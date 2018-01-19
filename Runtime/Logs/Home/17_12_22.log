@@ -1,0 +1,439 @@
+[ 2017-12-22T10:04:02+08:00 ] 127.0.0.1 /Login/check_verifycode.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000293s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000525s ]
+NOTIC: [8] Undefined variable: id F:\xampp\htdocs\cuit_check\Application\Home\Controller\LoginController.class.php 第 49 行.
+
+[ 2017-12-22T10:04:03+08:00 ] 127.0.0.1 /Login/check_login.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000326s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000565s ]
+ERR: SQLSTATE[HY000] [2002] ����Ŀ�����������ܾ����޷����ӡ�
+
+
+[ 2017-12-22T10:04:05+08:00 ] 127.0.0.1 /Login/check_verifycode.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000341s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000585s ]
+NOTIC: [8] Undefined variable: id F:\xampp\htdocs\cuit_check\Application\Home\Controller\LoginController.class.php 第 49 行.
+
+[ 2017-12-22T10:04:09+08:00 ] 127.0.0.1 /Login/check_verifycode.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000311s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000532s ]
+NOTIC: [8] Undefined variable: id F:\xampp\htdocs\cuit_check\Application\Home\Controller\LoginController.class.php 第 49 行.
+
+[ 2017-12-22T10:04:10+08:00 ] 127.0.0.1 /Login/check_login.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000279s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000517s ]
+ERR: SQLSTATE[HY000] [2002] ����Ŀ�����������ܾ����޷����ӡ�
+
+
+[ 2017-12-22T10:06:36+08:00 ] 127.0.0.1 /Login/check_verifycode.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000601s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000901s ]
+NOTIC: [8] Undefined variable: id F:\xampp\htdocs\cuit_check\Application\Home\Controller\LoginController.class.php 第 49 行.
+
+[ 2017-12-22T10:06:37+08:00 ] 127.0.0.1 /Login/check_login.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000345s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000561s ]
+SQL: SHOW COLUMNS FROM `kh_sysuser` [ RunTime:0.0355s ]
+SQL: SELECT * FROM `kh_sysuser` WHERE `account` = 'taolei' AND `password` = 'd93a5def7511da3d0f2d171d9c344e91'  [ RunTime:0.0351s ]
+SQL: SHOW COLUMNS FROM `kh_log` [ RunTime:0.0363s ]
+NOTIC: [8] Undefined index: validate F:\xampp\htdocs\cuit_check\ThinkPHP\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto F:\xampp\htdocs\cuit_check\ThinkPHP\Library\Think\Model.class.php 第 1128 行.
+SQL: INSERT INTO `kh_log` (`user_account`,`handlemethod`,`createip`,`create_date`,`create_by`,`del_flag`) VALUES ('taolei','/Home/Login/check_login','127.0.0.1','2017-12-22 10:06:37','taolei','1') [ RunTime:0.1062s ]
+
+[ 2017-12-22T10:06:38+08:00 ] 127.0.0.1 /cuitcheck/Uploads/UserPhoto/sysuser_1.jpeg
+ERR: 无法加载控制器:Cuitcheck
+
+[ 2017-12-22T10:06:39+08:00 ] 127.0.0.1 /Home/Index/GetMenulist.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000453s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000729s ]
+SQL: SHOW COLUMNS FROM `kh_menu` [ RunTime:0.0350s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 0 AND `del_flag` = 1 ORDER BY sort asc  [ RunTime:0.0339s ]
+SQL: SHOW COLUMNS FROM `kh_sysuser` [ RunTime:0.0355s ]
+SQL: SELECT `id`,`account`,`name`,`sex`,`photo`,`phone`,`email`,`role`,`status`,`dept_id` FROM `kh_sysuser` WHERE `account` = 'taolei' LIMIT 1   [ RunTime:0.0348s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 3 ORDER BY sort asc  [ RunTime:0.0355s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 9 ORDER BY sort asc  [ RunTime:0.0412s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 1 ORDER BY sort asc  [ RunTime:0.0436s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 11 ORDER BY sort asc  [ RunTime:0.0381s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 19 ORDER BY sort asc  [ RunTime:0.0325s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 17 ORDER BY sort asc  [ RunTime:0.0332s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 23 ORDER BY sort asc  [ RunTime:0.0335s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 28 ORDER BY sort asc  [ RunTime:0.0369s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 32 ORDER BY sort asc  [ RunTime:0.0376s ]
+SQL: SHOW COLUMNS FROM `kh_auth_group_access` [ RunTime:0.0590s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM kh_auth_group_access a INNER JOIN kh_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0959s ]
+SQL: SHOW COLUMNS FROM `kh_auth_rule` [ RunTime:0.0466s ]
+SQL: SELECT `condition`,`name` FROM `kh_auth_rule` WHERE `id` IN ('1','2','3','4','17','18','19','20','24','5','6','27','8','9','15','16','28','10','21','22','11','12','13','14','23','25','26','29','30','31','38','32','33','34','35','36') AND `type` = 1 AND `status` = 1  [ RunTime:0.2338s ]
+
+[ 2017-12-22T10:06:48+08:00 ] 127.0.0.1 /index.php/Home/ChapterMgr/chapterList
+ERR: 1146:Table 'cuitcheck.kh_lession' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `kh_lession`
+
+[ 2017-12-22T10:06:52+08:00 ] 127.0.0.1 /index.php/Home/ChapterMgr/chapterList
+ERR: 1146:Table 'cuitcheck.kh_lession' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `kh_lession`
+
+[ 2017-12-22T10:06:52+08:00 ] 127.0.0.1 /index.php/Home/KnowledgeMgr/knowledgeList
+ERR: 1146:Table 'cuitcheck.kh_lession' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `kh_lession`
+
+[ 2017-12-22T10:07:07+08:00 ] 127.0.0.1 /index.php/Home/TestDatabaseMgr/testDatabaseList
+ERR: 1146:Table 'cuitcheck.kh_lession' doesn't exist
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM `kh_testdatabase` JOIN kh_dict ON kh_dict.type = "testType" AND kh_dict.value = kh_testdatabase.type_id JOIN kh_lession ON kh_lession.id = kh_testdatabase.lession_id JOIN kh_course ON kh_course.id = kh_lession.course_id JOIN kh_college ON kh_college.id = kh_testdatabase.college_id  WHERE kh_testdatabase.del_flag = '1' LIMIT 1  
+
+[ 2017-12-22T10:08:06+08:00 ] 127.0.0.1 /index.php/Home/ChapterMgr/chapterList
+ERR: 1146:Table 'cuitcheck.kh_lession' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `kh_lession`
+
+[ 2017-12-22T10:08:12+08:00 ] 127.0.0.1 /Home/CourseMgr/editCourse.html?type=update&id=1
+ERR: 1054:Unknown column 'college_id' in 'field list'
+ [ SQL语句 ] : SELECT `id`,`name`,`remarks`,`college_id` FROM `kh_course` WHERE `id` = '1' AND `del_flag` = '1' LIMIT 1  
+
+[ 2017-12-22T10:08:16+08:00 ] 127.0.0.1 /index.php/Home/TestDBPermissionMgr/testDBList
+ERR: 1146:Table 'cuitcheck.kh_lession' doesn't exist
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM `kh_testdatabase` JOIN kh_lession ON kh_lession.id = kh_testdatabase.lession_id JOIN kh_course ON kh_course.id = kh_lession.course_id JOIN kh_college ON kh_college.id = kh_testdatabase.college_id  WHERE kh_testdatabase.del_flag = '1' LIMIT 1  
+
+[ 2017-12-22T10:09:01+08:00 ] 127.0.0.1 /index.php/Home/ScoreAnalysis/classList
+ERR: 1146:Table 'cuitcheck.kh_lession' doesn't exist
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM kh_courseclass as a LEFT join kh_college ON kh_college.id = a.college_id
+				LEFT join kh_grade ON kh_grade.id = a.grade_id 
+				LEFT join kh_sysuser ON kh_sysuser.id = a.teacher_id
+				LEFT join kh_lession ON kh_lession.id = a.lession_id
+			  WHERE a.del_flag = '1' LIMIT 1  
+
+[ 2017-12-22T10:09:53+08:00 ] 127.0.0.1 /Public/static/js/menuManage.js
+ERR: 无法加载控制器:Public
+
+[ 2017-12-22T10:10:42+08:00 ] 127.0.0.1 /index.php/Home/TestDatabaseMgr/testDatabaseList
+ERR: 1146:Table 'cuitcheck.kh_lession' doesn't exist
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM `kh_testdatabase` JOIN kh_dict ON kh_dict.type = "testType" AND kh_dict.value = kh_testdatabase.type_id JOIN kh_lession ON kh_lession.id = kh_testdatabase.lession_id JOIN kh_course ON kh_course.id = kh_lession.course_id JOIN kh_college ON kh_college.id = kh_testdatabase.college_id  WHERE kh_testdatabase.del_flag = '1' LIMIT 1  
+
+[ 2017-12-22T10:15:57+08:00 ] 127.0.0.1 /index.php/Home/CourseclassMgr/courseclassList
+ERR: 1146:Table 'cuitcheck.kh_lession' doesn't exist
+ [ SQL语句 ] : SELECT kh_courseclass.id,kh_courseclass.name,kh_courseclass.start_time,kh_courseclass.end_time,kh_college.name as college_name,kh_lession.name as lession_name,kh_lession.id as lession_id,kh_college.id as college_id,kh_grade.name as grade_name,kh_sysuser.name as teacher_name FROM `kh_courseclass` LEFT join kh_college ON kh_college.id = kh_courseclass.college_id
+				LEFT join kh_grade ON kh_grade.id = kh_courseclass.grade_id
+				LEFT join kh_lession ON kh_lession.id = kh_courseclass.lession_id
+				LEFT join kh_sysuser ON kh_sysuser.id = kh_courseclass.teacher_id
+			  WHERE kh_courseclass.del_flag = '1' ORDER BY college_id asc LIMIT 0,10  
+
+[ 2017-12-22T10:16:05+08:00 ] 127.0.0.1 /index.php/Home/ChapterMgr/chapterList
+ERR: 1146:Table 'cuitcheck.kh_lession' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `kh_lession`
+
+[ 2017-12-22T10:16:06+08:00 ] 127.0.0.1 /index.php/Home/KnowledgeMgr/knowledgeList
+ERR: 1146:Table 'cuitcheck.kh_lession' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `kh_lession`
+
+[ 2017-12-22T10:16:10+08:00 ] 127.0.0.1 /index.php/Home/TestDatabaseMgr/testDatabaseList
+ERR: 1146:Table 'cuitcheck.kh_lession' doesn't exist
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM `kh_testdatabase` JOIN kh_dict ON kh_dict.type = "testType" AND kh_dict.value = kh_testdatabase.type_id JOIN kh_lession ON kh_lession.id = kh_testdatabase.lession_id JOIN kh_course ON kh_course.id = kh_lession.course_id JOIN kh_college ON kh_college.id = kh_testdatabase.college_id  WHERE kh_testdatabase.del_flag = '1' LIMIT 1  
+
+[ 2017-12-22T10:16:12+08:00 ] 127.0.0.1 /index.php/Home/TestDBPermissionMgr/testDBList
+ERR: 1146:Table 'cuitcheck.kh_lession' doesn't exist
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM `kh_testdatabase` JOIN kh_lession ON kh_lession.id = kh_testdatabase.lession_id JOIN kh_course ON kh_course.id = kh_lession.course_id JOIN kh_college ON kh_college.id = kh_testdatabase.college_id  WHERE kh_testdatabase.del_flag = '1' LIMIT 1  
+
+[ 2017-12-22T10:16:56+08:00 ] 127.0.0.1 /Public/static/js/menuManage.js
+ERR: 无法加载控制器:Public
+
+[ 2017-12-22T10:28:23+08:00 ] 127.0.0.1 /cuitcheck/Uploads/UserPhoto/sysuser_1.jpeg
+ERR: 无法加载控制器:Cuitcheck
+
+[ 2017-12-22T10:28:26+08:00 ] 127.0.0.1 /cuitcheck/Uploads/UserPhoto/sysuser_1.jpeg
+ERR: 无法加载控制器:Cuitcheck
+
+[ 2017-12-22T10:28:28+08:00 ] 127.0.0.1 /Home/Index/GetMenulist.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000302s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000554s ]
+SQL: SHOW COLUMNS FROM `kh_menu` [ RunTime:0.0457s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 0 AND `del_flag` = 1 ORDER BY sort asc  [ RunTime:0.0508s ]
+SQL: SHOW COLUMNS FROM `kh_sysuser` [ RunTime:0.0469s ]
+SQL: SELECT `id`,`account`,`name`,`sex`,`photo`,`phone`,`email`,`role`,`status`,`dept_id` FROM `kh_sysuser` WHERE `account` = 'taolei' LIMIT 1   [ RunTime:0.0452s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 3 ORDER BY sort asc  [ RunTime:0.0463s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 9 ORDER BY sort asc  [ RunTime:0.0456s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 1 ORDER BY sort asc  [ RunTime:0.0446s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 11 ORDER BY sort asc  [ RunTime:0.0473s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 17 ORDER BY sort asc  [ RunTime:0.0514s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 23 ORDER BY sort asc  [ RunTime:0.0684s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 28 ORDER BY sort asc  [ RunTime:0.0447s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 32 ORDER BY sort asc  [ RunTime:0.0448s ]
+SQL: SHOW COLUMNS FROM `kh_auth_group_access` [ RunTime:0.0459s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM kh_auth_group_access a INNER JOIN kh_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0601s ]
+SQL: SHOW COLUMNS FROM `kh_auth_rule` [ RunTime:0.0487s ]
+SQL: SELECT `condition`,`name` FROM `kh_auth_rule` WHERE `id` IN ('1','2','3','4','17','18','19','20','24','5','6','27','8','9','15','16','28','11','12','13','14','23','25','21','22','26','39','29','30','31','38','32','33','34','35','36') AND `type` = 1 AND `status` = 1  [ RunTime:0.0500s ]
+
+[ 2017-12-22T10:28:36+08:00 ] 127.0.0.1 /cuitcheck/Uploads/UserPhoto/sysuser_1.jpeg
+ERR: 无法加载控制器:Cuitcheck
+
+[ 2017-12-22T10:29:02+08:00 ] 127.0.0.1 /cuitcheck/Uploads/UserPhoto/sysuser_1.jpeg
+ERR: 无法加载控制器:Cuitcheck
+
+[ 2017-12-22T10:29:03+08:00 ] 127.0.0.1 /Home/Index/GetMenulist.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000292s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000550s ]
+SQL: SHOW COLUMNS FROM `kh_menu` [ RunTime:0.0472s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 0 AND `del_flag` = 1 ORDER BY sort asc  [ RunTime:0.0485s ]
+SQL: SHOW COLUMNS FROM `kh_sysuser` [ RunTime:0.0473s ]
+SQL: SELECT `id`,`account`,`name`,`sex`,`photo`,`phone`,`email`,`role`,`status`,`dept_id` FROM `kh_sysuser` WHERE `account` = 'taolei' LIMIT 1   [ RunTime:0.0458s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 3 ORDER BY sort asc  [ RunTime:0.0450s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 9 ORDER BY sort asc  [ RunTime:0.0455s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 1 ORDER BY sort asc  [ RunTime:0.0449s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 11 ORDER BY sort asc  [ RunTime:0.0453s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 17 ORDER BY sort asc  [ RunTime:0.0454s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 23 ORDER BY sort asc  [ RunTime:0.0455s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 28 ORDER BY sort asc  [ RunTime:0.0455s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 32 ORDER BY sort asc  [ RunTime:0.0455s ]
+SQL: SHOW COLUMNS FROM `kh_auth_group_access` [ RunTime:0.0467s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM kh_auth_group_access a INNER JOIN kh_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0453s ]
+SQL: SHOW COLUMNS FROM `kh_auth_rule` [ RunTime:0.0466s ]
+SQL: SELECT `condition`,`name` FROM `kh_auth_rule` WHERE `id` IN ('1','2','3','4','17','18','19','20','24','5','6','27','8','9','15','16','28','11','12','13','14','23','25','21','22','26','39','29','30','31','38','32','33','34','35','36') AND `type` = 1 AND `status` = 1  [ RunTime:0.0456s ]
+
+[ 2017-12-22T10:29:19+08:00 ] 127.0.0.1 /cuitcheck/Uploads/UserPhoto/sysuser_1.jpeg
+ERR: 无法加载控制器:Cuitcheck
+
+[ 2017-12-22T10:29:20+08:00 ] 127.0.0.1 /Home/Index/GetMenulist.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000912s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001394s ]
+SQL: SHOW COLUMNS FROM `kh_menu` [ RunTime:0.0388s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 0 AND `del_flag` = 1 ORDER BY sort asc  [ RunTime:0.0383s ]
+SQL: SHOW COLUMNS FROM `kh_sysuser` [ RunTime:0.0406s ]
+SQL: SELECT `id`,`account`,`name`,`sex`,`photo`,`phone`,`email`,`role`,`status`,`dept_id` FROM `kh_sysuser` WHERE `account` = 'taolei' LIMIT 1   [ RunTime:0.0376s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 3 ORDER BY sort asc  [ RunTime:0.0381s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 9 ORDER BY sort asc  [ RunTime:0.0382s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 1 ORDER BY sort asc  [ RunTime:0.0385s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 11 ORDER BY sort asc  [ RunTime:0.0370s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 17 ORDER BY sort asc  [ RunTime:0.0383s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 23 ORDER BY sort asc  [ RunTime:0.0381s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 28 ORDER BY sort asc  [ RunTime:0.0372s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 32 ORDER BY sort asc  [ RunTime:0.0373s ]
+SQL: SHOW COLUMNS FROM `kh_auth_group_access` [ RunTime:0.0392s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM kh_auth_group_access a INNER JOIN kh_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0382s ]
+SQL: SHOW COLUMNS FROM `kh_auth_rule` [ RunTime:0.0401s ]
+SQL: SELECT `condition`,`name` FROM `kh_auth_rule` WHERE `id` IN ('1','2','3','4','17','18','19','20','24','5','6','27','8','9','15','16','28','11','12','13','14','23','25','21','22','26','39','29','30','31','38','32','33','34','35','36') AND `type` = 1 AND `status` = 1  [ RunTime:0.0392s ]
+
+[ 2017-12-22T10:30:13+08:00 ] 127.0.0.1 /Home/ClassPapersDetialMgr/getList.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000285s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000515s ]
+SQL: SHOW COLUMNS FROM `kh_question` [ RunTime:0.0395s ]
+SQL: SELECT `id` FROM `kh_question` WHERE `del_flag` = '1' AND `testdb_id` = '1'  [ RunTime:0.0380s ]
+SQL: SHOW COLUMNS FROM `kh_question_know` [ RunTime:0.0405s ]
+SQL: SELECT `knowledge_id` FROM `kh_question_know` WHERE `question_id` IN ('1','20','24','25')  [ RunTime:0.0379s ]
+SQL: SHOW COLUMNS FROM `kh_knowledge` [ RunTime:0.0407s ]
+SQL: SELECT `chapter_id` FROM `kh_knowledge` WHERE `del_flag` = '1' AND `id` IN ('1','1','1','1','2')  [ RunTime:0.0374s ]
+SQL: SHOW COLUMNS FROM `kh_chapter` [ RunTime:0.0406s ]
+SQL: SELECT * FROM `kh_chapter` WHERE `del_flag` = '1' AND `id` IN ('1','2')  [ RunTime:0.0438s ]
+
+[ 2017-12-22T10:30:26+08:00 ] 127.0.0.1 /Home/ClassPapersDetialMgr/getList.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000285s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000518s ]
+SQL: SHOW COLUMNS FROM `kh_question` [ RunTime:0.0501s ]
+SQL: SELECT `id` FROM `kh_question` WHERE `del_flag` = '1' AND `testdb_id` = '2'  [ RunTime:0.0447s ]
+SQL: SHOW COLUMNS FROM `kh_question_know` [ RunTime:0.0657s ]
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1
+ [ SQL语句 ] : SELECT `knowledge_id` FROM `kh_question_know` WHERE `question_id` IN () 
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1
+ [ SQL语句 ] : SELECT `knowledge_id` FROM `kh_question_know` WHERE `question_id` IN () 
+
+[ 2017-12-22T10:30:31+08:00 ] 127.0.0.1 /Home/ClassPapersDetialMgr/getList.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000284s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000513s ]
+SQL: SHOW COLUMNS FROM `kh_question` [ RunTime:0.0411s ]
+SQL: SELECT `id` FROM `kh_question` WHERE `del_flag` = '1' AND `testdb_id` = '1'  [ RunTime:0.0401s ]
+SQL: SHOW COLUMNS FROM `kh_question_know` [ RunTime:0.0444s ]
+SQL: SELECT `knowledge_id` FROM `kh_question_know` WHERE `question_id` IN ('1','20','24','25')  [ RunTime:0.0411s ]
+SQL: SHOW COLUMNS FROM `kh_knowledge` [ RunTime:0.0412s ]
+SQL: SELECT `chapter_id` FROM `kh_knowledge` WHERE `del_flag` = '1' AND `id` IN ('1','1','1','1','2')  [ RunTime:0.0401s ]
+SQL: SHOW COLUMNS FROM `kh_chapter` [ RunTime:0.0426s ]
+SQL: SELECT * FROM `kh_chapter` WHERE `del_flag` = '1' AND `id` IN ('1','2')  [ RunTime:0.0399s ]
+
+[ 2017-12-22T10:30:54+08:00 ] 127.0.0.1 /Home/AutoCreatePaperMgr/getList.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000356s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000602s ]
+SQL: SHOW COLUMNS FROM `kh_question` [ RunTime:0.0457s ]
+SQL: SELECT `id` FROM `kh_question` WHERE `del_flag` = '1' AND `testdb_id` = '1'  [ RunTime:0.0447s ]
+SQL: SHOW COLUMNS FROM `kh_question_know` [ RunTime:0.0454s ]
+SQL: SELECT `knowledge_id` FROM `kh_question_know` WHERE `question_id` IN ('1','20','24','25')  [ RunTime:0.0530s ]
+SQL: SHOW COLUMNS FROM `kh_knowledge` [ RunTime:0.0657s ]
+SQL: SELECT `chapter_id` FROM `kh_knowledge` WHERE `del_flag` = '1' AND `id` IN ('1','1','1','1','2')  [ RunTime:0.0483s ]
+SQL: SHOW COLUMNS FROM `kh_chapter` [ RunTime:0.0517s ]
+SQL: SELECT * FROM `kh_chapter` WHERE `del_flag` = '1' AND `id` IN ('1','2')  [ RunTime:0.0447s ]
+
+[ 2017-12-22T10:30:55+08:00 ] 127.0.0.1 /Home/AutoCreatePaperMgr/getResidueSubjectNum.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000285s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000559s ]
+SQL: select DISTINCT kq.id AS question_id from kh_question kq WHERE kq.testdb_id in (1); [ RunTime:0.0388s ]
+SQL: SHOW COLUMNS FROM `kh_question` [ RunTime:0.0397s ]
+SQL: SELECT * FROM `kh_question` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0506s ]
+SQL: SELECT * FROM `kh_question` WHERE `id` = 20 LIMIT 1   [ RunTime:0.0597s ]
+SQL: SELECT * FROM `kh_question` WHERE `id` = 21 LIMIT 1   [ RunTime:0.0560s ]
+SQL: SELECT * FROM `kh_question` WHERE `id` = 22 LIMIT 1   [ RunTime:0.0596s ]
+SQL: SELECT * FROM `kh_question` WHERE `id` = 23 LIMIT 1   [ RunTime:0.0604s ]
+SQL: SELECT * FROM `kh_question` WHERE `id` = 24 LIMIT 1   [ RunTime:0.0512s ]
+SQL: SELECT * FROM `kh_question` WHERE `id` = 25 LIMIT 1   [ RunTime:0.0562s ]
+
+[ 2017-12-22T10:30:58+08:00 ] 127.0.0.1 /Home/AutoCreatePaperMgr/getResidueSubjectNum.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000276s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000500s ]
+SQL: select DISTINCT kqk.question_id from kh_question_know kqk LEFT JOIN kh_question kq ON kqk.question_id = kq.id,kh_knowledge kkl 
+WHERE kkl.chapter_id in (2) AND kkl.id = kqk.knowledge_id AND kq.testdb_id in (1); [ RunTime:0.0640s ]
+SQL: SHOW COLUMNS FROM `kh_question` [ RunTime:0.0733s ]
+SQL: SELECT * FROM `kh_question` WHERE `id` = 20 LIMIT 1   [ RunTime:0.0606s ]
+
+[ 2017-12-22T10:31:40+08:00 ] 127.0.0.1 /StudentMgr
+ERR: 非法操作:index
+
+[ 2017-12-22T10:32:33+08:00 ] 127.0.0.1 /LoginMgr
+ERR: 无法加载控制器:LoginMgr
+
+[ 2017-12-22T10:32:43+08:00 ] 127.0.0.1 /LoginMgr/login
+ERR: 无法加载控制器:LoginMgr
+
+[ 2017-12-22T10:45:27+08:00 ] 127.0.0.1 /cuitcheck/Uploads/UserPhoto/sysuser_1.jpeg
+ERR: 无法加载控制器:Cuitcheck
+
+[ 2017-12-22T10:45:29+08:00 ] 127.0.0.1 /Home/Index/GetMenulist.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000801s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001795s ]
+SQL: SHOW COLUMNS FROM `kh_menu` [ RunTime:0.0761s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 0 AND `del_flag` = 1 ORDER BY sort asc  [ RunTime:0.0662s ]
+SQL: SHOW COLUMNS FROM `kh_sysuser` [ RunTime:0.0759s ]
+SQL: SELECT `id`,`account`,`name`,`sex`,`photo`,`phone`,`email`,`role`,`status`,`dept_id` FROM `kh_sysuser` WHERE `account` = 'taolei' LIMIT 1   [ RunTime:0.0740s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 3 ORDER BY sort asc  [ RunTime:0.0689s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 9 ORDER BY sort asc  [ RunTime:0.0686s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 1 ORDER BY sort asc  [ RunTime:0.0686s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 11 ORDER BY sort asc  [ RunTime:0.0744s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 17 ORDER BY sort asc  [ RunTime:0.3712s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 23 ORDER BY sort asc  [ RunTime:0.0633s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 28 ORDER BY sort asc  [ RunTime:0.0672s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 32 ORDER BY sort asc  [ RunTime:0.0724s ]
+SQL: SHOW COLUMNS FROM `kh_auth_group_access` [ RunTime:0.0731s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM kh_auth_group_access a INNER JOIN kh_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0734s ]
+SQL: SHOW COLUMNS FROM `kh_auth_rule` [ RunTime:0.0775s ]
+SQL: SELECT `condition`,`name` FROM `kh_auth_rule` WHERE `id` IN ('1','2','3','4','17','18','19','20','24','5','6','27','8','9','15','16','28','11','12','13','14','23','25','21','22','26','39','29','30','31','38','32','33','34','35','36') AND `type` = 1 AND `status` = 1  [ RunTime:0.0767s ]
+
+[ 2017-12-22T10:45:39+08:00 ] 127.0.0.1 /ScoreAnalysis/linkSearch.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000519s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000873s ]
+SQL: SHOW COLUMNS FROM `kh_course` [ RunTime:0.0718s ]
+SQL: SELECT * FROM `kh_course` WHERE `college_id` = 5  [ RunTime:0.0712s ]
+
+[ 2017-12-22T10:45:39+08:00 ] 127.0.0.1 /ScoreAnalysis/linkSearch.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000748s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001461s ]
+SQL: SHOW COLUMNS FROM `kh_lession` [ RunTime:0.0549s ]
+SQL: SELECT * FROM `kh_lession` WHERE `course_id` = 3  [ RunTime:0.0596s ]
+
+[ 2017-12-22T10:45:40+08:00 ] 127.0.0.1 /ScoreAnalysis/linkSearch.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000545s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000919s ]
+SQL: SHOW COLUMNS FROM `kh_course` [ RunTime:0.0633s ]
+SQL: SELECT * FROM `kh_course` WHERE `college_id` = 5  [ RunTime:0.0603s ]
+SQL: SHOW COLUMNS FROM `kh_testpaper` [ RunTime:0.0630s ]
+SQL: SELECT * FROM `kh_testpaper` WHERE `college_id` = 5 AND `lession_id` = 0  [ RunTime:0.0618s ]
+SQL: SHOW COLUMNS FROM `kh_courseclass` [ RunTime:0.0674s ]
+SQL: SELECT * FROM `kh_courseclass` WHERE `college_id` = 5 AND `lession_id` = 0 AND `grade_id` = 0  [ RunTime:0.0691s ]
+
+[ 2017-12-22T10:45:41+08:00 ] 127.0.0.1 /ScoreAnalysis/linkSearch.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000397s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000686s ]
+SQL: SHOW COLUMNS FROM `kh_course` [ RunTime:0.0811s ]
+SQL: SELECT * FROM `kh_course` WHERE `college_id` = 5  [ RunTime:0.0754s ]
+SQL: SHOW COLUMNS FROM `kh_testpaper` [ RunTime:0.0760s ]
+SQL: SELECT * FROM `kh_testpaper` WHERE `college_id` = 5 AND `lession_id` = 0  [ RunTime:0.0746s ]
+
+[ 2017-12-22T10:45:44+08:00 ] 127.0.0.1 /ScoreAnalysis/linkSearch.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000304s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000580s ]
+SQL: SHOW COLUMNS FROM `kh_course` [ RunTime:0.0642s ]
+SQL: SELECT * FROM `kh_course` WHERE `college_id` = 5  [ RunTime:0.0712s ]
+SQL: SHOW COLUMNS FROM `kh_testpaper` [ RunTime:0.0637s ]
+SQL: SELECT * FROM `kh_testpaper` WHERE `college_id` = 5 AND `lession_id` = 0  [ RunTime:0.0639s ]
+SQL: SHOW COLUMNS FROM `kh_courseclass` [ RunTime:0.0700s ]
+SQL: SELECT * FROM `kh_courseclass` WHERE `college_id` = 5 AND `lession_id` = 0 AND `grade_id` = 1  [ RunTime:0.0716s ]
+
+[ 2017-12-22T10:45:46+08:00 ] 127.0.0.1 /ScoreAnalysis/linkSearch.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000315s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000638s ]
+SQL: SHOW COLUMNS FROM `kh_course` [ RunTime:0.0653s ]
+SQL: SELECT * FROM `kh_course` WHERE `college_id` = 4  [ RunTime:0.0596s ]
+
+[ 2017-12-22T10:45:47+08:00 ] 127.0.0.1 /ScoreAnalysis/linkSearch.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000908s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001327s ]
+SQL: SHOW COLUMNS FROM `kh_lession` [ RunTime:0.0646s ]
+SQL: SELECT * FROM `kh_lession` WHERE `course_id` = 1  [ RunTime:0.0632s ]
+
+[ 2017-12-22T10:45:47+08:00 ] 127.0.0.1 /ScoreAnalysis/linkSearch.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000340s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000649s ]
+SQL: SHOW COLUMNS FROM `kh_course` [ RunTime:0.0483s ]
+SQL: SELECT * FROM `kh_course` WHERE `college_id` = 4  [ RunTime:0.0649s ]
+SQL: SHOW COLUMNS FROM `kh_testpaper` [ RunTime:0.0543s ]
+SQL: SELECT * FROM `kh_testpaper` WHERE `college_id` = 4 AND `lession_id` = 0  [ RunTime:0.0632s ]
+SQL: SHOW COLUMNS FROM `kh_courseclass` [ RunTime:0.0497s ]
+SQL: SELECT * FROM `kh_courseclass` WHERE `college_id` = 4 AND `lession_id` = 0 AND `grade_id` = 1  [ RunTime:0.0651s ]
+
+[ 2017-12-22T10:45:48+08:00 ] 127.0.0.1 /ScoreAnalysis/linkSearch.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000286s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000599s ]
+SQL: SHOW COLUMNS FROM `kh_course` [ RunTime:0.0713s ]
+SQL: SELECT * FROM `kh_course` WHERE `college_id` = 4  [ RunTime:0.0631s ]
+SQL: SHOW COLUMNS FROM `kh_testpaper` [ RunTime:0.0727s ]
+SQL: SELECT * FROM `kh_testpaper` WHERE `college_id` = 4 AND `lession_id` = 1  [ RunTime:0.0671s ]
+
+[ 2017-12-22T10:45:58+08:00 ] 127.0.0.1 /Home/ScoreAnalysis/paperKnowledge.html?paperId=1&courseclass_id=
+ERR: 1064:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 1
+ [ SQL语句 ] : SELECT `id` FROM `kh_student` WHERE kh_student.account IN () 
+
+[ 2017-12-22T12:00:02+08:00 ] 127.0.0.1 /cuitcheck/Uploads/UserPhoto/sysuser_1.jpeg
+ERR: 无法加载控制器:Cuitcheck
+
+[ 2017-12-22T12:00:02+08:00 ] 127.0.0.1 /cuitcheck/Uploads/UserPhoto/sysuser_1.jpeg
+ERR: 无法加载控制器:Cuitcheck
+
+[ 2017-12-22T12:00:04+08:00 ] 127.0.0.1 /Home/Index/GetMenulist.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000291s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000673s ]
+SQL: SHOW COLUMNS FROM `kh_menu` [ RunTime:0.0465s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 0 AND `del_flag` = 1 ORDER BY sort asc  [ RunTime:0.0443s ]
+SQL: SHOW COLUMNS FROM `kh_sysuser` [ RunTime:0.0474s ]
+SQL: SELECT `id`,`account`,`name`,`sex`,`photo`,`phone`,`email`,`role`,`status`,`dept_id` FROM `kh_sysuser` WHERE `account` = 'taolei' LIMIT 1   [ RunTime:0.0453s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 3 ORDER BY sort asc  [ RunTime:0.0443s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 9 ORDER BY sort asc  [ RunTime:0.0450s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 1 ORDER BY sort asc  [ RunTime:0.0454s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 11 ORDER BY sort asc  [ RunTime:0.0450s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 17 ORDER BY sort asc  [ RunTime:0.0439s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 23 ORDER BY sort asc  [ RunTime:0.0447s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 28 ORDER BY sort asc  [ RunTime:0.0449s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 32 ORDER BY sort asc  [ RunTime:0.0448s ]
+SQL: SHOW COLUMNS FROM `kh_auth_group_access` [ RunTime:0.0466s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM kh_auth_group_access a INNER JOIN kh_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0453s ]
+SQL: SHOW COLUMNS FROM `kh_auth_rule` [ RunTime:0.0466s ]
+SQL: SELECT `condition`,`name` FROM `kh_auth_rule` WHERE `id` IN ('1','2','3','4','17','18','19','20','24','5','6','27','8','9','15','16','28','11','12','13','14','23','25','21','22','26','39','29','30','31','38','32','33','34','35','36') AND `type` = 1 AND `status` = 1  [ RunTime:0.0456s ]
+

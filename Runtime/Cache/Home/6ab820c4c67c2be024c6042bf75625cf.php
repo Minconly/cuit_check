@@ -1,0 +1,138 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>日志记录</title>
+	          <link rel="stylesheet" type="text/css" href="/Public/static/layui/css/layui.css">
+	<link rel="stylesheet" href="/Public/static/css/global.css" media="all">
+</head>
+<body>
+	<div class="admin-main">
+			<blockquote class="layui-elem-quote">
+			<form class="layui-form" style="display: inline-block;margin-left: 10px; min-height: inherit; vertical-align: bottom;">
+				<div class="layui-input-block" style="display: inline-block;margin-left: 20px; min-height: inherit; vertical-align: bottom;">
+					<div class="layui-form-pane">
+					<label class="layui-form-label" style="padding: 4px 15px;">日志时间</label>
+					<div class="layui-input-inline">
+				      <input class="layui-input" placeholder="开始日期" id="log_beginDate" name="beginDate" style="height:30px; line-height:30px;"  value="<?php echo ((isset($beginDate) && ($beginDate !== ""))?($beginDate):''); ?>" readonly="true">
+				    </div>
+            -
+				    <div class="layui-input-inline">
+				      <input class="layui-input" placeholder="结束日期" id="log_endDate" name="endDate" style="height:30px; line-height:30px;" value="<?php echo ((isset($endDate) && ($endDate !== ""))?($endDate):''); ?>" readonly="true">
+				    </div>
+					</div>
+				</div>
+				<a href="javascript:;" class="layui-btn layui-btn-small" style="margin-left: 20px;" id="log_search">
+					<i class="layui-icon">&#xe615;</i> 搜索
+				</a>
+				<a href="javascript:;" class="layui-btn layui-btn-small" id="log_searchAll">
+					<i class="layui-icon">&#xe615;</i> 查看全部
+				</a>
+        <a href="javascript:;" class="layui-btn layui-btn-small" id="log_clean">
+          <i class="layui-icon">&#xe640;</i> 日志清理
+        </a>
+				</form>
+			</blockquote>
+			<fieldset class="layui-elem-field">
+				<legend>日志列表</legend>
+          <div class="layui-field-box">              
+          <table class="site-table table-hover">
+						<thead>
+							<tr>
+								<th>操作用户</th>
+								<th>操作方法</th>
+								<th>操作Ip</th>
+                <th>操作时间</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php if(is_array($logList)): $i = 0; $__LIST__ = $logList;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+								<td><?php echo ($vo["account"]); ?></td>
+								<td><?php echo ($vo["method"]); ?></td>
+                <td><?php echo ($vo["ip"]); ?></td>
+                <td><?php echo ($vo["create_date"]); ?></td>
+							</tr><?php endforeach; endif; else: echo "" ;endif; ?>
+						</tbody>
+					</table>
+				</div>
+			</fieldset>
+			<div  style="position: fixed;bottom: 0;width: 100%;border-bottom: 1px solid #ddd;left: 0px;">
+				<div id="page" class="page">
+			</div>
+			</div>
+	</div>
+	        <script src="/Public/static/layui/layui.js"></script>
+  <script type="text/javascript">
+  var pages = <?php echo ($pages); ?>;
+  var curr = <?php echo ($requestPage); ?>;
+</script>
+</body>
+</html>
+<script type="text/javascript">
+layui.use(['layer','form','jquery','laypage','laydate'],function(){
+  var layer = layui.layer,
+  form = layui.form(),
+  laypage = layui.laypage,
+  laydate = layui.laydate,
+  $ = layui.jquery;
+  var start = {
+    istime: true, 
+    format: 'YYYY-MM-DD hh:mm:ss', 
+    festival: false,
+      choose: function(datas){
+        end.min = datas; //开始日选好后，重置结束日的最小日期
+        end.start = datas //将结束日的初始值设定为开始日
+      }
+    }; 
+    var end = {
+      istime: true, 
+    format: 'YYYY-MM-DD hh:mm:ss', 
+    festival: false,
+      choose: function(datas){
+        start.max = datas; //结束日选好后，重置开始日的最大日期
+      }
+    };
+    
+    $('#log_beginDate').get(0).onclick = function(){
+      start.elem = this;
+      laydate(start);
+    }
+    $('#log_endDate').get(0).onclick = function(){
+      end.elem = this
+      laydate(end);
+    }
+    laypage({
+    cont: 'page',
+    pages: pages ,//总页数
+    skip:true, //显示跳页
+    groups: 5, //连续显示分页数
+    curr: curr,//获得当前页码
+    jump: function(obj, first) {
+      var curr = obj.curr;
+      if(!first) {
+        var beginDate = $('#log_beginDate').val();
+        var endDate = $('#log_endDate').val();
+        window.location.href="<?php echo U('Home/System/log');?>"+"?requestPage="+curr+"&beginDate="+beginDate+"&endDate="+endDate;;
+      }
+    }
+  });
+  $('#log_search').on('click',function(event) {
+   var beginDate = $('#log_beginDate').val();
+   var endDate = $('#log_endDate').val();
+   var searchword = "?";
+     if (!(beginDate!="" && endDate!="")) {
+          layer.msg('请先选择正确的时间区间',{time:1000});
+       }else{
+        searchword = searchword+"beginDate="+beginDate+"&endDate="+endDate;
+          window.location.href="<?php echo U('Home/System/log');?>"+searchword;
+       }    
+  });
+  $('#log_searchAll').on('click', function(){
+    window.location.href="<?php echo U('Home/System/log');?>";
+  });
+  $('#log_clean').on('click',function(){
+     layer.msg('//TODO');
+  })
+})
+</script>

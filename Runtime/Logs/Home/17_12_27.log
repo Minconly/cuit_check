@@ -1,0 +1,362 @@
+[ 2017-12-27T18:00:28+08:00 ] 127.0.0.1 /Login/check_verifycode.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000509s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001015s ]
+NOTIC: [8] Undefined variable: id F:\xampp\htdocs\cuit_check\Application\Home\Controller\LoginController.class.php 第 49 行.
+
+[ 2017-12-27T18:00:28+08:00 ] 127.0.0.1 /Login/check_login.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000342s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000609s ]
+ERR: SQLSTATE[HY000] [1045] Access denied for user 'cuitcheck'@'182.150.27.61' (using password: YES)
+
+[ 2017-12-27T18:01:52+08:00 ] 127.0.0.1 /Login/check_verifycode.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000390s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000695s ]
+NOTIC: [8] Undefined variable: id F:\xampp\htdocs\cuit_check\Application\Home\Controller\LoginController.class.php 第 49 行.
+
+[ 2017-12-27T18:01:55+08:00 ] 127.0.0.1 /Login/check_verifycode.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000355s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000802s ]
+NOTIC: [8] Undefined variable: id F:\xampp\htdocs\cuit_check\Application\Home\Controller\LoginController.class.php 第 49 行.
+
+[ 2017-12-27T18:01:56+08:00 ] 127.0.0.1 /Login/check_login.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000299s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000579s ]
+SQL: SHOW COLUMNS FROM `kh_sysuser` [ RunTime:0.1717s ]
+SQL: SELECT * FROM `kh_sysuser` WHERE `account` = 'taolei' AND `password` = 'd93a5def7511da3d0f2d171d9c344e91'  [ RunTime:0.1107s ]
+SQL: SHOW COLUMNS FROM `kh_log` [ RunTime:0.0391s ]
+NOTIC: [8] Undefined index: validate F:\xampp\htdocs\cuit_check\ThinkPHP\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto F:\xampp\htdocs\cuit_check\ThinkPHP\Library\Think\Model.class.php 第 1128 行.
+SQL: INSERT INTO `kh_log` (`user_account`,`handlemethod`,`createip`,`create_date`,`create_by`,`del_flag`) VALUES ('taolei','/Home/Login/check_login','127.0.0.1','2017-12-27 18:01:56','taolei','1') [ RunTime:0.0680s ]
+
+[ 2017-12-27T18:01:56+08:00 ] 127.0.0.1 /cuitcheck/Uploads/UserPhoto/sysuser_1.jpeg
+ERR: 无法加载控制器:Cuitcheck
+
+[ 2017-12-27T18:01:57+08:00 ] 127.0.0.1 /Public/static/css/bootstrap.min.css.map
+ERR: 无法加载控制器:Public
+
+[ 2017-12-27T18:01:58+08:00 ] 127.0.0.1 /Home/Index/GetMenulist.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000329s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000598s ]
+SQL: SHOW COLUMNS FROM `kh_menu` [ RunTime:0.0407s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 0 AND `del_flag` = 1 ORDER BY sort asc  [ RunTime:0.0387s ]
+SQL: SHOW COLUMNS FROM `kh_sysuser` [ RunTime:0.0400s ]
+SQL: SELECT `id`,`account`,`name`,`sex`,`photo`,`phone`,`email`,`role`,`status`,`dept_id` FROM `kh_sysuser` WHERE `account` = 'taolei' LIMIT 1   [ RunTime:0.0390s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 3 ORDER BY sort asc  [ RunTime:0.0407s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 9 ORDER BY sort asc  [ RunTime:0.0393s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 1 ORDER BY sort asc  [ RunTime:0.0389s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 11 ORDER BY sort asc  [ RunTime:0.0387s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 17 ORDER BY sort asc  [ RunTime:0.0392s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 23 ORDER BY sort asc  [ RunTime:0.0394s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 28 ORDER BY sort asc  [ RunTime:0.0391s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 32 ORDER BY sort asc  [ RunTime:0.0392s ]
+SQL: SHOW COLUMNS FROM `kh_auth_group_access` [ RunTime:0.0395s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM kh_auth_group_access a INNER JOIN kh_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0393s ]
+SQL: SHOW COLUMNS FROM `kh_auth_rule` [ RunTime:0.0400s ]
+SQL: SELECT `condition`,`name` FROM `kh_auth_rule` WHERE `id` IN ('1','2','3','4','17','18','19','20','24','5','6','27','8','9','15','16','28','11','12','13','14','23','25','21','22','26','39','29','30','31','38','32','33','34','35','36') AND `type` = 1 AND `status` = 1  [ RunTime:0.0396s ]
+
+[ 2017-12-27T18:04:10+08:00 ] 127.0.0.1 /cuitcheck/Uploads/UserPhoto/sysuser_1.jpeg
+ERR: 无法加载控制器:Cuitcheck
+
+[ 2017-12-27T18:04:11+08:00 ] 127.0.0.1 /Home/Index/GetMenulist.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000514s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000869s ]
+SQL: SHOW COLUMNS FROM `kh_menu` [ RunTime:0.0470s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 0 AND `del_flag` = 1 ORDER BY sort asc  [ RunTime:0.0442s ]
+SQL: SHOW COLUMNS FROM `kh_sysuser` [ RunTime:0.0487s ]
+SQL: SELECT `id`,`account`,`name`,`sex`,`photo`,`phone`,`email`,`role`,`status`,`dept_id` FROM `kh_sysuser` WHERE `account` = 'taolei' LIMIT 1   [ RunTime:0.0441s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 3 ORDER BY sort asc  [ RunTime:0.0453s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 9 ORDER BY sort asc  [ RunTime:0.0439s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 1 ORDER BY sort asc  [ RunTime:0.0444s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 11 ORDER BY sort asc  [ RunTime:0.0527s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 17 ORDER BY sort asc  [ RunTime:0.0458s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 23 ORDER BY sort asc  [ RunTime:0.0567s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 28 ORDER BY sort asc  [ RunTime:0.0468s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 32 ORDER BY sort asc  [ RunTime:0.0532s ]
+SQL: SHOW COLUMNS FROM `kh_auth_group_access` [ RunTime:0.0531s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM kh_auth_group_access a INNER JOIN kh_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0439s ]
+SQL: SHOW COLUMNS FROM `kh_auth_rule` [ RunTime:0.0435s ]
+SQL: SELECT `condition`,`name` FROM `kh_auth_rule` WHERE `id` IN ('1','2','3','4','17','18','19','20','24','5','6','27','8','9','15','16','28','11','12','13','14','23','25','21','22','26','39','29','30','31','38','32','33','34','35','36') AND `type` = 1 AND `status` = 1  [ RunTime:0.0446s ]
+
+[ 2017-12-27T18:04:23+08:00 ] 127.0.0.1 /cuitcheck/Uploads/UserPhoto/sysuser_1.jpeg
+ERR: 无法加载控制器:Cuitcheck
+
+[ 2017-12-27T18:07:40+08:00 ] 127.0.0.1 /Public/static/js/menuManage.js
+ERR: 无法加载控制器:Public
+
+[ 2017-12-27T18:30:34+08:00 ] 127.0.0.1 /cuitcheck/Uploads/UserPhoto/sysuser_1.jpeg
+ERR: 无法加载控制器:Cuitcheck
+
+[ 2017-12-27T18:30:35+08:00 ] 127.0.0.1 /Home/Index/GetMenulist.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000357s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000640s ]
+SQL: SHOW COLUMNS FROM `kh_menu` [ RunTime:0.0450s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 0 AND `del_flag` = 1 ORDER BY sort asc  [ RunTime:0.0444s ]
+SQL: SHOW COLUMNS FROM `kh_sysuser` [ RunTime:0.0452s ]
+SQL: SELECT `id`,`account`,`name`,`sex`,`photo`,`phone`,`email`,`role`,`status`,`dept_id` FROM `kh_sysuser` WHERE `account` = 'taolei' LIMIT 1   [ RunTime:0.0438s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 3 ORDER BY sort asc  [ RunTime:0.0454s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 9 ORDER BY sort asc  [ RunTime:0.0443s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 1 ORDER BY sort asc  [ RunTime:0.0443s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 11 ORDER BY sort asc  [ RunTime:0.0438s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 17 ORDER BY sort asc  [ RunTime:0.0436s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 23 ORDER BY sort asc  [ RunTime:0.0442s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 28 ORDER BY sort asc  [ RunTime:0.0441s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 32 ORDER BY sort asc  [ RunTime:0.0446s ]
+SQL: SHOW COLUMNS FROM `kh_auth_group_access` [ RunTime:0.0444s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM kh_auth_group_access a INNER JOIN kh_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0441s ]
+SQL: SHOW COLUMNS FROM `kh_auth_rule` [ RunTime:0.0432s ]
+SQL: SELECT `condition`,`name` FROM `kh_auth_rule` WHERE `id` IN ('1','2','3','4','17','18','19','20','24','5','6','27','8','9','15','16','28','11','12','13','14','23','25','21','22','26','39','29','30','31','38','32','33','34','35','36') AND `type` = 1 AND `status` = 1  [ RunTime:0.0447s ]
+
+[ 2017-12-27T18:31:14+08:00 ] 127.0.0.1 /Home/InformMgr/informAdd.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000292s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000522s ]
+SQL: SHOW COLUMNS FROM `kh_inform` [ RunTime:0.0444s ]
+NOTIC: [8] Undefined index: validate F:\xampp\htdocs\cuit_check\ThinkPHP\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [2] strpos() expects parameter 1 to be string, array given F:\xampp\htdocs\cuit_check\ThinkPHP\Library\Think\Model.class.php 第 1205 行.
+NOTIC: [2] strpos() expects parameter 1 to be string, array given F:\xampp\htdocs\cuit_check\ThinkPHP\Library\Think\Model.class.php 第 1205 行.
+NOTIC: [2] strpos() expects parameter 1 to be string, array given F:\xampp\htdocs\cuit_check\ThinkPHP\Library\Think\Model.class.php 第 1205 行.
+NOTIC: [2] strpos() expects parameter 1 to be string, array given F:\xampp\htdocs\cuit_check\ThinkPHP\Library\Think\Model.class.php 第 1205 行.
+NOTIC: [2] strpos() expects parameter 1 to be string, array given F:\xampp\htdocs\cuit_check\ThinkPHP\Library\Think\Model.class.php 第 1205 行.
+NOTIC: [2] strpos() expects parameter 1 to be string, array given F:\xampp\htdocs\cuit_check\ThinkPHP\Library\Think\Model.class.php 第 1205 行.
+NOTIC: [2] strpos() expects parameter 1 to be string, array given F:\xampp\htdocs\cuit_check\ThinkPHP\Library\Think\Model.class.php 第 1205 行.
+NOTIC: [2] strpos() expects parameter 1 to be string, array given F:\xampp\htdocs\cuit_check\ThinkPHP\Library\Think\Model.class.php 第 1205 行.
+SQL: SELECT * FROM `kh_inform` WHERE `del_flag` = '1' AND `title` = 'd' LIMIT 1   [ RunTime:0.0444s ]
+NOTIC: [8] Undefined index: auto F:\xampp\htdocs\cuit_check\ThinkPHP\Library\Think\Model.class.php 第 1128 行.
+SQL: INSERT INTO `kh_inform` (`title`,`content`,`sendtype`,`dept_id`,`file_url`,`file_name`,`greatedate`,`greateby`) VALUES ('d','&lt;img src=&quot;/Public/static/kindeditor/attached/image/20170616/20170616103224_19063.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;pre&gt;&lt;img src=&quot;/Public/static/kindeditor/attached/image/20170408/20170408093328_24815.jpg&quot; alt=&quot;&quot; /&gt;&lt;/pre&gt;','1','0','','','2017-12-27 18:31:14','taolei') [ RunTime:0.0580s ]
+
+[ 2017-12-27T18:31:23+08:00 ] 127.0.0.1 /Home/InformMgr/informdelete.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000298s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000549s ]
+SQL: SHOW COLUMNS FROM `kh_inform` [ RunTime:0.0498s ]
+SQL: SHOW COLUMNS FROM `kh_inform` [ RunTime:0.0394s ]
+SQL: UPDATE `kh_inform` SET `del_flag`='0' WHERE `id` = 36 [ RunTime:0.0670s ]
+
+[ 2017-12-27T18:31:27+08:00 ] 127.0.0.1 /Public/static/js/menuManage.js
+ERR: 无法加载控制器:Public
+
+[ 2017-12-27T18:32:04+08:00 ] 127.0.0.1 /cuitcheck/Uploads/UserPhoto/sysuser_1.jpeg
+ERR: 无法加载控制器:Cuitcheck
+
+[ 2017-12-27T18:32:05+08:00 ] 127.0.0.1 /Home/Index/GetMenulist.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000299s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000534s ]
+SQL: SHOW COLUMNS FROM `kh_menu` [ RunTime:0.0379s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 0 AND `del_flag` = 1 ORDER BY sort asc  [ RunTime:0.0367s ]
+SQL: SHOW COLUMNS FROM `kh_sysuser` [ RunTime:0.0379s ]
+SQL: SELECT `id`,`account`,`name`,`sex`,`photo`,`phone`,`email`,`role`,`status`,`dept_id` FROM `kh_sysuser` WHERE `account` = 'taolei' LIMIT 1   [ RunTime:0.0383s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 3 ORDER BY sort asc  [ RunTime:0.0382s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 9 ORDER BY sort asc  [ RunTime:0.0378s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 1 ORDER BY sort asc  [ RunTime:0.0373s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 11 ORDER BY sort asc  [ RunTime:0.0378s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 17 ORDER BY sort asc  [ RunTime:0.0378s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 23 ORDER BY sort asc  [ RunTime:0.0376s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 28 ORDER BY sort asc  [ RunTime:0.0365s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 32 ORDER BY sort asc  [ RunTime:0.0377s ]
+SQL: SHOW COLUMNS FROM `kh_auth_group_access` [ RunTime:0.0373s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM kh_auth_group_access a INNER JOIN kh_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0368s ]
+SQL: SHOW COLUMNS FROM `kh_auth_rule` [ RunTime:0.0390s ]
+SQL: SELECT `condition`,`name` FROM `kh_auth_rule` WHERE `id` IN ('1','2','3','4','17','18','19','20','24','5','6','27','8','9','15','16','28','11','12','13','14','23','25','21','22','26','39','29','30','31','38','32','33','34','35','36') AND `type` = 1 AND `status` = 1  [ RunTime:0.0377s ]
+
+[ 2017-12-27T18:33:00+08:00 ] 127.0.0.1 /Public/static/js/menuManage.js
+ERR: 无法加载控制器:Public
+
+[ 2017-12-27T18:34:18+08:00 ] 127.0.0.1 /ScoreAnalysis/linkSearch.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000509s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001173s ]
+SQL: SHOW COLUMNS FROM `kh_course` [ RunTime:0.0429s ]
+SQL: SELECT * FROM `kh_course` WHERE `college_id` = 4  [ RunTime:0.0444s ]
+
+[ 2017-12-27T18:34:18+08:00 ] 127.0.0.1 /ScoreAnalysis/linkSearch.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000335s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000577s ]
+SQL: SHOW COLUMNS FROM `kh_lession` [ RunTime:0.0338s ]
+SQL: SELECT * FROM `kh_lession` WHERE `course_id` = 1  [ RunTime:0.0330s ]
+
+[ 2017-12-27T18:34:18+08:00 ] 127.0.0.1 /ScoreAnalysis/linkSearch.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000298s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000568s ]
+SQL: SHOW COLUMNS FROM `kh_course` [ RunTime:0.0440s ]
+SQL: SELECT * FROM `kh_course` WHERE `college_id` = 4  [ RunTime:0.0453s ]
+SQL: SHOW COLUMNS FROM `kh_testpaper` [ RunTime:0.0452s ]
+SQL: SELECT * FROM `kh_testpaper` WHERE `college_id` = 4 AND `lession_id` = 0  [ RunTime:0.0449s ]
+SQL: SHOW COLUMNS FROM `kh_courseclass` [ RunTime:0.0472s ]
+SQL: SELECT * FROM `kh_courseclass` WHERE `college_id` = 4 AND `lession_id` = 0 AND `grade_id` = 0  [ RunTime:0.0454s ]
+
+[ 2017-12-27T18:34:19+08:00 ] 127.0.0.1 /ScoreAnalysis/linkSearch.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000295s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000528s ]
+SQL: SHOW COLUMNS FROM `kh_course` [ RunTime:0.0331s ]
+SQL: SELECT * FROM `kh_course` WHERE `college_id` = 4  [ RunTime:0.0339s ]
+SQL: SHOW COLUMNS FROM `kh_testpaper` [ RunTime:0.0358s ]
+SQL: SELECT * FROM `kh_testpaper` WHERE `college_id` = 4 AND `lession_id` = 1  [ RunTime:0.0324s ]
+
+[ 2017-12-27T18:34:21+08:00 ] 127.0.0.1 /ScoreAnalysis/linkSearch.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000523s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000853s ]
+SQL: SHOW COLUMNS FROM `kh_course` [ RunTime:0.0345s ]
+SQL: SELECT * FROM `kh_course` WHERE `college_id` = 4  [ RunTime:0.0332s ]
+SQL: SHOW COLUMNS FROM `kh_testpaper` [ RunTime:0.0343s ]
+SQL: SELECT * FROM `kh_testpaper` WHERE `college_id` = 4 AND `lession_id` = 1  [ RunTime:0.0344s ]
+SQL: SHOW COLUMNS FROM `kh_courseclass` [ RunTime:0.0346s ]
+SQL: SELECT * FROM `kh_courseclass` WHERE `college_id` = 4 AND `lession_id` = 1 AND `grade_id` = 1  [ RunTime:0.0339s ]
+
+[ 2017-12-27T18:36:08+08:00 ] 127.0.0.1 /cuitcheck/Uploads/UserPhoto/sysuser_1.jpeg
+ERR: 无法加载控制器:Cuitcheck
+
+[ 2017-12-27T18:36:09+08:00 ] 127.0.0.1 /Home/Index/GetMenulist.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000490s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000781s ]
+SQL: SHOW COLUMNS FROM `kh_menu` [ RunTime:0.0394s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 0 AND `del_flag` = 1 ORDER BY sort asc  [ RunTime:0.0382s ]
+SQL: SHOW COLUMNS FROM `kh_sysuser` [ RunTime:0.0391s ]
+SQL: SELECT `id`,`account`,`name`,`sex`,`photo`,`phone`,`email`,`role`,`status`,`dept_id` FROM `kh_sysuser` WHERE `account` = 'taolei' LIMIT 1   [ RunTime:0.0388s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 3 ORDER BY sort asc  [ RunTime:0.0395s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 9 ORDER BY sort asc  [ RunTime:0.0380s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 1 ORDER BY sort asc  [ RunTime:0.0381s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 11 ORDER BY sort asc  [ RunTime:0.0383s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 17 ORDER BY sort asc  [ RunTime:0.0376s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 23 ORDER BY sort asc  [ RunTime:0.0389s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 28 ORDER BY sort asc  [ RunTime:0.2960s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 32 ORDER BY sort asc  [ RunTime:0.0376s ]
+SQL: SHOW COLUMNS FROM `kh_auth_group_access` [ RunTime:0.0396s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM kh_auth_group_access a INNER JOIN kh_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0405s ]
+SQL: SHOW COLUMNS FROM `kh_auth_rule` [ RunTime:0.0398s ]
+SQL: SELECT `condition`,`name` FROM `kh_auth_rule` WHERE `id` IN ('1','2','3','4','17','18','19','20','24','5','6','27','8','9','15','16','28','11','12','13','14','23','25','21','22','26','39','29','30','31','38','32','33','34','35','36') AND `type` = 1 AND `status` = 1  [ RunTime:0.0395s ]
+
+[ 2017-12-27T18:41:26+08:00 ] 127.0.0.1 /cuitcheck/Uploads/UserPhoto/sysuser_1.jpeg
+ERR: 无法加载控制器:Cuitcheck
+
+[ 2017-12-27T18:41:27+08:00 ] 127.0.0.1 /Home/Index/GetMenulist.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000309s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000547s ]
+SQL: SHOW COLUMNS FROM `kh_menu` [ RunTime:0.0473s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 0 AND `del_flag` = 1 ORDER BY sort asc  [ RunTime:0.0404s ]
+SQL: SHOW COLUMNS FROM `kh_sysuser` [ RunTime:0.0401s ]
+SQL: SELECT `id`,`account`,`name`,`sex`,`photo`,`phone`,`email`,`role`,`status`,`dept_id` FROM `kh_sysuser` WHERE `account` = 'taolei' LIMIT 1   [ RunTime:0.0382s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 3 ORDER BY sort asc  [ RunTime:0.0394s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 9 ORDER BY sort asc  [ RunTime:0.0389s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 1 ORDER BY sort asc  [ RunTime:0.0390s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 11 ORDER BY sort asc  [ RunTime:0.0392s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 17 ORDER BY sort asc  [ RunTime:0.0391s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 23 ORDER BY sort asc  [ RunTime:0.0386s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 28 ORDER BY sort asc  [ RunTime:0.0384s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 32 ORDER BY sort asc  [ RunTime:0.0395s ]
+SQL: SHOW COLUMNS FROM `kh_auth_group_access` [ RunTime:0.0383s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM kh_auth_group_access a INNER JOIN kh_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0395s ]
+SQL: SHOW COLUMNS FROM `kh_auth_rule` [ RunTime:0.0395s ]
+SQL: SELECT `condition`,`name` FROM `kh_auth_rule` WHERE `id` IN ('1','2','3','4','17','18','19','20','24','5','6','27','8','9','15','16','28','11','12','13','14','23','25','21','22','26','39','29','30','31','38','32','33','34','35','36') AND `type` = 1 AND `status` = 1  [ RunTime:0.0401s ]
+
+[ 2017-12-27T18:47:52+08:00 ] 127.0.0.1 /cuitcheck/Uploads/UserPhoto/sysuser_1.jpeg
+ERR: 无法加载控制器:Cuitcheck
+
+[ 2017-12-27T18:47:54+08:00 ] 127.0.0.1 /Home/Index/GetMenulist.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000294s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000549s ]
+SQL: SHOW COLUMNS FROM `kh_menu` [ RunTime:0.0499s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 0 AND `del_flag` = 1 ORDER BY sort asc  [ RunTime:0.0563s ]
+SQL: SHOW COLUMNS FROM `kh_sysuser` [ RunTime:0.0469s ]
+SQL: SELECT `id`,`account`,`name`,`sex`,`photo`,`phone`,`email`,`role`,`status`,`dept_id` FROM `kh_sysuser` WHERE `account` = 'taolei' LIMIT 1   [ RunTime:0.0550s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 3 ORDER BY sort asc  [ RunTime:0.0511s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 9 ORDER BY sort asc  [ RunTime:0.0515s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 1 ORDER BY sort asc  [ RunTime:0.0526s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 11 ORDER BY sort asc  [ RunTime:0.0493s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 17 ORDER BY sort asc  [ RunTime:0.0606s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 23 ORDER BY sort asc  [ RunTime:0.0557s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 28 ORDER BY sort asc  [ RunTime:0.0556s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 32 ORDER BY sort asc  [ RunTime:0.0571s ]
+SQL: SHOW COLUMNS FROM `kh_auth_group_access` [ RunTime:0.0584s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM kh_auth_group_access a INNER JOIN kh_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0487s ]
+SQL: SHOW COLUMNS FROM `kh_auth_rule` [ RunTime:0.0515s ]
+SQL: SELECT `condition`,`name` FROM `kh_auth_rule` WHERE `id` IN ('1','2','3','4','17','18','19','20','24','5','6','27','8','9','15','16','28','11','12','13','14','23','25','21','22','26','39','29','30','31','38','32','33','34','35','36') AND `type` = 1 AND `status` = 1  [ RunTime:0.0523s ]
+
+[ 2017-12-27T18:47:59+08:00 ] 127.0.0.1 /cuitcheck/Uploads/UserPhoto/sysuser_1.jpeg
+ERR: 无法加载控制器:Cuitcheck
+
+[ 2017-12-27T18:48:01+08:00 ] 127.0.0.1 /Home/Index/GetMenulist.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000312s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000567s ]
+SQL: SHOW COLUMNS FROM `kh_menu` [ RunTime:0.0641s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 0 AND `del_flag` = 1 ORDER BY sort asc  [ RunTime:0.0655s ]
+SQL: SHOW COLUMNS FROM `kh_sysuser` [ RunTime:0.0596s ]
+SQL: SELECT `id`,`account`,`name`,`sex`,`photo`,`phone`,`email`,`role`,`status`,`dept_id` FROM `kh_sysuser` WHERE `account` = 'taolei' LIMIT 1   [ RunTime:0.0545s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 3 ORDER BY sort asc  [ RunTime:0.0596s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 9 ORDER BY sort asc  [ RunTime:0.0683s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 1 ORDER BY sort asc  [ RunTime:0.0710s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 11 ORDER BY sort asc  [ RunTime:0.0642s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 17 ORDER BY sort asc  [ RunTime:0.0707s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 23 ORDER BY sort asc  [ RunTime:0.0598s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 28 ORDER BY sort asc  [ RunTime:0.0552s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 32 ORDER BY sort asc  [ RunTime:0.0567s ]
+SQL: SHOW COLUMNS FROM `kh_auth_group_access` [ RunTime:0.0578s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM kh_auth_group_access a INNER JOIN kh_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0545s ]
+SQL: SHOW COLUMNS FROM `kh_auth_rule` [ RunTime:0.0570s ]
+SQL: SELECT `condition`,`name` FROM `kh_auth_rule` WHERE `id` IN ('1','2','3','4','17','18','19','20','24','5','6','27','8','9','15','16','28','11','12','13','14','23','25','21','22','26','39','29','30','31','38','32','33','34','35','36') AND `type` = 1 AND `status` = 1  [ RunTime:0.0550s ]
+
+[ 2017-12-27T18:48:02+08:00 ] 127.0.0.1 /cuitcheck/Uploads/UserPhoto/sysuser_1.jpeg
+ERR: 无法加载控制器:Cuitcheck
+
+[ 2017-12-27T18:48:03+08:00 ] 127.0.0.1 /Home/Index/GetMenulist.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000530s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001008s ]
+SQL: SHOW COLUMNS FROM `kh_menu` [ RunTime:0.0563s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 0 AND `del_flag` = 1 ORDER BY sort asc  [ RunTime:0.0596s ]
+SQL: SHOW COLUMNS FROM `kh_sysuser` [ RunTime:0.0611s ]
+SQL: SELECT `id`,`account`,`name`,`sex`,`photo`,`phone`,`email`,`role`,`status`,`dept_id` FROM `kh_sysuser` WHERE `account` = 'taolei' LIMIT 1   [ RunTime:0.0648s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 3 ORDER BY sort asc  [ RunTime:0.0618s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 9 ORDER BY sort asc  [ RunTime:0.0652s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 1 ORDER BY sort asc  [ RunTime:0.0656s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 11 ORDER BY sort asc  [ RunTime:0.0537s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 17 ORDER BY sort asc  [ RunTime:0.0538s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 23 ORDER BY sort asc  [ RunTime:0.0620s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 28 ORDER BY sort asc  [ RunTime:0.0664s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 32 ORDER BY sort asc  [ RunTime:0.0647s ]
+SQL: SHOW COLUMNS FROM `kh_auth_group_access` [ RunTime:0.0655s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM kh_auth_group_access a INNER JOIN kh_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0684s ]
+SQL: SHOW COLUMNS FROM `kh_auth_rule` [ RunTime:0.0641s ]
+SQL: SELECT `condition`,`name` FROM `kh_auth_rule` WHERE `id` IN ('1','2','3','4','17','18','19','20','24','5','6','27','8','9','15','16','28','11','12','13','14','23','25','21','22','26','39','29','30','31','38','32','33','34','35','36') AND `type` = 1 AND `status` = 1  [ RunTime:0.0687s ]
+
+[ 2017-12-27T18:53:03+08:00 ] 127.0.0.1 /cuitcheck/Uploads/UserPhoto/sysuser_1.jpeg
+ERR: 无法加载控制器:Cuitcheck
+
+[ 2017-12-27T18:53:04+08:00 ] 127.0.0.1 /Home/Index/GetMenulist.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000341s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000585s ]
+SQL: SHOW COLUMNS FROM `kh_menu` [ RunTime:0.0459s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 0 AND `del_flag` = 1 ORDER BY sort asc  [ RunTime:0.0452s ]
+SQL: SHOW COLUMNS FROM `kh_sysuser` [ RunTime:0.0455s ]
+SQL: SELECT `id`,`account`,`name`,`sex`,`photo`,`phone`,`email`,`role`,`status`,`dept_id` FROM `kh_sysuser` WHERE `account` = 'taolei' LIMIT 1   [ RunTime:0.0430s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 3 ORDER BY sort asc  [ RunTime:0.0449s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 9 ORDER BY sort asc  [ RunTime:0.0437s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 1 ORDER BY sort asc  [ RunTime:0.0471s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 11 ORDER BY sort asc  [ RunTime:0.0447s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 17 ORDER BY sort asc  [ RunTime:0.0447s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 23 ORDER BY sort asc  [ RunTime:0.0475s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 28 ORDER BY sort asc  [ RunTime:0.0458s ]
+SQL: SELECT `id`,`name`,`url`,`sort`,`icon` FROM `kh_menu` WHERE `parent_id` = 32 ORDER BY sort asc  [ RunTime:0.0462s ]
+SQL: SHOW COLUMNS FROM `kh_auth_group_access` [ RunTime:0.0449s ]
+SQL: SELECT `uid`,`group_id`,`title`,`rules` FROM kh_auth_group_access a INNER JOIN kh_auth_group g on a.group_id=g.id  WHERE ( a.uid='1' and g.status='1' )  [ RunTime:0.0499s ]
+SQL: SHOW COLUMNS FROM `kh_auth_rule` [ RunTime:0.0476s ]
+SQL: SELECT `condition`,`name` FROM `kh_auth_rule` WHERE `id` IN ('1','2','3','4','17','18','19','20','24','5','6','27','8','9','15','16','28','11','12','13','14','23','25','21','22','26','39','29','30','31','38','32','33','34','35','36') AND `type` = 1 AND `status` = 1  [ RunTime:0.0523s ]
+
