@@ -72,7 +72,7 @@ class LoginController extends BaseController {
                 $data = array('success'=>true,'msg'=>'验证通过');
                 session('account',$temp['account']);
                 session('accInfo',$isset[0]);
-                addlog(__ACTION__);
+               // addlog(__ACTION__);
             }else{
                 $data = array('success'=>false,'msg'=>'账号或密码不存在');
             }
