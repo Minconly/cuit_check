@@ -500,3 +500,24 @@ if (!function_exists('time_foramt_h')) {
     }
 }
 
+//清空某个目录下的文件
+if(!function_exists('clearDir')){
+    function clearDir($directory)
+    {
+        if (file_exists($directory)) {                        //判断被删除的目录是否存在
+            if ($dir_handle = @opendir($directory)) {         //打开目录，返回目录指针
+                while ($filename = readdir($dir_handle)) {   //循环遍历目录中的文件
+                    if ($filename != "." && $filename != "..") {   //去掉.和..目录
+                        $subFile = $directory . "/" . $filename;   //连接目录名
+                        if (is_dir($subFile))                //如果遍历的是目录
+                            clearDir($subFile);       //调用自己删除子目录
+                        if (is_file($subFile))               //如果遍历的是文件
+                            @unlink($subFile);            //直接删除文件
+                    }
+                }
+                closedir($dir_handle);                      //关闭目录资源
+            }
+            @rmdir($directory);
+        }
+    }
+}

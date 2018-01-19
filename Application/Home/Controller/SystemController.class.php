@@ -121,5 +121,13 @@ class SystemController extends HomeBaseController {
 		$this->assign('fname',$fname);
 	    $this->display();
 	}
+
+	public function  clearCache(){
+
+	    if(is_dir(ROOT_PATH.RUNTIME_PATH)){
+            clearDir(ROOT_PATH.RUNTIME_PATH);
+        }
+        $this->_exit('成功清理缓存',true);
+    }
 }
 ?>

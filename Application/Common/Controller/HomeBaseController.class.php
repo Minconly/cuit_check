@@ -10,7 +10,6 @@ class HomeBaseController extends BaseController{
      * 初始化方法
      */
     public function _initialize(){
-        addlog(CONTROLLER_NAME.'/'.ACTION_NAME);
         parent::_initialize();
         // 判断网站是否关闭
         if(C('WEB_STATUS')!=1){
@@ -23,6 +22,15 @@ class HomeBaseController extends BaseController{
             //重置到登录页面
             redirect(U('Home/Login/login'));
         }
+    }
+
+    /**退出输出json
+     * @param string $msg
+     * @param bool $status
+     */
+    public function _exit($msg = '',$status = false){
+        echo json_encode(array('msg'=>$msg,'success'=>$status),JSON_UNESCAPED_UNICODE);
+        exit;
     }
 }
 

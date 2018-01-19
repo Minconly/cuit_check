@@ -17,6 +17,12 @@ layui.config({
 		});
 	}).resize();
 
+	$('#clearCache').on('click',function(){
+        $.get("{:U('Home/System/clearCache')}",function (data) {
+            layer.msg(data.msg)
+        });
+	});
+
 	//设置navbar
 	navbar.set({
 		elem: '#admin-navbar-side',
