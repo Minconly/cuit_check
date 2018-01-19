@@ -274,3 +274,229 @@
 
     }
 
+if (!function_exists('cutl_post')) {
+    /**
+     * curl模拟post请求
+     * @param $url
+     * @param $data
+     * @return mixed
+     */
+    function curl_post($url, $data)
+    {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+        $result = curl_exec($ch);
+        curl_close($ch);
+        return $result;
+    }
+}
+
+    /**
+     * 将数据按某个key分类
+     * @param array $arr
+     * @param string $key
+     * @param bool $is_array
+     * @return array
+     */
+    function  sortByKey($arr = array(),$key = 'add_admin',$is_array = false)
+    {
+        $ret = array();
+        if (empty($arr)) return $ret;
+        foreach ($arr as $k=>$v) {
+            if ($is_array) {
+                $ret[$v[$key]][] = $v;
+            } else {
+                $ret[$v[$key]] = $v;
+            }
+        }
+        return $ret;
+    }
+
+
+#获取一定长度的盐字符串
+if (!function_exists('cuit_salt')) {
+
+    /**
+     * 获取一定长度的盐字符串
+     * @param int $len
+     * @return bool|string
+     */
+    function cuit_salt($len = 4)
+    {
+        $rand = cuit_rand($len);//
+        $rand_crypt = sha1($rand);
+        $maxLen = strlen($rand_crypt);
+        $start = intval($rand) % ( $maxLen - $len - 1 );//0-28
+        return '' . substr($rand_crypt, $start, $len);
+    }
+}
+#生成密码
+if (!function_exists('cuit_password')) {
+    /**
+     * 生成密码
+     * @param string $pwd 源密码
+     * @param string $salt 盐
+     * @return string
+     */
+    function cuit_password($pwd = '', $salt = '')
+    {
+        if (!$pwd) return '';
+        $_pwd = md5($pwd);
+        $_salt = $salt ? md5($salt) : '';
+        if ($_salt) {
+            $_pwd = md5($_pwd . $_salt);
+        }
+        return $_pwd;
+    }
+}
+
+#生成一个长度一定的随机数字串（不足长度以0补位）
+if (!function_exists('cuit_rand')) {
+
+    /**
+     * 生成一个长度一定的随机数字串（不足长度以0补位）
+     * @param int $len
+     * @return string
+     */
+    function cuit_rand($len = 4)
+    {
+        $len = intval($len);
+        if ($len < 1) {
+            $len = 4;
+        } elseif ($len > 9) {
+            $len = 9;
+        }
+        $max = str_repeat('9', $len);
+        $rand = rand(0, intval($max));
+        return sprintf('%0' . $len . 's', $rand);
+    }
+}
+
+
+
+if(!function_exists('cuit_dateYW')){
+    /**
+     * 获取时间中的YW
+     */
+    function cuit_dateYW($time, &$info = array())
+    {
+        $time = intval($time);
+        $date = date('Y-m-d', $time);  //当前日期
+        $first = 1; //$first =1 表示每周星期一为开始日期 0表示每周日为开始日期
+        $w = date('w', strtotime($date));  //获取当前周的第几天 周日是 0 周一到周六是 1 - 6
+        $Y = date('Y', strtotime("$date -" . ( $w ? $w - $first : 6 ) . ' days')); //获取本周开始日期，如果$w是0，则表示周日，减去 6 天
+        $YW = $Y . date('W', $time);
+        $info[ 'YW' ] = $YW;
+        $info[ 'start_date' ] = date('Y-m-d', strtotime("$date -" . ( $w ? $w - $first : 6 ) . ' days')); //获取本周开始日期，如果$w是0，则表示周日，减去 6 天;
+        $info[ 'end_date' ] = date('Y-m-d', strtotime("{$info['start_date']} +6 days"));
+        $info[ 'start_time' ] = strtotime($info[ 'start_date' ] . ' 00:00:00');
+        $info[ 'end_time' ] = strtotime($info[ 'end_date' ] . ' 23:59:59');
+        return $YW;
+    }
+}
+
+//数组按照某个字段排序
+if (!function_exists('cuit_multisort')) {
+
+    /**
+     * 数组排序
+     * @param $arrays
+     * @param $sort_key
+     * @param int $sort_order
+     * @param int $sort_type
+     * @return bool|array
+     */
+    function cuit_multisort($arrays, $sort_key, $sort_order = SORT_ASC, $sort_type = SORT_NUMERIC)
+    {
+        $key_arrays = [];
+        if (is_array($arrays) && $arrays) {
+            foreach ($arrays as $array) {
+                if (isset($array[ $sort_key ])) {
+                    $key_arrays[] = $array[ $sort_key ];
+                } else {
+                    return false;
+                }
+            }
+        } else {
+            return false;
+        }
+        array_multisort($key_arrays, $sort_order, $sort_type, $arrays);
+        return $arrays;
+    }
+}
+
+
+#获取时间格式化
+if (!function_exists('time_foramt_q')) {
+    /**
+     * @param int $timestamp
+     * @return bool|string
+     */
+    function time_foramt_q($timestamp = 0)
+    {
+        $current_time = time();
+        (int)$span = (int)$current_time - (int)$timestamp;
+        if ($span < 60) {
+            return "1分钟内";
+        } else if ($span < 3600) {
+            $m = floor($span / 60);
+            return $m . "分钟前";
+        } else if ($span < 24 * 3600) {
+            $h = floor($span / 3600);
+            return $h . '小时前';
+        } else {
+            if ($timestamp == 0) {
+                return '';
+            } else {
+                if (date('Y-m-d', $timestamp) == date('Y-m-d', time())) {
+                    return date('H:i', $timestamp);
+                } elseif (date('Y', $timestamp) == date('Y', time())) {
+                    return date('m-d', $timestamp);
+                } else {
+                    return date('Y-m-d H:i', $timestamp);
+                }
+            }
+        }
+    }
+}
+
+
+#剩余时间戳格式化
+if (!function_exists('time_foramt_h')) {
+    /**
+     * 社区时间戳格式化
+     * @param int $timestamp
+     * @return bool|string
+     */
+    function time_foramt_h($timestamp = 0)
+    {
+        $current_time = time();
+        (int)$span = (int)$timestamp - (int)$current_time;
+        if ($span < 60) {
+            return $span . "秒后";
+        } else if ($span < 3600) {
+            $m = floor($span / 60);
+            return $m . "分钟后";
+        } else if ($span < 24 * 3600) {
+            $h = floor($span / 3600);
+            return $h . '小时后';
+        } else {
+            if ($timestamp == 0) {
+                return '';
+            } else {
+                if (date('Y-m-d', $timestamp) == date('Y-m-d', time())) {
+                    return date('H:i', $timestamp);
+                } elseif (date('Y', $timestamp) == date('Y', time())) {
+                    return date('m-d', $timestamp);
+                } else {
+                    return date('Y-m-d H:i', $timestamp);
+                }
+            }
+        }
+    }
+}
+
