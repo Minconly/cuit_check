@@ -4,11 +4,24 @@
     <link href="__PUBLIC__/student/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
 </head>
-<div class="headerBox">
-    <img src="__PUBLIC__/student/images/logo.png" alt="logo">
-    <a href="#" class="nl-sign">NLKH &nbsp;&nbsp;&nbsp;能力考核系统（学生）</a>
-    <div class="nl-logout">
-        <button class="ui teal button" id="loginout" name="loginout"><i class="fa fa-sign-out fa-fw"></i>&nbsp;退出</button> 
+<style>
+    .fixDiv{
+        position: fixed;
+        z-index: 10;
+    }
+</style>
+
+<div class="headerBox fixDiv">
+    <div class="">
+        <img src="__PUBLIC__/student/images/logo.png" alt="logo">
+        <a href="#" class="nl-sign">NLKH &nbsp;&nbsp;&nbsp;能力考核系统（学生）</a>
+        <div class="nl-logout">
+            <button class="ui teal button" id="loginout" name="loginout"><i class="fa fa-sign-out fa-fw"></i>&nbsp;退出</button>
+        </div>
     </div>
 </div>
-
+<div id="fill-room"></div>
+<script src="__PUBLIC__/student/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $('#fill-room').height($('.fixDiv').height());
+</script>

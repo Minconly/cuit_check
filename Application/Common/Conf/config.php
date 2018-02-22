@@ -17,7 +17,7 @@ return array(
 	'TAGLIB_BUILD_IN'       =>  'Cx,Common\Tag\mytag',
     'TMPL_PARSE_STRING'     =>  array(                        //定义常用路径
     '__PUBLIC__'      =>  __ROOT__.'/Public',
-    '__SITE__'	=>'http://cuitcheck.cn/',
+    '__SITE__'	=>'http://localhost/cuit_check/',
     ),
     //配置session
     'SESSION_OPTIONS'       =>  array(

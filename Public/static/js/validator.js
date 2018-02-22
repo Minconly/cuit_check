@@ -11,7 +11,7 @@ layui.define(function(exports) {
 			}
 		},
 		Istruelength: function(input){
-			len = input.length;
+			var len = input.length;
 			if(len>=6 && len<=16){
 				return true;
 			}else{
