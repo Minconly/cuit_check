@@ -43,10 +43,11 @@ layui.use(['laypage', 'layer','form'], function() {
 
                 });
             }
+            var pages = json.info !== undefined?json.info.pages:0;
 
             laypage({
                 cont: 'nl-page2',
-                pages: json.info.pages,
+                pages: pages,
                 skin: '#6a96df',
                 curr: curr || 1,
                 jump: function(obj, first) {

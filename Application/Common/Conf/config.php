@@ -32,5 +32,13 @@ return array(
 	// 显示页面Trace信息
 	'SHOW_PAGE_TRACE' =>true,
 	//定义单页rows
-	'PAGE_SIZE'=>10,
+    'PAGE_SIZE'=>10,
+    //Predis配置
+    'PREDIS_OPTIONS' => array(
+        'scheme' => 'tcp',
+        'host' => '119.29.100.113',
+        'port' => 6379,
+        'password' => 'cuitcheck',
+    ),
+
 );
