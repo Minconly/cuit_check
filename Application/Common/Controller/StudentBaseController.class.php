@@ -6,6 +6,7 @@ use Predis\Autoloader;
  * 学生端的基类Controller 
  */
 class StudentBaseController extends BaseController{
+    protected  $redis;
     /**
      * 初始化方法
      */
@@ -22,15 +23,16 @@ class StudentBaseController extends BaseController{
             //重置到登录页面
             redirect(U('Student/LoginMgr/login'));
         }
-        //自动加载redis
+        //自动加载predis
         Autoloader::register();
     }
 
     //获取redis客户端
     public final function getRedis(){
-
-        $redis = new Client(C('PREDIS_OPTIONS'));
-        return $redis;
+        if($this->redis == null) {
+            $this->redis = new Client(C('PREDIS_OPTIONS'));
+        }
+        return $this->redis;
     }
 
 

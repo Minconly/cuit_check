@@ -8,6 +8,7 @@ class TestRedisController extends StudentBaseController
 {
     public function get(){
         $redis = $this->getRedis();
-        echo $redis->dbsize();
+
+        echo $redis->get('test');
     }
 }

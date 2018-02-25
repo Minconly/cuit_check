@@ -77,6 +77,7 @@ class TestPaperController extends StudentBaseController {
         if(empty($testpaper_id) || empty($courseclass_id)){
             $this->error();
         }else{
+//            $paperInfo = D('PaperCourserclass')->getPapaerInfo($testpaper_id,$courseclass_id);
             $this->assign('id',$testpaper_id);
             $this->assign('courseclass_id', $courseclass_id);
             $this->display();

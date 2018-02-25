@@ -121,7 +121,7 @@
     function postAnswer(str="时间已到,试卷已经提交!"){
         var storage = window.localStorage;
         $('#alert_text').html(str);
-        $.post(CheckAnswer, {answer:storage, testpaper_id:paper_id}, function(data){
+        $.post(CheckAnswer, {'answer':JSON.stringify(storage), 'testpaper_id':paper_id}, function(data){
             if(data === true){
                 $('.small.modal')
                 .modal({

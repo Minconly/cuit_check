@@ -115,9 +115,10 @@ class PaperCourserclassModel extends Model{
     public function getPapaerInfo($paper_id, $course_id){
         $map['testpaper_id'] = $paper_id;
         $map['courserclass_id'] = $course_id;
-        $time = $this->field('end_time')->where($map)->select();
+        $time = $this->field('start_time,end_time')->where($map)->select();
         $testpaper = M('testpaper')->field('name, full_score, pass_score,id')->where(array('id'=>$paper_id))->select();
         $testpaper[0]['end_time'] =$time[0]['end_time'];
+        $testpaper[0]['start_time'] =$time[0]['start_time'];
         return $testpaper[0];
     }
 

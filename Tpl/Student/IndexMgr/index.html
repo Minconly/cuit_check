@@ -193,7 +193,7 @@
              
              <div class="at-container">
 			<div class="at-main">
-			<include file="indexMgr/personinfo" />
+			<include file="IndexMgr:personInfo" />
 			</div>
 			</div>
              <!--end-->
@@ -229,9 +229,9 @@
 
 	<script>
 		//这里统一写接口地址
-		var canjia_testUrl = "{:U('Student/TestPaper/paperList')}";
+		var paperDetailUrl = "{:U('Student/TestPaper/paperList')}";
 		var detailInfoUrl = "{:U('Student/TestPaper/getThePaper_info')}";
-		var guoduUrl = "{:U('Student/TestPaper/detailInfo')}";
+		var paperDetilUrl = "{:U('Student/TestPaper/detailInfo')}";
 		var recordlist = "{:U('Student/TestRecord/getRecord')}";	// 考试记录
 		var recordDetail = "{:U('Student/TestRecord/detail')}";		// 记录详情
 	</script>
@@ -290,7 +290,7 @@ layui.use(['layer','upload'],function(){
 		  }
 	});      
 	$('#btn').click(function(event) {
-	    var id = $("#id").val();
+	    var id = $("#id1").val();
 	    var phone = $("#phone").val();
 	    var email = $("#email").val();
 	    if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(phone))){ 

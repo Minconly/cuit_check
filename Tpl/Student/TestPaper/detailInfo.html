@@ -35,7 +35,7 @@
                     </p>
                     <p class="item_label">
                     	<b>完成时间：</b>
-                        <span class="d_star" id="create_time">120</span>分钟
+                        <span class="d_star" id="DuringTime"></span>分钟
                     </p>
                     <p class="item_label">
                     	<b>及格成绩：</b>
@@ -80,12 +80,22 @@
             var json = eval(data);
             if (json.status == 1) {
                 var singlePaper = json.info;
+                //计算考试时间
+                var startTime = new Date(singlePaper[0].start_time);
+                var endTime = new Date(singlePaper[0].end_time);
+                // var during = Math.floor(((endTime.getTime()-startTime.getTime())%3.6)/60000);
+                // var during = endTime.getTime()-startTime.getTime();
+                var during =  parseInt((endTime.getTime()-startTime.getTime()) / parseInt(60000));
+
+
+
                 //为试卷信息追加内容
                 document.getElementById("paper_name").innerText = singlePaper[0].name;
                 document.getElementById("type").innerText = singlePaper[0].typename;
                 document.getElementById("college_name").innerText = singlePaper[0].collegename;
                 document.getElementById("pass_score").innerText = singlePaper[0].pass_score;
                 document.getElementById("full_score").innerText = singlePaper[0].full_score;
+                document.getElementById("DuringTime").innerText = during+'';
                 //为开始做题按钮赋值id
                 document.getElementById("start_test").dataset.id = singlePaper[0].id;
                 document.getElementById("start_test").dataset.course = singlePaper[0].courseclass_id;

@@ -19,7 +19,7 @@
 						<!--</div>-->
 
 						<form>
-						<input type="hidden" name="id" id="id" value="{$person.id}">
+						<input type="hidden" name="id" id="id1" value="{$person.id}">
 							<div class="info-edit">
 								<div class="nl-personInfoform">
 									<dl>
@@ -32,11 +32,11 @@
 										<dt><i class="fa fa-venus-mars fa-fw"></i>&nbsp;性别</dt>
 											<dd>
 										<if condition="$person['sex'] eq  1">
-											<input class="gender-edit" type="radio" name="sex" id="sex" value="1" disabled="true" checked > 男
-											<input class="gender-edit" type="radio" name="sex" id="sex" disabled="true" value="0" > 女
+											<input class="gender-edit" type="radio" name="sex" value="1" disabled="true" checked > 男
+											<input class="gender-edit" type="radio" name="sex" disabled="true" value="0" > 女
 									    <else />
-											<input class="gender-edit" type="radio" name="sex" id="sex" disabled="true" value="1"> 男
-											<input class="gender-edit" type="radio" name="sex" id="sex" disabled="true" value="0" checked> 女								
+											<input class="gender-edit" type="radio" name="sex" disabled="true" value="1"> 男
+											<input class="gender-edit" type="radio" name="sex" disabled="true" value="0" checked> 女
 										</if>
 											</dd>
 									</dl>

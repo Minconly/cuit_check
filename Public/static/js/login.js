@@ -1,5 +1,5 @@
 layui.config({
-	base: '../../cuit_check/Public/static/js/'
+	base: '../../Public/static/js/'
 }).use(['layer', 'form','validator'], function() {
 	var layer = layui.layer,
 	$ = layui.jquery,

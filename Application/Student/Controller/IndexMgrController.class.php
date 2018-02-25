@@ -12,7 +12,7 @@ class IndexMgrController extends StudentBaseController {
          $personData=$this->personInfo();       
         // dump($personData);die();
         $this->assign('person',$personData);
-          $inform=$this->Inform();
+        $inform=$this->Inform();
         $this->assign('info',$inform);
         $this->display();
     }
@@ -48,7 +48,7 @@ class IndexMgrController extends StudentBaseController {
             $data['email']=I('email');
             $student=M('student');
             if(false!=$student->save($data)){
-                $result=array('status'=>success);
+                $result=array('status'=>true);
             }else{
                 $result=array('status'=>false,'msg'=>'保存失败!');
             }

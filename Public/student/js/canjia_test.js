@@ -9,13 +9,13 @@ layui.use(['laypage', 'layer','form'], function() {
 
     //获取试卷的详细信息
     function getPaperList(curr, type_id) {
-        $.getJSON(canjia_testUrl, {'requestPage': curr, 'type_id':type_id}, function(data) {
+        $.getJSON(paperDetailUrl, {'requestPage': curr, 'type_id':type_id}, function(data) {
             var json = eval(data); //数组
             //console.log(json);
             if(json.status == 1) {
                 var list = json.info.list;
                 //console.log(json.info.list);
-                $("#canjia_test").html("");  //在每次跳转分页的时候，将该页原本追加的div清空
+                $("#lists").html("");  //在每次跳转分页的时候，将该页原本追加的div清空
                 //循环json数组，依次赋值div
                 $.each(list, function (index, item) {
                     var flag = checkTime(item.start_time, item.end_time);   //比较考试时间与当前的时间
@@ -39,7 +39,7 @@ layui.use(['laypage', 'layer','form'], function() {
                         html += '<div class="testStatusY">考试正在进行</div>'+'</div></div>';
                     }
 
-                    $("#canjia_test").append(html); //每一次循环，将html追加一次
+                    $("#lists").append(html); //每一次循环，将html追加一次
 
                 });
             }
@@ -107,7 +107,7 @@ layui.use(['laypage', 'layer','form'], function() {
     $(document).on('click', '.testList', function() {
         var id = $(this).data('id');        //获取试卷的id
         var courseclass_id = $(this).data('courseid');
-        $.StandardPost(guoduUrl, {'id':id,'courseclass_id':courseclass_id});
+        $.StandardPost(paperDetilUrl, {'id':id,'courseclass_id':courseclass_id});
     });
     //监听select选择框
     $('#paperListType').change(function() {
