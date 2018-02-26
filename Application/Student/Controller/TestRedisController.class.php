@@ -8,7 +8,7 @@ class TestRedisController extends StudentBaseController
 {
     public function get(){
         $redis = $this->getRedis();
-
-        echo $redis->get('test');
+        $redis->set('mylock', 'value', 'EX', 10,'NX');
+        echo $redis->get('mylock');
     }
 }

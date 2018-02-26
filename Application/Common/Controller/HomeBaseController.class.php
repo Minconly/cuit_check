@@ -1,11 +1,14 @@
 <?php
 namespace Common\Controller;
 use Common\Controller\BaseController;
+use Predis\Client;
+
 /**
  * 管理端基类Controller
  */
 
 class HomeBaseController extends BaseController{
+    protected  $redis;
     /**
      * 初始化方法
      */
@@ -31,6 +34,15 @@ class HomeBaseController extends BaseController{
     public function _exit($msg = '',$status = false){
         echo json_encode(array('msg'=>$msg,'success'=>$status),JSON_UNESCAPED_UNICODE);
         exit;
+    }
+
+
+    //获取redis客户端
+    public final function getRedis(){
+        if($this->redis == null) {
+            $this->redis = new Client(C('PREDIS_OPTIONS_ADMIN'));
+        }
+        return $this->redis;
     }
 }
 

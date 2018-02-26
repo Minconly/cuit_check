@@ -33,12 +33,21 @@ return array(
 	'SHOW_PAGE_TRACE' =>true,
 	//定义单页rows
     'PAGE_SIZE'=>10,
-    //Predis配置
-    'PREDIS_OPTIONS' => array(
+    //Predis配置1
+    'PREDIS_OPTIONS_STUDENT' => array(
         'scheme' => 'tcp',
         'host' => '119.29.100.113',
         'port' => 6379,
         'password' => 'cuitcheck',
+        'database' => 0
+    ),
+    //Predis配置2
+    'PREDIS_OPTIONS_ADMIN' => array(
+        'scheme' => 'tcp',
+        'host' => '119.29.100.113',
+        'port' => 6379,
+        'password' => 'cuitcheck',
+        'database' => 1
     ),
 
 );
