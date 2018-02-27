@@ -2,7 +2,10 @@
 	/**
 	 * 公共的方法类
 	 */
-	/**
+
+use Predis\Client;
+
+/**
 	 * 调试时更好的打印数据的函数
 	 * @Author   taolei
 	 * @DateTime 2017-02-16
@@ -521,3 +524,38 @@ if(!function_exists('clearDir')){
         }
     }
 }
+
+
+//链接redis库2
+if(!function_exists('connectRedis')){
+        function connectRedis(){
+            \Predis\Autoloader::register();
+            $redis = new Client(C('PREDIS_OPTIONS_SYS'));
+            return $redis;
+        }
+}
+//获取锁
+if(!function_exists('lock')){
+    function lock($key, $expire=15){
+        $redis = connectRedis();
+        $isok = $redis->set($key, session_id(), 'EX', $expire,'NX');
+        if(!$isok){
+            $isok = ($redis->get($key) == session_id())?true:false;
+        }
+        return $isok?true:false;
+    }
+}
+//释放锁
+if(!function_exists('unlock')){
+    function unlock($keys){
+        $redis = connectRedis();
+        if(is_array($keys)){
+            $isdel = $redis->del($keys);
+        }else if(is_string($keys)){
+            $isdel = $redis->del(array($keys));
+        }
+        return $isdel?true:false;
+    }
+
+}
+

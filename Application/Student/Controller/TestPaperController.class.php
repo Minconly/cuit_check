@@ -111,17 +111,31 @@ class TestPaperController extends StudentBaseController {
         $score = M('score')->where(array('account'=>session('stu_account'), 'testpaper_id'=>$paper_id))->getField('score');
         if($score != NULL){
            $this->error('您已经完成该试卷了!');
-        }
+        }else{
+            $redis = $this->getRedis();
+            $tag = C('REDIS_TAG')['papers'].$course_id.':'.$paper_id;
 
-        else{
-            // 查找试卷信息
-            $paper_list = D('paper_courserclass')->getPapaerInfo($paper_id, $course_id);
-            // 查找试卷题目
-            $quesion_list = D('paper_question')->getQuestionList($paper_id);
-            // $this->ajaxReturn($paper_list);
-            $this->assign('paperInfo',$paper_list);
-            $this->assign('question',$quesion_list);
+            if(!($redis->hexists($tag,'paperInfo') && $redis->hexists($tag,'questionLists')) ){
+
+                if(lock("lockPaper")){
+                    // 查找试卷信息
+                    $paper_list = D('paper_courserclass')->getPapaerInfo($paper_id, $course_id);
+                    // 查找试卷题目
+                    $question_list = D('paper_question')->getQuestionList($paper_id);
+                    $redis->hset($tag,'paperInfo',json_encode($paper_list));
+                    $redis->hset($tag,'questionLists',json_encode($question_list));
+                    unlock("lockPaper");
+                }
+            }
+            $paperInfo = $redis->hget($tag,'paperInfo');
+            $questionLists = $redis->hget($tag,'questionLists');
+            $this->assign('paperInfo',json_decode($paperInfo));
+            $this->assign('question',json_decode($questionLists));
             $this->display();
+
+
+            p(json_decode($paperInfo));
+            p(json_decode($questionLists));
         }
 
     }

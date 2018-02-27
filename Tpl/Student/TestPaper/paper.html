@@ -24,9 +24,9 @@
         <div class="paper_box">
             
             <h3 class="ui black block header" style="text-align: center;"> 
-                <span style="padding-right: 15px;">{$paperInfo['name']}</span>  
-                <span style="padding-right: 15px;">总分:{$paperInfo['full_score']}</span>
-                <span style="padding-right: 15px;">及格分数:{$paperInfo['pass_score']}</span>
+                <span style="padding-right: 15px;">{$paperInfo.name]}</span>
+                <span style="padding-right: 15px;">总分:{$paperInfo.full_score}</span>
+                <span style="padding-right: 15px;">及格分数:{$paperInfo.pass_score}</span>
             </h3>
                     
             <div class="paper_topic">   
@@ -187,9 +187,9 @@
 
 <script type="text/javascript">
     var index = '{:U("Student/IndexMgr/index")}';
-    var untilTime = "{$paperInfo['end_time']}";
+    var untilTime = "{$paperInfo.end_time}";
     var CheckAnswer = '{:U("Student/testPaper/CheckAnswer")}';
-    var paper_id = "{$paperInfo['id']}";
+    var paper_id = "{$paperInfo.id}";
 
 </script>
 

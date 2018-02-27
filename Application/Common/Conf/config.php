@@ -49,5 +49,13 @@ return array(
         'password' => 'cuitcheck',
         'database' => 1
     ),
+    //Predis配置3
+    'PREDIS_OPTIONS_SYS' => array(
+        'scheme' => 'tcp',
+        'host' => '119.29.100.113',
+        'port' => 6379,
+        'password' => 'cuitcheck',
+        'database' => 2
+    ),
 
 );
