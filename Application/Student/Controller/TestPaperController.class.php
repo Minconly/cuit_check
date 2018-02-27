@@ -129,13 +129,13 @@ class TestPaperController extends StudentBaseController {
             }
             $paperInfo = $redis->hget($tag,'paperInfo');
             $questionLists = $redis->hget($tag,'questionLists');
-            $this->assign('paperInfo',json_decode($paperInfo));
-            $this->assign('question',json_decode($questionLists));
+            $this->assign('paperInfo',json_decode($paperInfo,true));
+            $this->assign('question',json_decode($questionLists,true));
             $this->display();
 
 
-            p(json_decode($paperInfo));
-            p(json_decode($questionLists));
+            p(json_decode($paperInfo,true));
+            p(json_decode($questionLists,true));
         }
 
     }
