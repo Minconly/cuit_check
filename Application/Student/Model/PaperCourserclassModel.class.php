@@ -2,6 +2,7 @@
 
 
 namespace Student\Model;
+use Common\Controller\StudentBaseController;
 use Think\Model;
 
 /**
@@ -86,12 +87,23 @@ class PaperCourserclassModel extends Model{
     public function isIntime($paper_id, $course_id){
         $map['testpaper_id'] = $paper_id;
         $map['courserclass_id'] = $course_id;
-        $map['is_use'] = 1;
+        $map['del_flag'] = 1;
 
-        // 获得考试时间
-        $info = $this->field('start_time,end_time')->where($map)->select();
-        $start_time = strtotime($info[0]['start_time']);     //将字符串转换为时间戳
-        $end_time = strtotime($info[0]['end_time']);     //将字符串转换为时间戳
+        $redis = (new StudentBaseController)->getRedis();
+        $tag = C('REDIS_TAG')['papers'].$course_id.':'.$paper_id;
+
+        if($redis->hexists($tag,'paperInfo')){
+            $paperInfo = json_decode($redis->hget($tag,'paperInfo'),true);
+            $start_time = strtotime($paperInfo['start_time']);     //将字符串转换为时间戳
+            $end_time = strtotime($paperInfo['end_time']);     //将字符串转换为时间戳
+        }else{
+            // 获得考试时间
+            $info = $this->field('start_time,end_time')->where($map)->select();
+            $start_time = strtotime($info[0]['start_time']);     //将字符串转换为时间戳
+            $end_time = strtotime($info[0]['end_time']);     //将字符串转换为时间戳
+        }
+
+
 
         if(time() > $start_time && time() < $end_time) {
             return true;

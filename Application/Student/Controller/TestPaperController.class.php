@@ -94,12 +94,14 @@ class TestPaperController extends StudentBaseController {
     public function paper(){
         $paper_id = I('post.paper_id');
         $course_id = I('post.course_id');
+        $redis = $this->getRedis();
+        $tag = C('REDIS_TAG')['testinfo'].$course_id.':'.$paper_id;
 
         // 传递变量为空
         if( empty($paper_id) && empty($course_id)  ) {
             $this->error('请按照正确途径进入!');
         }
-        
+
         // 检验是否在考试时间
         $status = D('paper_courserclass')->isIntime($paper_id, $course_id);
         // 不在考试时间之内
@@ -110,35 +112,67 @@ class TestPaperController extends StudentBaseController {
         // 检验学生是否已经有该试卷成绩, 防止再次考试
         $score = M('score')->where(array('account'=>session('stu_account'), 'testpaper_id'=>$paper_id))->getField('score');
         if($score != NULL){
-           $this->error('您已经完成该试卷了!');
+            $this->error('您已经完成该试卷了!');
         }else{
-            $redis = $this->getRedis();
-            $tag = C('REDIS_TAG')['papers'].$course_id.':'.$paper_id;
-
-            if(!($redis->hexists($tag,'paperInfo') && $redis->hexists($tag,'questionLists')) ){
-
+            //判断缓存中是否已经存在数据
+            if(!($redis->hexists($tag,'paperInfo') && $redis->hexists($tag,'question')  && $redis->exists($tag.':questionLists'))){
+                //加锁处理
                 if(lock("lockPaper")){
                     // 查找试卷信息
                     $paper_list = D('paper_courserclass')->getPapaerInfo($paper_id, $course_id);
                     // 查找试卷题目
                     $question_list = D('paper_question')->getQuestionList($paper_id);
+                    //存储题目原始信息
                     $redis->hset($tag,'paperInfo',json_encode($paper_list));
-                    $redis->hset($tag,'questionLists',json_encode($question_list));
+                    //存储试卷题目原始信息
+                    $redis->hset($tag,'question',json_encode($question_list['question_info']));
+                    //存储试卷题目和对应的答案
+                    foreach ($question_list['question_info'] as $value){
+                        foreach ($value['answer'] as $key => $value2){
+                            if($value2['is_true'] == 1){
+                                $redis->hset($tag.':questionLists',$value['id'],$value2['id']);
+                                //缓存题目的分值
+                                $redis->hset($tag.':questionValue',$value['id'],$question_list['question_value'][$key]);
+                            }
+                        }
+                    }
                     unlock("lockPaper");
                 }
             }
+
+            //判断学生是否加入缓存
+            $student = $tag.":".session("stu_account");
+            if(!$redis->exists($student)){
+                $data = array(
+                    'alive' => 1,
+                    'account' => empty(session("stu_account"))?session("stu_account"):'err',
+                    'LastIp' => get_ip(),
+                    'LastLoction' => json_encode(getCity(get_client_ip(0))),
+                    'fistInTime' => date('Y-M-D h:m:s',time()),
+                    'lastOutTime' =>  date('Y-M-D h:m:s',time())
+                );
+                if(!$data['account']){
+                    $this->error("登录账号过期！");
+                }
+                p($data);
+                $redis->hmset($student.":studentTestingInfo",$data);
+
+            }
+
             $paperInfo = $redis->hget($tag,'paperInfo');
-            $questionLists = $redis->hget($tag,'questionLists');
+            $question = $redis->hget($tag,'question');
             $this->assign('paperInfo',json_decode($paperInfo,true));
-            $this->assign('question',json_decode($questionLists,true));
+            $this->assign('question',json_decode($question,true));
             $this->display();
 
-
             p(json_decode($paperInfo,true));
-            p(json_decode($questionLists,true));
+            p(json_decode($question,true));
         }
 
     }
+
+
+
 
 
     /**

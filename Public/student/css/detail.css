@@ -31,8 +31,8 @@
 .paper_info_warn p{
 	}
 .paper_info_btn{
-	width:800px; margin:0 auto; height:60px; line-height:60px;}
+	width:80%; margin:25px auto; height:60px; line-height:60px;border-radius: 25px}
 .paper_info_btn button{
-	width:800px; height:60px; background-color:#00B188; text-align:center; color:#FFF; outline:none; border:none; font-size:16px; cursor:pointer;}
+	width:80%; height:60px; background-color:#00B188; text-align:center; color:#FFF; outline:none; border:none; font-size:16px; border-radius: 25px; cursor:pointer;}
 .paper_info_btn button:hover{
 	background-color:#009966;}

@@ -559,3 +559,33 @@ if(!function_exists('unlock')){
 
 }
 
+/**
+获取 IP  地理位置
+ * 淘宝IP接口
+ * @Return: array
+ * @example {"code":0,"data":{"ip":"182.150.27.61","country":"中国","area":"","region":"四川","city":"成都","county":"XX","isp":"电信","country_id":"CN","area_id":"","region_id":"510000","city_id":"510100","county_id":"xx","isp_id":"100017"}}
+ */
+if(!function_exists('getCity')) {
+    function getCity($ip = '')
+    {
+        $url = "http://ip.taobao.com/service/getIpInfo.php?ip=".$ip;
+        $ip = json_decode(file_get_contents($url));
+        if ((string)$ip->code == '1') {
+            return false;
+        }
+        $data = (array)$ip->data;
+        return $data;
+    }
+}
+
+
+ function get_ip(){
+    if ($_SERVER['HTTP_CLIENT_IP']) {
+        $onlineip = $_SERVER['HTTP_CLIENT_IP'];
+    } elseif ($_SERVER['HTTP_X_FORWARDED_FOR']) {
+        $onlineip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    } else {
+        $onlineip = $_SERVER['REMOTE_ADDR'];
+    }
+    return $onlineip;
+}

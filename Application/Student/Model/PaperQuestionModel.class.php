@@ -18,22 +18,18 @@ class PaperQuestionModel extends Model{
 	 */
 	public function getQuestionList($paper_id){
 		// 得到问题id
-		$question = $this->where(array('testpaper_id'=>$paper_id))->getField('question_id',true);
+		$question = $this->field('question_id,value')->where(array('testpaper_id'=>$paper_id))->select();
 		$question_info = [];
-		foreach ($question as $key => $value) {
-			$answer_info = "";
-			$info = M('question')->field(array('content','type','id'))->where(array('id'=>$value))->select();
+        $question_value = [];
+        foreach ($question as $key => $value) {
+            $answer_info = "";
+			$info = M('question')->field(array('content','type','id'))->where(array('id'=>$value['question_id'],'del_flag'=>1))->select();
 			$question_info[$key] = $info[0];
-			$answer_info = M('answer')->field(array('content', 'id'))->where(array('question_id'=>$value))->select();
+			$answer_info = M('answer')->field(array('content', 'id','is_true'))->where(array('question_id'=>$value['question_id'],'del_flag'=>1))->select();
 			$question_info[$key]['answer'] = $answer_info;
-
-		
+            $question_value[$key] = $value['value'];
 		}
-
-	
-
-
-		$data = $question_info;
+		$data = array('question_info'=>$question_info,'question_value'=>$question_value);
 		return $data;
 	}
 

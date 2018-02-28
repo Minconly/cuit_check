@@ -7,7 +7,7 @@ return array(
 		'list'=>'indexMgr/index',
 	),
     'REDIS_TAG'=>array(
-        'papers'=>'papersCache:',
+        'testinfo'=>'TestInfo:',
 
     ),
 );
