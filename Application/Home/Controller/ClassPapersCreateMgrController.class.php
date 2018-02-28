@@ -105,7 +105,7 @@ class ClassPapersCreateMgrController extends BaseController{
     }
     
     /**
-     * @function 添加测试试卷
+     * @function 添加测试试
      * @Author   许加明
      * @DateTime 2017/6/20 0020
      * @param    null
