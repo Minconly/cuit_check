@@ -578,14 +578,19 @@ if(!function_exists('getCity')) {
     }
 }
 
-
- function get_ip(){
-    if ($_SERVER['HTTP_CLIENT_IP']) {
-        $onlineip = $_SERVER['HTTP_CLIENT_IP'];
-    } elseif ($_SERVER['HTTP_X_FORWARDED_FOR']) {
-        $onlineip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-    } else {
-        $onlineip = $_SERVER['REMOTE_ADDR'];
+/**
+ * 获取
+ */
+if(!function_exists('get_ip')){
+    function get_ip(){
+        if ($_SERVER['HTTP_CLIENT_IP']) {
+            $onlineip = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif ($_SERVER['HTTP_X_FORWARDED_FOR']) {
+            $onlineip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $onlineip = $_SERVER['REMOTE_ADDR'];
+        }
+        return $onlineip;
     }
-    return $onlineip;
+
 }
