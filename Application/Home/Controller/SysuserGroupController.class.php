@@ -3,6 +3,7 @@ namespace Home\Controller;
 use Common\Controller\HomeBaseController;
 
 class SysuserGroupController extends HomeBaseController{
+    private static  $prefix = ["menulist:1","menulist:2","menulist:3","menulist:4"];
     /**
      * @function 系统用户组管理        
      * @Author   罗钞
@@ -48,6 +49,7 @@ class SysuserGroupController extends HomeBaseController{
         }else{
             // dump($_POST);die();
             $data=D('authGroup')->addgroup();
+            $this->delCache(self::$prefix);
         }
 
         $this->ajaxReturn($data, 'json');
@@ -58,6 +60,7 @@ class SysuserGroupController extends HomeBaseController{
             $data = array('success'=>false, 'msg'=>'提交方式不正确');
         }else{
             $data = D('authGroup')->updateGroup();
+            $this->delCache(self::$prefix);
         }
 
         $this->ajaxReturn($data, 'json');
@@ -69,6 +72,7 @@ class SysuserGroupController extends HomeBaseController{
             $id=I('id');
             // dump($id);die();
             $data = D('authGroup')->deleteGroup($id);
+            $this->delCache(self::$prefix);
         }
 
         $this->ajaxReturn($data, 'json');
@@ -99,6 +103,7 @@ class SysuserGroupController extends HomeBaseController{
         $group=M('Auth_group');
           if (false!==$group->save($data)) {
                     $res=array('status' => success);
+                    $this->delCache(self::$prefix);
                 }else{
                     $res=array('status' => false, 'msg'=>'分配失败');
          }

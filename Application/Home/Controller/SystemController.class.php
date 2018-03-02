@@ -8,6 +8,7 @@ use Common\Controller\HomeBaseController;
  */
 class SystemController extends HomeBaseController {
 
+    private static  $prefix = ["menulist:1","menulist:2","menulist:3","menulist:4"];
 	public function index(){
 	    $this->display();
 	}
@@ -61,6 +62,7 @@ class SystemController extends HomeBaseController {
 	    }
 	    $data = array();
 	    if($flag){
+            $this->delCache(self::$prefix);
 	    	$data = array('status'=>0, 'msg'=>'操作成功');
 	    }else{
 	    	$data = array('status'=>1, 'msg'=>'操作失败请重试');
@@ -82,7 +84,9 @@ class SystemController extends HomeBaseController {
 			$flag = D('Menu')->addNode($edit);
 		}
 		if($flag){
+            $this->delCache(self::$prefix);
 	    	$data = array('status'=>0, 'msg'=>'操作成功');
+
 	    }else{
 	    	$data = array('status'=>1, 'msg'=>'操作失败!');
 	    }
@@ -101,6 +105,7 @@ class SystemController extends HomeBaseController {
 	    }
 	    $flag = D('Menu')->addNode($new);
 	    if($flag){
+	        $this->delCache(self::$prefix);
 	    	$data = array('status'=>0, 'msg'=>'操作成功');
 	    }else{
 	    	$data = array('status'=>1, 'msg'=>'操作失败!');

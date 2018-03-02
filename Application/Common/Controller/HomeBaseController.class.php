@@ -44,5 +44,9 @@ class HomeBaseController extends BaseController{
         }
         return $this->redis;
     }
+
+    protected  function delCache($key){
+        $this->getRedis()->del($key);
+    }
 }
 
