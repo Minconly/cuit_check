@@ -58,10 +58,12 @@
     $("input[type='radio']").on('click',function(){
         var question_id = $(this).attr('name');
         var answer = $(this).val();
+        var qId = $(this).data("qId");
+        var anId = $(this).data("anId");
+
         if(answer != ""){
             $("#"+question_id).addClass('positive');        // add class 'positive' to answer_sheet
             localStorage.setItem(question_id, answer);    // store the item by name
-
         }
         Progress();
      });
@@ -162,6 +164,40 @@
         .progress({
             total : sheet,
             percent : (p/sheet)*100 
+        });
+    }
+
+    /*
+    * "status"=>
+"msg"=>"",
+"time" =>
+"is_Intime
+    * */
+    //todo:
+    function setRedisAnswer(paper_id,course_id,question_id,answer) {
+        $.ajax({
+            type: "POST",
+            url: setRedisUrl,
+            data: {
+                "paper_id":paper_id,
+                "course_id":course_id,
+                "question_id":question_id,
+                "answer":answer
+            },
+            dataType: "json",
+            success: function(data){
+               if(data.status === 0){
+                   layer.confirm('确定退出吗？',{ title:false,icon:3,
+                       btn:['确定','取消']
+                   },function(){
+                       $.get("{:U('Student/loginMgr/loginout')}",function(){
+                           parent.location.href = "{:U('loginMgr/login')}";
+                       });
+                   },function(){
+
+                   });
+               }
+            }
         });
     }
 

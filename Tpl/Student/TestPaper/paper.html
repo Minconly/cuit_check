@@ -24,7 +24,7 @@
         <div class="paper_box">
             
             <h3 class="ui black block header" style="text-align: center;"> 
-                <span style="padding-right: 15px;">{$paperInfo.name]}</span>
+                <span style="padding-right: 15px;">{$paperInfo.name}</span>
                 <span style="padding-right: 15px;">总分:{$paperInfo.full_score}</span>
                 <span style="padding-right: 15px;">及格分数:{$paperInfo.pass_score}</span>
             </h3>
@@ -52,7 +52,7 @@
                                     <foreach name="vo['answer']" item='v1' key="k1">
                                         <div class="field">
                                           <div class="ui radio checkbox">
-                                            <input type="radio" name="question_{$vo['id']}" data-anId="{$v1['id']}" value="{$v1['content']}">
+                                            <input type="radio" name="question_{$vo['id']}" data-qId="{$vo['id']}" data-anId="{$v1['id']}" value="{$v1['content']}">
                                             <label>{$v1['content']}</label>
                                           </div>
                                         </div>
@@ -190,6 +190,8 @@
     var untilTime = "{$paperInfo.end_time}";
     var CheckAnswer = '{:U("Student/testPaper/CheckAnswer")}';
     var paper_id = "{$paperInfo.id}";
+    var course_id = "{$course_id}"
+    var setRedisUrl = '{:U("Student/Api/setAnswer")}';
 
 </script>
 
