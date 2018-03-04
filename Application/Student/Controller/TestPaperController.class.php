@@ -130,12 +130,12 @@ class TestPaperController extends StudentBaseController {
                     foreach ($question_list['question_info'] as $value){
                         foreach ($value['answer'] as $key => $value2){
                             if($value2['is_true'] == 1){
-                                //非选择题记录值否则记录id
-                                if($value["type"] != 1){
+//                                非选择题记录值否则记录id
+//                                if($value["type"] != 1){
                                     $redis->hset($tag.':questionLists',$value['id'],$value2['content']);
-                                }else{
-                                    $redis->hset($tag.':questionLists',$value['id'],$value2['id']);
-                                }
+//                                }else{
+//                                    $redis->hset($tag.':questionLists',$value['id'],$value2['id']);
+//                                }
                                 //缓存题目的分值
                                 $redis->hset($tag.':questionValue',$value['id'],$question_list['question_value'][$key]);
                             }
