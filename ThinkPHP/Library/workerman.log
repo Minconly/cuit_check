@@ -4,3 +4,24 @@
 2018-03-05 12:09:40 pid:23249 Workerman[index.php] stop 
 2018-03-05 12:09:40 pid:23249 Workerman[index.php] not run
 2018-03-05 12:09:44 pid:23259 Workerman[index.php] start in DEBUG mode
+2018-03-05 13:19:39 pid:23259 Workerman[index.php] stopping ...
+2018-03-05 13:19:39 pid:23259 Workerman[index.php] has been stopped
+2018-03-05 13:19:46 pid:29504 Workerman[index.php] connections 
+2018-03-05 13:19:46 pid:29504 Workerman[index.php] not run
+2018-03-05 13:19:49 pid:29505 Workerman[index.php] start in DEBUG mode
+2018-03-05 13:21:25 pid:29505 Workerman[index.php] stopping ...
+2018-03-05 13:21:25 pid:29505 Workerman[index.php] has been stopped
+2018-03-05 13:21:34 pid:29706 Workerman[index.php] start in DEBUG mode
+2018-03-05 13:23:35 pid:29706 Workerman[index.php] stopping ...
+2018-03-05 13:23:35 pid:29706 Workerman[index.php] has been stopped
+2018-03-05 13:23:37 pid:29885 Workerman[index.php] start in DEBUG mode
+2018-03-05 13:24:54 pid:29885 Workerman[index.php] stopping ...
+2018-03-05 13:24:54 pid:29885 Workerman[index.php] has been stopped
+2018-03-05 13:24:56 pid:30021 Workerman[index.php] start in DEBUG mode
+2018-03-05 13:29:40 pid:30021 Workerman[index.php] stopping ...
+2018-03-05 13:29:40 pid:30021 Workerman[index.php] has been stopped
+2018-03-05 13:29:41 pid:30439 Workerman[index.php] start in DEBUG mode
+2018-03-05 13:31:54 pid:30629 Workerman[index.php] status 
+2018-03-05 13:32:17 pid:30660 Workerman[index.php] connections 
+2018-03-05 13:33:07 pid:30728 Workerman[index.php] connections 
+2018-03-05 13:33:43 pid:30774 Workerman[index.php] connections 
