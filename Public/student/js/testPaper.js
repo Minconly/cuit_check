@@ -31,6 +31,8 @@
             console.log(data);
 
                 if(!data.status){
+                    var storage = window.localStorage;
+
 
                     for(var k in data){
                         var value = data[k];
@@ -54,6 +56,8 @@
                         } else if(type === 'text'){                  // if type is 'text' make its value equels key
                             _this.val(value);
                         }
+                        localStorage.removeItem(key);
+                        localStorage.setItem(key, value);
                         $("#"+key).addClass('positive');            // add class 'positive' to answer_sheet
                     }
                     Progress();
@@ -132,6 +136,7 @@
         if(answer !== "空+"){
             $("#"+question_id).addClass('positive');        // add class 'positive' to answer_sheet
             localStorage.setItem(question_id, answer);    // store the item by name
+            // localStorage.removeItem(question_id);    // store the item by name
         }else{
             $("#"+question_id).removeClass('positive');        // add class 'positive' to answer_sheet
             localStorage.removeItem(question_id);    // store the item by name
@@ -140,6 +145,53 @@
  
     });
 
+
+
+    //redis 存储答案
+    function setRedisAnswer(paper_id,course_id,question_id,answer) {
+    $.ajax({
+        type: "POST",
+        url: setRedisUrl,
+        data: {
+            "paper_id":paper_id,
+            "course_id":course_id,
+            "question_id":question_id,
+            "answer":answer
+        },
+        dataType: "json",
+        success: function(data){
+            if(data.status !== 1){
+                $("#alert_msg").html(data.msg);
+                $('.mini.modal')
+                    .modal({
+                        onApprove(){
+                            localStorage.clear();
+                            $.StandardPost(testPage, {'paper_id': paper_id, 'course_id': course_id});
+                        },
+                        closable:false
+
+                    })
+                    .modal('show');
+                Progress();
+            }
+            $.countdown.resync();
+            $(".count_down").countdown('option','until',new Date(data.time));
+
+        },
+        error: function(){
+            $("#alert_msg").html("网络故障");
+            $('.mini.modal')
+                .modal({
+                    onApprove(){
+                        localStorage.clear();
+                        $.StandardPost(testPage, {'paper_id': paper_id, 'course_id': course_id});
+                    },
+                    closable:false
+                })
+                .modal('show');
+        }
+    });
+}
 
      $(".goToTheSheet").click(function(){
         var question_id = $(this).attr('id');
@@ -238,52 +290,27 @@
     }
 
 
-    //redis 存储答案
-    function setRedisAnswer(paper_id,course_id,question_id,answer) {
-        $.ajax({
-            type: "POST",
-            url: setRedisUrl,
-            data: {
-                "paper_id":paper_id,
-                "course_id":course_id,
-                "question_id":question_id,
-                "answer":answer
-            },
-            dataType: "json",
-            success: function(data){
-                if(data.status !== 1){
-                    $("#alert_msg").html(data.msg);
-                    $('.mini.modal')
-                        .modal({
-                            onApprove(){
-
-                            },
-                            deny(){
-
-                            }
-                        })
-                        .modal('show');
-                }
-                console.log(data);
-                $.countdown.resync();
-                $(".count_down").countdown('option','until',data.time);
-
-            },
-            error: function(){
-                $("#alert_msg").html("网络故障");
-                $('.mini.modal')
-                    .modal({
-                        onApprove(){
-
-                        },
-                        deny(){
-
-                        }
-                    })
-                    .modal('show');
-            }
+// 扩展post提交数据, 并进行跳转
+$.extend({
+    StandardPost: function (url, args) {
+        var body = $(document.body),
+            form = $("<form method='post'></form>"),
+            input;
+        form.attr({"action": url});
+        $.each(args, function (key, value) {
+            input = $("<input type='hidden'>");
+            input.attr({"name": key});
+            input.val(value);
+            form.append(input);
         });
+
+        form.appendTo(document.body);
+        form.submit();
+        document.body.removeChild(form[0]);
     }
+});
+
+
 
 
 
