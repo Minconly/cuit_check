@@ -12,6 +12,7 @@ class IndexController  {
         $worker->onWorkerStart = function($worker){
             echo "Worker starting...\n";
         };
+        
         $worker->onMessage = function($connection, $data)
         {
             // 向客户端发送hello $data
