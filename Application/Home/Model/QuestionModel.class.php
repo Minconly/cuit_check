@@ -165,7 +165,7 @@ class QuestionModel extends Model{
 			// 获得含有的知识点列表;
 			// $knowledgeids = explode(",", $value['knowledge_ids']);
 			$knowledgeids = M('question_know')->where(array('question_id'=>$value['id']))->getField('knowledge_id',true);
-			$knowledgenames="";
+			$knowledgenames=[];
 			foreach ($knowledgeids as $key1 => $value1) {
 				$knowledge = current(M('knowledge')->where(array('id'=>$value1))->select());
 				$knowledgenames[$key1] =$knowledge['name'];
@@ -241,7 +241,8 @@ class QuestionModel extends Model{
 				}
 
 				// 进行知识点添加
-				$knowledge_ids = split(',', $_POST['knowledgeIds']);
+//				$knowledge_ids = split(',', $_POST['knowledgeIds']);
+                $knowledge_ids = explode(',', $_POST['knowledgeIds']);
 				$know_info = D("question_know")->addKnow($info, $knowledge_ids);
 				if($know_info == false) {
 					$return = $this->packResult(false);
@@ -297,7 +298,7 @@ class QuestionModel extends Model{
 				}
 
 				// 进行知识点修改
-				$knowledge_ids = split(',', $_POST['knowledgeIds']);
+				$knowledge_ids = explode(',', $_POST['knowledgeIds']);
 				$knowledgeids = M('question_know')->where(array('question_id'=>$_POST['id']))->delete();
 				$know_info = D("question_know")->addKnow($_POST['id'], $knowledge_ids);
 				if($know_info == false) {

@@ -24,7 +24,7 @@
         <div class="paper_box">
             
             <h3 class="ui black block header" style="text-align: center;"> 
-                <span style="padding-right: 15px;">{$paperInfo.name]}</span>
+                <span style="padding-right: 15px;">{$paperInfo.name}</span>
                 <span style="padding-right: 15px;">总分:{$paperInfo.full_score}</span>
                 <span style="padding-right: 15px;">及格分数:{$paperInfo.pass_score}</span>
             </h3>
@@ -52,7 +52,7 @@
                                     <foreach name="vo['answer']" item='v1' key="k1">
                                         <div class="field">
                                           <div class="ui radio checkbox">
-                                            <input type="radio" name="question_{$vo['id']}" data-anId="{$v1['id']}" value="{$v1['content']}">
+                                            <input type="radio" name="question_{$vo['id']}" data-type="1" data-qId="{$vo['id']}" data-anId="{$v1['id']}" value="{$v1['content']}">
                                             <label>{$v1['content']}</label>
                                           </div>
                                         </div>
@@ -62,13 +62,13 @@
                                 <case value='2'>
                                     <div class="field">
                                       <div class="ui radio checkbox">
-                                        <input type="radio" name="question_{$vo['id']}" value="T">
+                                        <input type="radio" data-type="2"  name="question_{$vo['id']}" data-qId="{$vo['id']}" value="T">
                                         <label data-anId="{$vo['answer'][0]['id']}">T</label>
                                       </div>
                                     </div>
                                     <div class="field">
                                         <div class="ui radio checkbox">
-                                            <input type="radio" name="question_{$vo['id']}" value="F">
+                                            <input type="radio" data-type="2"  name="question_{$vo['id']}" data-qId="{$vo['id']}" value="F">
                                             <label data-anId="{$vo['answer'][0]['id']}">F</label>
                                         </div>
                                     </div>
@@ -77,7 +77,7 @@
                                 <case value='3'>
                                     <div class="field">
                                         <div class="ui input">
-                                            <input type="text" placeholder="请输入答案" name="question_{$vo['id']}" data-anId="{$vo['answer'][0]['id']}">
+                                            <input type="text" data-type="3"  placeholder="请输入答案" name="question_{$vo['id']}" data-qId="{$vo['id']}" data-anId="{$vo['answer'][0]['id']}">
                                         </div>
                                     </div>
                                 </case>
@@ -178,6 +178,17 @@
           </div>
         </div>
 
+        <div class="ui mini modal">
+            <div class="header">缓存答案出错</div>
+            <div class="content">
+                <p id="alert_msg"></p>
+            </div>
+            <div class="actions">
+                <div class="ui approve button">点击刷新</div>
+                <div class="ui  button">不管</div>
+            </div>
+        </div>
+
 
         <include file='Public:foot' />
     
@@ -190,6 +201,10 @@
     var untilTime = "{$paperInfo.end_time}";
     var CheckAnswer = '{:U("Student/testPaper/CheckAnswer")}';
     var paper_id = "{$paperInfo.id}";
+    var course_id = "{$course_id}"
+    var setRedisUrl = '{:U("Student/StudentApi/setAnswer")}';
+    var serverTimeUrl = '{:U("Student/StudentApi/serverTime")}';
+    var getAnswerUrl = '{:U("Student/StudentApi/getAnswer")}';
 
 </script>
 

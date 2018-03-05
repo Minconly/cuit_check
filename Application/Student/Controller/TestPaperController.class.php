@@ -130,43 +130,63 @@ class TestPaperController extends StudentBaseController {
                     foreach ($question_list['question_info'] as $value){
                         foreach ($value['answer'] as $key => $value2){
                             if($value2['is_true'] == 1){
-                                $redis->hset($tag.':questionLists',$value['id'],$value2['id']);
+//                                非选择题记录值否则记录id
+//                                if($value["type"] != 1){
+                                    $redis->hset($tag.':questionLists',$value['id'],$value2['content']);
+//                                }else{
+//                                    $redis->hset($tag.':questionLists',$value['id'],$value2['id']);
+//                                }
                                 //缓存题目的分值
                                 $redis->hset($tag.':questionValue',$value['id'],$question_list['question_value'][$key]);
                             }
                         }
                     }
                     unlock("lockPaper");
+                }else{
+                    sleep(5);
                 }
             }
 
             //判断学生是否加入缓存
             $student = $tag.":".session("stu_account");
-            if(!$redis->exists($student)){
+            if(!$redis->exists($student.":studentTestingInfo")){
                 $data = array(
                     'alive' => 1,
-                    'account' => empty(session("stu_account"))?session("stu_account"):'err',
+                    'is_cheat' => 0,
+                    'account' => session("stu_account"),
                     'LastIp' => get_ip(),
                     'LastLoction' => json_encode(getCity(get_client_ip(0))),
-                    'fistInTime' => date('Y-M-D h:m:s',time()),
-                    'lastOutTime' =>  date('Y-M-D h:m:s',time())
+                    'fistInTime' => date('Y-m-d H:i:s',time()),
+                    'lastOutTime' =>  date('Y-m-d H:i:s',time())
                 );
                 if(!$data['account']){
-                    $this->error("登录账号过期！");
+                    $this->error("登录账号过期！","/cuit_check/Student/indexMgr/index.html",3);
+                    return;
                 }
-                p($data);
                 $redis->hmset($student.":studentTestingInfo",$data);
 
+            }else{
+                //每次登录时更新信息
+                $data2 = array(
+                    'alive' => 1,
+                    'account' => session("stu_account"),
+                    'LastIp' => get_ip(),
+                    'LastLoction' => json_encode(getCity(get_client_ip(0))),
+                    'lastOutTime' =>  date('Y-m-d H:i:s',time())
+                );
+                if($redis->hget($student.":studentTestingInfo","is_cheat") == "1"){
+                    $this->error("已被禁止考试！","/cuit_check/Student/indexMgr/index.html",3);
+                    return;
+                }
+                $redis->hmset($student.":studentTestingInfo",$data2);
             }
 
             $paperInfo = $redis->hget($tag,'paperInfo');
             $question = $redis->hget($tag,'question');
             $this->assign('paperInfo',json_decode($paperInfo,true));
             $this->assign('question',json_decode($question,true));
+            $this->assign("course_id",$course_id);
             $this->display();
-
-            p(json_decode($paperInfo,true));
-            p(json_decode($question,true));
         }
 
     }
