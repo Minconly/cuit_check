@@ -30,6 +30,8 @@ class Events
 //        );
 //        $test = A('Worker/Index')->test($testData);
         // 根据类型执行不同的业务
+
+        //params : type  对话类型  data  数组
         switch($message_data['type'])
         {
             // 客户端回应服务端的心跳
@@ -37,6 +39,14 @@ class Events
                 return;
             // 客户端登录 message格式: {type:login, name:xx, room_id:1} ，添加到客户端，广播给所有客户端xx进入聊天室
             case 'login':
+                $data = $message_data['data'] ;
+                //判断该场考试是否存在
+                //TODO
+
+                //如果是后台登录，获取当场考试的所有用户列表并转播给后台用户
+
+                //如果是前台登录，返回连接结果
+
                 // 判断是否有房间号
                 if(!isset($message_data['room_id']))
                 {
