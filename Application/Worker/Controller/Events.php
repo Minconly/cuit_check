@@ -1,6 +1,9 @@
 <?php
 use \GatewayWorker\Lib\Gateway;
 
+/**
+ * 监听和消息推送主逻辑代码
+ */
 class Events
 {
 
@@ -26,7 +29,6 @@ class Events
 //            'odwadw'=>'dwad',
 //        );
 //        $test = A('Worker/Index')->test($testData);
-
         // 根据类型执行不同的业务
         switch($message_data['type'])
         {
@@ -75,7 +77,7 @@ class Events
                 $room_id = $_SESSION['room_id'];
                 $client_name = $_SESSION['client_name'];
 
-                // 私聊
+                // 管理端向学生端发送信息
                 if($message_data['to_client_id'] != 'all')
                 {
                     $new_message = array(
