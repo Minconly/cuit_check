@@ -15,7 +15,7 @@ class IndexController  {
         $worker->onMessage = function($connection, $data)
         {
             // 向客户端发送hello $data
-            $connection->send('hello '.$data);
+            $connection->send('hello world'.$data);
         };
         // 运行worker
         Worker::runAll();
