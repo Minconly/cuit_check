@@ -5,7 +5,7 @@ return array(
 	//加载分块的配置项
 	'LOAD_EXT_CONFIG'       => 'db,system,web',
 	//模块
-	'MODULE_ALLOW_LIST' => array('Student', 'Home','Workerman'),
+	'MODULE_ALLOW_LIST' => array('Student', 'Home','Worker'),
 	//默认模块
 	'DEFAULT_MODULE' => 'Home',
 	//路由模式为2号模式
