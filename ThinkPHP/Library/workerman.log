@@ -25,3 +25,70 @@
 2018-03-05 13:32:17 pid:30660 Workerman[index.php] connections 
 2018-03-05 13:33:07 pid:30728 Workerman[index.php] connections 
 2018-03-05 13:33:43 pid:30774 Workerman[index.php] connections 
+2018-03-05 15:22:34 pid:30439 Workerman[index.php] stopping ...
+2018-03-05 15:22:34 pid:30439 Workerman[index.php] has been stopped
+2018-03-05 15:29:12 pid:11940 Workerman[index.php] start in DEBUG mode
+2018-03-05 15:29:27 pid:11940 Workerman[index.php] stopping ...
+2018-03-05 15:29:27 pid:11940 Workerman[index.php] has been stopped
+2018-03-05 15:30:56 pid:12088 Workerman[index.php] start in DEBUG mode
+2018-03-05 15:31:28 pid:12088 Workerman[index.php] stopping ...
+2018-03-05 15:31:28 pid:12088 Workerman[index.php] has been stopped
+2018-03-05 15:40:35 pid:13539 Workerman[index.php] start in DEBUG mode
+2018-03-05 15:42:47 pid:13539 Workerman[index.php] stopping ...
+2018-03-05 15:42:47 pid:13539 Workerman[index.php] has been stopped
+2018-03-05 15:43:00 pid:13793 Workerman[index.php] start in DEBUG mode
+2018-03-05 15:45:36 pid:13793 Workerman[index.php] stopping ...
+2018-03-05 15:45:36 pid:13793 Workerman[index.php] has been stopped
+2018-03-05 15:45:37 pid:14049 Workerman[index.php] start in DEBUG mode
+2018-03-05 15:47:10 pid:14049 Workerman[index.php] stopping ...
+2018-03-05 15:47:10 pid:14049 Workerman[index.php] has been stopped
+2018-03-05 15:47:11 pid:14200 Workerman[index.php] start in DEBUG mode
+2018-03-05 15:47:13 pid:14200 Workerman[index.php] stopping ...
+2018-03-05 15:47:13 pid:14200 Workerman[index.php] has been stopped
+2018-03-05 15:47:22 pid:14240 Workerman[index.php] start in DEBUG mode
+2018-03-05 15:47:24 pid:14240 Workerman[index.php] stopping ...
+2018-03-05 15:47:24 pid:14240 Workerman[index.php] has been stopped
+2018-03-05 15:48:54 pid:14409 Workerman[index.php] start in DEBUG mode
+2018-03-05 15:49:11 pid:14409 Workerman[index.php] stopping ...
+2018-03-05 15:49:11 pid:14409 Workerman[index.php] has been stopped
+2018-03-05 15:58:50 pid:15752 Workerman[index.php] start in DEBUG mode
+2018-03-05 15:59:39 pid:15752 Workerman[index.php] stopping ...
+2018-03-05 15:59:39 pid:15752 Workerman[index.php] has been stopped
+2018-03-05 15:59:39 pid:15843 Workerman[index.php] start in DEBUG mode
+2018-03-05 15:59:41 pid:15843 Workerman[index.php] stopping ...
+2018-03-05 15:59:41 pid:15843 Workerman[index.php] has been stopped
+2018-03-05 16:00:21 pid:15944 Workerman[index.php] start in DEBUG mode
+2018-03-05 16:01:03 pid:15944 Workerman[index.php] stopping ...
+2018-03-05 16:01:03 pid:15944 Workerman[index.php] has been stopped
+2018-03-05 16:01:27 pid:16096 Workerman[index.php] start in DEBUG mode
+2018-03-05 16:01:54 pid:16096 Workerman[index.php] stopping ...
+2018-03-05 16:01:54 pid:16096 Workerman[index.php] has been stopped
+2018-03-05 16:03:25 pid:16366 Workerman[index.php] start in DEBUG mode
+2018-03-05 16:04:08 pid:16366 Workerman[index.php] stopping ...
+2018-03-05 16:04:08 pid:16372 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2018-03-05 16:04:08 pid:16366 Workerman[index.php] has been stopped
+2018-03-05 16:05:34 pid:16626 Workerman[index.php] start in DEBUG mode
+2018-03-05 16:06:07 pid:16626 Workerman[index.php] stopping ...
+2018-03-05 16:06:07 pid:16626 Workerman[index.php] has been stopped
+2018-03-05 16:06:07 pid:16704 Workerman[index.php] start in DEBUG mode
+2018-03-05 16:06:12 pid:16704 Workerman[index.php] stopping ...
+2018-03-05 16:06:12 pid:16704 Workerman[index.php] has been stopped
+2018-03-05 16:06:45 pid:16782 Workerman[index.php] start in DEBUG mode
+2018-03-05 16:07:21 pid:16782 Workerman[index.php] stopping ...
+2018-03-05 16:07:21 pid:16786 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2018-03-05 16:07:21 pid:16782 Workerman[index.php] has been stopped
+2018-03-05 16:07:39 pid:16893 Workerman[index.php] start in DEBUG mode
+2018-03-05 16:08:22 pid:16893 Workerman[index.php] stopping ...
+2018-03-05 16:08:22 pid:16893 Workerman[index.php] has been stopped
+2018-03-05 16:08:24 pid:17015 Workerman[index.php] start in DEBUG mode
+2018-03-05 16:09:51 pid:17015 Workerman[index.php] stopping ...
+2018-03-05 16:09:51 pid:17021 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2018-03-05 16:09:51 pid:17015 Workerman[index.php] has been stopped
+2018-03-05 16:09:52 pid:17272 Workerman[index.php] start in DEBUG mode
+2018-03-05 16:10:15 pid:17272 Workerman[index.php] stopping ...
+2018-03-05 16:10:15 pid:17277 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2018-03-05 16:10:15 pid:17272 Workerman[index.php] has been stopped
+2018-03-05 16:10:16 pid:17331 Workerman[index.php] start in DEBUG mode
+2018-03-05 16:10:18 pid:17331 Workerman[index.php] stopping ...
+2018-03-05 16:10:18 pid:17337 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2018-03-05 16:10:18 pid:17331 Workerman[index.php] has been stopped
