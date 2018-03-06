@@ -1,13 +1,82 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+<layuicss/>
+<link rel="stylesheet" href="__PUBLIC__/student/SemanticUI/semantic.min.css">
+<style>
 
-</body>
-</html>
+    legend{
+        text-align: center;
+    }
+    .container{
+        display:flex;
+        width:100%;
+        align-item:stretch;
+        padding-top: 10px;
+    }
+    .left{
+        min-width:550px;
+        padding-left: 250px;
+    }
+    .right{
+        width:100%;
+        padding-right: 250px;
+    }
+    .msg-box{
+        padding-left: 250px;
+        padding-right: 250px;
+    }
+    .body-main{
+        padding-top: 20px;
+    }
+    .man-box{
+        padding-left:15px;
+    }
+    .image img{
+        width: 5px;
+        height: 5px;
+    }
+    .ui.card>.extra, .ui.cards>.card>.extra{
+        padding: 0px;
+        text-align: center;
+        color: #0C0C0C;
+    }
+    .card{
+        max-height: 80px !important;
+        max-width: 60px !important;
+        font-weight: lighter;
+    }
+    .ui.card{
+        overflow:hidden !important;
+
+    }
+</style>
+
+<div class="body-main">
+    <div class="sign-diver" >
+        <h4 class="ui horizontal header divider">
+            <i class="bar chart icon"></i>
+            在线监控
+        </h4>
+    </div>
+    <div class="container">
+        <div class="left">
+            <fieldset class="layui-elem-field" style="min-height: 550px;">
+                <legend>连线记录</legend>
+            </fieldset>
+        </div>
+        <div class="right">
+            <fieldset class="layui-elem-field" style="min-height: 550px;">
+                <legend>在线状态</legend>
+                <div class="man-box cards special">
+
+
+                </div>
+
+            </fieldset>
+        </div>
+    </div>
+    <div class="msg-box">
+        <fieldset class="layui-elem-field" style="min-height: 220px;">
+            <legend>消息推送</legend>
+
+        </fieldset>
+    </div>
+</div>
