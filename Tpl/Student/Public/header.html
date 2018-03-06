@@ -9,6 +9,9 @@
         position: fixed;
         z-index: 10;
     }
+    .ui.selection.dropdown{
+        color: rgba(0,0,0,.6);
+    }
 </style>
 
 <div class="headerBox fixDiv">
@@ -19,27 +22,53 @@
             <button class="ui teal button" id="loginout" name="loginout"><i class="fa fa-sign-out fa-fw"></i>&nbsp;退出</button>
         </div>
 
-        <div class="ui  dropdown labeled  icon button nl-logout" style="margin-top: 6px">
-            <i class=" icon-reorder icon"></i>
-            <span class="text">切换课程</span>
-            <div class="menu">
-                <div class="item">Arabic</div>
-                <div class="item">Chinese</div>
-                <div class="item">Danish</div>
+        <!--<div class="ui  dropdown  icon button nl-logout" id="selectCourse" data-inverted="" data-tooltip="选择切换课程" data-position="left center" style="margin-top: 6px">-->
+            <!--<input name="which" type="hidden">-->
+            <!--<i class=" icon-reorder icon"></i>-->
+            <!--<span class="text">切换课程</span>-->
+            <!--<div class="menu">-->
+                <!--<div class="item">Arabic</div>-->
+                <!--<div class="item">Chinese</div>-->
+                <!--<div class="item">Danish</div>-->
+            <!--</div>-->
+        <!--</div>-->
 
-            </div>
+        <div class="ui nl-logout "  style="margin-top: 8px"  data-inverted="" data-tooltip="选择切换课程" data-position="left center">
+            <select class="ui dropdown button mini"   id="selectCourse" >
+                <foreach name="courseList" item="vo" key="k" >
+                    <option value="{$vo['cci']}">{$vo['name']}</option>
+                </foreach>
+            </select>
         </div>
-
     </div>
 </div>
 <div id="fill-room"></div>
 <script src="__PUBLIC__/student/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+<script src="__PUBLIC__/student/SemanticUI/semantic.min.js"></script>
 <script type="text/javascript">
     $('#fill-room').height($('.fixDiv').height()*2);
-    $('.dropdown')
+
+    $('#selectCourse')
         .dropdown({
-            action: function(value, text, $selectedItem) {
-                alert("test！");
+            onChange:function(value, text, $choice) {
+                // custom action
+                console.log(value);
             }
         });
+    //监听select选择框
+    $('#selectCourse').change(function() {
+        var id = $("#selectCourse").val();
+
+        layer.confirm('确定切换课程吗？',{ title:false,icon:3,
+            btn:['确定','取消']
+        },function(){
+            // $.get("{:U('Student/loginMgr/loginout')}",function(){
+            //     parent.location.href = "{:U('loginMgr/login')}";
+            // });
+        },function(){
+
+        });
+
+    });
+
 </script>

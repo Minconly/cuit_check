@@ -223,10 +223,10 @@
 
 
 
-	<script src="__PUBLIC__/student/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+	<!--<script src="__PUBLIC__/student/js/jquery-3.1.1.min.js" type="text/javascript"></script>-->
 
 	<script type="text/javascript" src="__PUBLIC__/student/js/jquery-tab.js"></script>
-	<script src="__PUBLIC__/student/SemanticUI/semantic.min.js"></script>
+
 
 	<script>
 		//这里统一写接口地址
@@ -259,7 +259,7 @@
 	$('#loginout').click(function(event) {
 		layer.confirm('确定退出吗？',{ title:false,icon:3,
 		   btn:['确定','取消'] 
-		   		},function(){ 
+		   		},function(){
 			$.get("{:U('Student/loginMgr/loginout')}",function(){
 				 parent.location.href = "{:U('loginMgr/login')}";
 			});
@@ -267,7 +267,9 @@
 
 		});
 	});
-	 // href="{:U('Student/loginMgr/loginout')}" 
+	 // href="{:U('Student/loginMgr/loginout')}"
+
+
 </script>
 <script type="text/javascript">
 layui.use(['layer','upload'],function(){
