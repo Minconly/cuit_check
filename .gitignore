@@ -1,3 +1,4 @@
 .idea/
 /Runtime/
 .phpstorm.meta.php
+.log
