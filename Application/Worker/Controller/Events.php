@@ -7,6 +7,11 @@ use \GatewayWorker\Lib\Gateway;
 class Events
 {
 
+    //将某个 学生踢出考试!
+    public static function  delStu($account,$msg){
+        Gateway::closeClient(md5($account),$msg);
+    }
+
     /**
      * 有消息时
      * @param int $client_id

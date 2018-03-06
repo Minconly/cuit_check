@@ -12,7 +12,7 @@
         padding-top: 10px;
     }
     .left{
-        min-width:550px;
+        min-width:35%;
         padding-left: 250px;
     }
     .right{
@@ -27,25 +27,62 @@
         padding-top: 20px;
     }
     .man-box{
-        padding-left:15px;
+        padding-left:20px;
+        padding-top: 18px;
     }
-    .image img{
-        width: 5px;
-        height: 5px;
-    }
-    .ui.card>.extra, .ui.cards>.card>.extra{
-        padding: 0px;
-        text-align: center;
-        color: #0C0C0C;
-    }
-    .card{
-        max-height: 80px !important;
-        max-width: 60px !important;
-        font-weight: lighter;
-    }
-    .ui.card{
-        overflow:hidden !important;
+    /*.image img{*/
+        /*width: 5px;*/
+        /*height: 5px;*/
+    /*}*/
+    /*.ui.card>.extra, .ui.cards>.card>.extra{*/
+        /*padding: 0px;*/
+        /*text-align: center;*/
+        /*color: #0C0C0C;*/
+    /*}*/
+    /*.card{*/
+        /*max-height: 80px !important;*/
+        /*max-width: 60px !important;*/
+        /*font-weight: lighter;*/
+    /*}*/
+    /*.ui.card{*/
+        /*overflow:hidden !important;*/
 
+    /*}*/
+    .card{
+        width: 77px !important;
+        height: 97px !important;
+    }
+    .box{
+        padding-left: 5px !important;
+        padding-right: 8px !important;
+        padding-top: 7px !important;
+    }
+    .gray {
+        -webkit-filter: grayscale(1); /* Webkit */
+        filter: gray; /* IE6-9 */
+        filter: grayscale(1); /* W3C */
+    }
+
+
+    .send {
+        position:relative;
+        width:85%;
+        height:35px;
+        background: #9bb2ff;
+        border-radius:5px; /* 圆角 */
+       margin-top: 15px;
+        margin-left: 16px;
+    }
+
+    .send .arrow {
+        position:absolute;
+        top:8px;
+        left:-16px; /* 圆角的位置需要细心调试哦 */
+        width:0;
+        height:0;
+        font-size:0;
+        border:solid 8px;
+        border-color: #ffffff  #9bb2ff #ffffff #ffffff;
     }
 </style>
 
@@ -58,36 +95,147 @@
     </div>
     <div class="container">
         <div class="left">
-            <fieldset class="layui-elem-field" style="min-height: 550px;">
+            <fieldset class="layui-elem-field" style="min-height: 700px;max-height: 700px">
                 <legend>连线记录</legend>
+                <div class="his-box">
+                    <div class="send">
+                        <div class="arrow"></div>
+                    </div>
+                    <div class="send">
+                        <div class="arrow"></div>
+                    </div>
+                    <div class="send">
+                        <div class="arrow"></div>
+                    </div>
+                    <div class="send">
+                        <div class="arrow"></div>
+                    </div><div class="send">
+                    <div class="arrow"></div>
+                </div><div class="send">
+                    <div class="arrow"></div>
+                </div><div class="send">
+                    <div class="arrow"></div>
+                </div><div class="send">
+                    <div class="arrow"></div>
+                </div><div class="send">
+                    <div class="arrow"></div>
+                </div><div class="send">
+                    <div class="arrow"></div>
+                </div>
+                    <div class="send">
+                        <div class="arrow"></div>
+                    </div><div class="send">
+                    <div class="arrow"></div>
+                </div><div class="send">
+                    <div class="arrow"></div>
+                </div>
+
+                </div>
             </fieldset>
         </div>
         <div class="right">
-            <fieldset class="layui-elem-field" style="min-height: 550px;">
+            <fieldset class="layui-elem-field" style="min-height: 700px;max-height: 700px">
                 <legend>在线状态</legend>
-                <div class="man-box cards special">
-                    <div class="ui card">
-                        <div class="image"><img src="https://semantic-ui.qyears.com/images/avatar2/large/kristy.png" alt=""></div>
-                        <div class="extra content">
-                            东方既白
+                <div class="man-box">
+                    <div class="ui  grid">
+                        <div class="box">
+                            <div class="ui fluid card">
+                                <div class="image">
+                                    <img class="gray" src="https://semantic-ui.qyears.com/images/avatar/large/daniel.jpg">
+                                </div>
+                                <label>东方既白<i class="wifi icon" style="color:#A0A0A0"></i></label>
+
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="ui fluid card">
+                                <div class="image">
+                                    <img src="https://semantic-ui.qyears.com/images/avatar/large/daniel.jpg">
+                                </div>
+                                <label>东方既白<i class="wifi icon" style="color:#2f6eff"></i></label>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="ui fluid card">
+                                <div class="image">
+                                    <img class="gray" src="https://semantic-ui.qyears.com/images/avatar/large/daniel.jpg">
+                                </div>
+                                <label>东方既白<i class="wifi icon" style="color:#A0A0A0"></i></label>
+
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="ui fluid card">
+                                <div class="image">
+                                    <img src="https://semantic-ui.qyears.com/images/avatar/large/daniel.jpg">
+                                </div>
+                                <label>东方既白<i class="wifi icon" style="color:#2f6eff"></i></label>
+                            </div>
+                        </div> <div class="box">
+                        <div class="ui fluid card">
+                            <div class="image">
+                                <img class="gray" src="https://semantic-ui.qyears.com/images/avatar/large/daniel.jpg">
+                            </div>
+                            <label>东方既白<i class="wifi icon" style="color:#A0A0A0"></i></label>
+
                         </div>
                     </div>
-                    <div class="ui card">
-                        <div class="image"><img src="https://semantic-ui.qyears.com/images/avatar2/large/kristy.png" alt=""></div>
-                        <div class="extra content">
-                            东方既白
+                        <div class="box">
+                            <div class="ui fluid card">
+                                <div class="image">
+                                    <img src="https://semantic-ui.qyears.com/images/avatar/large/daniel.jpg">
+                                </div>
+                                <label>东方既白<i class="wifi icon" style="color:#2f6eff"></i></label>
+                            </div>
+                        </div> <div class="box">
+                        <div class="ui fluid card">
+                            <div class="image">
+                                <img class="gray" src="https://semantic-ui.qyears.com/images/avatar/large/daniel.jpg">
+                            </div>
+                            <label>东方既白<i class="wifi icon" style="color:#A0A0A0"></i></label>
+
                         </div>
-                    </div><div class="ui card">
-                    <div class="image"><img src="https://semantic-ui.qyears.com/images/avatar2/large/kristy.png" alt=""></div>
-                    <div class="extra content">
-                        东方既白
                     </div>
-                </div><div class="ui card">
-                    <div class="image"><img src="https://semantic-ui.qyears.com/images/avatar2/large/kristy.png" alt=""></div>
-                    <div class="extra content">
-                        东方既白
+                        <div class="box">
+                            <div class="ui fluid card">
+                                <div class="image">
+                                    <img src="https://semantic-ui.qyears.com/images/avatar/large/daniel.jpg">
+                                </div>
+                                <label>东方既白<i class="wifi icon" style="color:#2f6eff"></i></label>
+                            </div>
+                        </div> <div class="box">
+                        <div class="ui fluid card">
+                            <div class="image">
+                                <img class="gray" src="https://semantic-ui.qyears.com/images/avatar/large/daniel.jpg">
+                            </div>
+                            <label>东方既白<i class="wifi icon" style="color:#A0A0A0"></i></label>
+
+                        </div>
                     </div>
-                </div>
+                        <div class="box">
+                            <div class="ui fluid card">
+                                <div class="image">
+                                    <img src="https://semantic-ui.qyears.com/images/avatar/large/daniel.jpg">
+                                </div>
+                                <label>东方既白<i class="wifi icon" style="color:#2f6eff"></i></label>
+                            </div>
+                        </div> <div class="box">
+                        <div class="ui fluid card">
+                            <div class="image">
+                                <img class="gray" src="https://semantic-ui.qyears.com/images/avatar/large/daniel.jpg">
+                            </div>
+                            <label>东方既白<i class="wifi icon" style="color:#A0A0A0"></i></label>
+
+                        </div>
+                    </div>
+                        <div class="box">
+                            <div class="ui fluid card">
+                                <div class="image">
+                                    <img src="https://semantic-ui.qyears.com/images/avatar/large/daniel.jpg">
+                                </div>
+                                <label>东方既白<i class="wifi icon" style="color:#2f6eff"></i></label>
+                            </div>
+                        </div>
                 </div>
             </fieldset>
         </div>
