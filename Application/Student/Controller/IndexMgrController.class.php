@@ -9,11 +9,13 @@ use Common\Controller\StudentBaseController;
  **/
 class IndexMgrController extends StudentBaseController {
     public function index(){
-         $personData=$this->personInfo();       
+        $personData=$this->personInfo();
+        $courseList = D("class_student")->getCourse(session('stu_account'));
         // dump($personData);die();
         $this->assign('person',$personData);
         $inform=$this->Inform();
         $this->assign('info',$inform);
+        $this->assign('courseList',$courseList);
         $this->display();
     }
     public function Inform(){
