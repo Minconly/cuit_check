@@ -285,9 +285,6 @@ class TestpaperModel extends Model{
             ->where($_where2)->select();
 
 
-        //获取行课班级列表
-        $couresList = M('Courseclass')->field('');
-
         $data = [];
         if($list){
             foreach ($list as $k=>$v){

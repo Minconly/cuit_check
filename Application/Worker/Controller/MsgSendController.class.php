@@ -12,7 +12,7 @@ class MsgSendController extends controller{
     public function index(){
         //获取正在进行的考试列表
         $data = (new TestpaperModel())->getNowExam();
-       //p($data);
+       $this->assign('exam_list',$data);
        $this->display();
     }
 

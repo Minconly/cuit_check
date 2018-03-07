@@ -20,48 +20,29 @@
 <body>
 <div class="container">
     <div class="ui special cards">
-        <div class="card">
-            <div class="blurring dimmable image">
-                <div class="ui dimmer">
-                    <div class="content">
-                        <div class="center">
-                            <div class="ui inverted button">进入考试</div>
+        <foreach name="exam_list" item="v">
+            <div class="card">
+                <div class="blurring dimmable image">
+                    <div class="ui dimmer">
+                        <div class="content">
+                            <div class="center">
+                                <div class="ui inverted button" data-id="{$v.testpaper_id}" data-cid="{$v.courserclass_id}">进入考试</div>
+                            </div>
                         </div>
                     </div>
+                    <img src="http://www.cuit.edu.cn/images/511.png">
                 </div>
-                <img src="http://www.cuit.edu.cn/images/511.png">
-            </div>
-            <div class="content">
-                <a class="header">15级期中考试</a>
-                <div class="meta">
-                    <span class="date">2018/12/12  12:30结束</span>
-                </div>
-            </div>
-            <div class="extra content">
-                <a><i class="users icon"></i> 共35人 </a>
-            </div>
-        </div>
-        <div class="card">
-            <div class="blurring dimmable image">
-                <div class="ui dimmer">
-                    <div class="content">
-                        <div class="center">
-                            <div class="ui inverted button">进入考试</div>
-                        </div>
+                <div class="content">
+                    <a class="header">{$v.papername}</a>
+                    <div class="meta">
+                        <span class="date">{$v.end_time}结束</span>
                     </div>
                 </div>
-                <img src="http://www.cuit.edu.cn/images/511.png">
-            </div>
-            <div class="content">
-                <a class="header">14级期中考试</a>
-                <div class="meta">
-                    <span class="date">2018/12/13  12:30结束</span>
+                <div class="extra content">
+                    <a><i class="users icon"></i> 共{$v.count}人 </a>
                 </div>
             </div>
-            <div class="extra content">
-                <a><i class="users icon"></i> 共35人 </a>
-            </div>
-        </div>
+        </foreach>
     </div>
 </div>
 <layuijs/>
