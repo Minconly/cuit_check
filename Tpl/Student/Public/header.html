@@ -21,6 +21,7 @@
         <div class="nl-logout">
             <button class="ui teal button" id="loginout" name="loginout"><i class="fa fa-sign-out fa-fw"></i>&nbsp;退出</button>
         </div>
+        <input type="hidden" id="courseClassId" value="{$courseClassId}">
 
         <!--<div class="ui  dropdown  icon button nl-logout" id="selectCourse" data-inverted="" data-tooltip="选择切换课程" data-position="left center" style="margin-top: 6px">-->
             <!--<input name="which" type="hidden">-->
@@ -36,7 +37,11 @@
         <div class="ui nl-logout "  style="margin-top: 8px"  data-inverted="" data-tooltip="选择切换课程" data-position="left center">
             <select class="ui dropdown button mini"   id="selectCourse" >
                 <foreach name="courseList" item="vo" key="k" >
-                    <option value="{$vo['cci']}">{$vo['name']}</option>
+                    <if condition="$courseClassId eq $vo['cci']">
+                        <option value="{$vo['cci']}" selected>{$vo['name']}</option>
+                        <else />
+                        <option value="{$vo['cci']}">{$vo['name']}</option>
+                    </if>
                 </foreach>
             </select>
         </div>
@@ -48,23 +53,24 @@
 <script type="text/javascript">
     $('#fill-room').height($('.fixDiv').height()*2);
 
-    $('#selectCourse')
-        .dropdown({
-            onChange:function(value, text, $choice) {
-                // custom action
-                console.log(value);
-            }
-        });
+    // $('#selectCourse')
+    //     .dropdown({
+    //         onChange:function(value, text, $choice) {
+    //             // custom action
+    //             console.log(value);
+    //         }
+    //     });
     //监听select选择框
     $('#selectCourse').change(function() {
         var id = $("#selectCourse").val();
+        console.log("---------"+id);
 
         layer.confirm('确定切换课程吗？',{ title:false,icon:3,
             btn:['确定','取消']
         },function(){
-            // $.get("{:U('Student/loginMgr/loginout')}",function(){
-            //     parent.location.href = "{:U('loginMgr/login')}";
-            // });
+            layer.msg('切换成功', {time: 1000},function(){
+                parent.location.href="{:U('indexMgr/index')}?courseClassId="+id;
+            });
         },function(){
 
         });
