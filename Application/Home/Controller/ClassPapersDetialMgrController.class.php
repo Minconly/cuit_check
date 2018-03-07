@@ -131,7 +131,7 @@ class ClassPapersDetialMgrController extends HomeBaseController{
         ->where($map)->select();
 
         // p($testid);die();
-        // 获取有操作该题库权限的图库表的题库集
+        // 获取有操作该题库权限的题库表的题库集
         $testids=array_column($testid,'testdb_id');
         if($type_id==1){
             $map3['type_id'] = array('eq', 1);
