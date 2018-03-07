@@ -569,6 +569,7 @@ class ScoreAnalysisController extends HomeBaseController {
         outputExcel($title,$cellName,$cellHeader,$data2);
     }
 
+
 }
 
 

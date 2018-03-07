@@ -16,7 +16,7 @@ class TestpaperModel extends Model{
         array('college_id','checkCollegeId',array('success'=>false,'msg'=>'学院范围有误！'),0,'callback'),
         array('type_id','checkTypeId',array('success'=>false,'msg'=>'类型范围有误！'),0,'callback'),
     );
-    
+
     /**
      * @function 学院id检测
      * @Author   许加明
@@ -197,7 +197,7 @@ class TestpaperModel extends Model{
      * @function 获得试卷题目数量
      * @Author   许加明
      * @DateTime 2017-6-20 15:51:58
-     * @param    $paper_id 
+     * @param    $paper_id
      * @return   number
      */
     public function getPaperQuestionNum($paper_id){
@@ -258,8 +258,44 @@ class TestpaperModel extends Model{
                     $info = $this->packResult(true,'修改成功！');
                 }
             }
-        }
-        return $info;
+        }return $info;
     }
 
+
+    /**
+     * 获取当前时间正在进行的考试-按班级分类
+     * @param $time
+     */
+    public function getNowExam(){
+        //paperList
+        $_where['type'] = 2;
+        $_where['del_flag'] = 1;
+        $paperList = M('Testpaper')->field('id,name,college_id')->select();
+        $paperList2 = [];
+        foreach ($paperList as $k=>$v){
+            $paperList2[$v['id']]=$v;
+        }
+
+        //获取行课班级和试卷关联的表数据
+        $_where2['del_flag'] = 1;
+        $nowTime = date('Y-m-d H:i:s');         //获取系统时间
+        $_where2['start_time'] = array('elt', $nowTime); //考试开始
+        $_where2['end_time'] = array('egt',$nowTime);
+        $list = M('PaperCourserclass')->field('testpaper_id,courserclass_id,end_time')
+            ->where($_where2)->select();
+
+
+        //获取行课班级列表
+        $couresList = M('Courseclass')->field('');
+
+        $data = [];
+        if($list){
+            foreach ($list as $k=>$v){
+                $v['papername'] = $paperList2[$v['testpaper_id']]['name'];
+                $v['count'] =  M('class_student')->where(array('courseclass_id' => $v['courserclass_id']))->count();
+                $data[] = $v;
+            }
+        }
+        return $data;
+    }
 }

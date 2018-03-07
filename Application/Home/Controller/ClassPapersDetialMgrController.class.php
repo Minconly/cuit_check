@@ -331,7 +331,7 @@ class ClassPapersDetialMgrController extends HomeBaseController{
     	}else if($class_ids == ''){
     		$data = array('success'=>false, 'msg'=>'请填写数据');
     	}else{
-    		$allClass_ids = split(',', $class_ids);
+    		$allClass_ids = explode(',', $class_ids);
     		$data = D('PaperDetial')->addClass($allClass_ids, $start_time, $end_time, $testpaper_id);
     	}
 
