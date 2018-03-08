@@ -230,13 +230,13 @@
     var _worker;
     var baseInfo = {
         'student_name':"{$baseInfo.name}",
-        'room_id':"{$baseInfo.room_id},",
+        'room_id':"{$baseInfo.room_id}",
         'account':"{$baseInfo.account}",
         'account_type':"student",
     };
     connect();
     function connect(){
-        _worker = new WebSocket("ws://"+document.domain+":7272");
+        _worker = new WebSocket("ws://localhost:7272");
         _worker.onopen = onopen;
         _worker.onmessage = onmessage;
         _worker.onclose = function() {
