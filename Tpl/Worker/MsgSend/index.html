@@ -58,7 +58,9 @@
         });
         //进入考试
         $('.button').on('click',function(){
-            window.open('{:U("detail")}?id=11');
+            var course_id = $(this).data('cid');
+            var pid = $(this).data('id');
+            window.open('{:U("detail")}?cid='+course_id+'&pid='+pid);
         });
     });
 

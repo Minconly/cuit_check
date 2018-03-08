@@ -186,7 +186,7 @@ class TestPaperController extends StudentBaseController {
             $baseInfo = array(
                 'name'=>session('stu_account'),
                 'account'=>session('stu_account'),
-                'room_id'=>md5($paper_id+$course_id),
+                'room_id'=>md5($paper_id*1234567+$course_id),
             );
 
             $this->assign('baseInfo',$baseInfo);

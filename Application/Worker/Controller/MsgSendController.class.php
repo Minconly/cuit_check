@@ -2,6 +2,7 @@
 namespace Worker\Controller;
 use Think\Controller;
 use Home\Model\TestpaperModel;
+use Home\Model\CourseclassModel as Courseclass;
 /**
  * 消息推送
  * @package Student\Controller
@@ -17,12 +18,21 @@ class MsgSendController extends controller{
     }
 
     public function detail(){
+        //当前考试对应的班级id
+        $cid = I('cid',0,'int');
+        //试卷id
+        $pid = I('pid',0,'int');
+        if($cid && $pid){
+            //获取当前登录的用户信
+            $this->assign('accountname','xxx');
+            $this->assign('account','taolei233');
+            $this->assign('room_id',md5($pid*1234567+$cid));
+            $this->assign('account_type','admin');
 
-        //获取当前登录的用户信
-        $this->assign('accountname','xxx');
-        $this->assign('account','taolei233');
-        $this->assign('room_id','11');
-        $this->assign('account_type','admin');
-        $this->display();
+            //获取当场考试的所有学生信息
+            $list = (new Courseclass())->getStuInfoByCid($cid);
+            $this->assign('user_list',$list);
+            $this->display();
+        }
     }
 }

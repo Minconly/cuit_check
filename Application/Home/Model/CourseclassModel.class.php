@@ -264,5 +264,14 @@ Class courseclassModel extends Model{
 		return $data;
 	}
 
+	//根据ｉｄ获取该班级所有学生的基本信息
+	public function getStuInfoByCid($cid){
+        $list = M('ClassStudent')->alias('cst')->where(['courseclass_id'=>$cid])
+            ->field('kh_student.name,cst.account,kh_student.photo')
+            ->join('left join kh_student on kh_student.account = cst.account')
+            ->select();
+        return $list;
+    }
+
 
 }
