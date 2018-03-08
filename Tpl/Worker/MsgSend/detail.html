@@ -272,6 +272,7 @@
     // 连接建立时发送登录信息
     function onopen()
     {
+        console.log(ws);
         // 登录
         var params = {
             'client_name':"{$accountname}",

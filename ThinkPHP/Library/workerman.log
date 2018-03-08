@@ -110,3 +110,6 @@
 2018-03-08 14:24:41 pid:6162 Workerman[index.php] status 
 2018-03-08 14:24:41 pid:6162 Workerman[index.php] not run
 2018-03-08 14:24:44 pid:6163 Workerman[index.php] start in DEBUG mode
+2018-03-08 15:50:40 pid:6163 Workerman[index.php] stopping ...
+2018-03-08 15:50:40 pid:6163 Workerman[index.php] has been stopped
+2018-03-08 15:50:43 pid:15191 Workerman[index.php] start in DEBUG mode

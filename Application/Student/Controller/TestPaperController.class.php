@@ -164,7 +164,6 @@ class TestPaperController extends StudentBaseController {
                     return;
                 }
                 $redis->hmset($student.":studentTestingInfo",$data);
-
             }else{
                 //每次登录时更新信息
                 $data2 = array(
@@ -183,6 +182,16 @@ class TestPaperController extends StudentBaseController {
 
             $paperInfo = $redis->hget($tag,'paperInfo');
             $question = $redis->hget($tag,'question');
+
+            $baseInfo = array(
+                'name'=>session('stu_account'),
+                'account'=>session('stu_account'),
+                'room_id'=>md5($paper_id+$course_id),
+            );
+
+            $this->assign('baseInfo',$baseInfo);
+
+
             $this->assign('paperInfo',json_decode($paperInfo,true));
             $this->assign('question',json_decode($question,true));
             $this->assign("course_id",$course_id);
