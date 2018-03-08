@@ -113,93 +113,20 @@
             
 		    </section>
 		    <section id="tab3" title="课程信息">
-            
-		     <div class="mianBodyshow">
-             <!--课程信息begin-->
-             <div class="testListBox">
-             <div class="testLheader">
-				 <h4 class="ui horizontal header divider">
-					 <i class="Checkmark Box icon"></i>
-					 已选课程
-				 </h4>
-			 </div>
-             <!--begin-->
-				 <div style="margin-top: 20%;">
-					 <div class="testList">
-						 <div class="testListLeft">
-							 <div class="classNameBorder"><div class="className1">C语言程序设计</div></div>
 
-						 </div>
-						 <div class="testListRight">
-							 <div class="classInTmp"></div>
-							 <div class="testMessage"><font color="#666">●</font>&nbsp;任课教师：张星星</div>
-							 <div class="testMessage"><font color="#666">●</font>&nbsp;上课时间：周三下午7,8节</div>
-							 <div class="testMessage"><font color="#666">●</font>&nbsp;上课地点：1108</div>
-							 <div class="testMessage"><font color="#666">●</font>&nbsp;课程内容：了解程序基础</div>
-
-
-
-						 </div>
-					 </div>
-					 <!--end-->
-					 <!--begin-->
-					 <div class="testList">
-						 <div class="testListLeft">
-							 <div class="classNameBorder"><div class="className2">形势与政策</div></div>
-
-						 </div>
-						 <div class="testListRight">
-							 <div class="classInTmp"></div>
-							 <div class="testMessage"><font color="#666">●</font>&nbsp;任课教师：泡菜鱼</div>
-							 <div class="testMessage"><font color="#666">●</font>&nbsp;上课时间：周二下午7,8节</div>
-							 <div class="testMessage"><font color="#666">●</font>&nbsp;上课地点：1106</div>
-							 <div class="testMessage"><font color="#666">●</font>&nbsp;课程内容：分析专业发展前景</div>
-
-
-
-						 </div>
-					 </div>
-					 <!--end-->
-					 <!--begin-->
-					 <div class="testList">
-						 <div class="testListLeft">
-							 <div class="classNameBorder"><div class="className1">大学英语4</div></div>
-
-						 </div>
-						 <div class="testListRight">
-							 <div class="classInTmp"></div>
-							 <div class="testMessage"><font color="#666">●</font>&nbsp;任课教师：吴诗心</div>
-							 <div class="testMessage"><font color="#666">●</font>&nbsp;上课时间：周一下午7,8节</div>
-							 <div class="testMessage"><font color="#666">●</font>&nbsp;上课地点：1208</div>
-							 <div class="testMessage"><font color="#666">●</font>&nbsp;课程内容：英语</div>
-
-
-
-						 </div>
-					 </div>
-					 <!--end-->
-				 </div>
-                   <!--分页begging-->
-                   <div id="page-show3" style="text-align: center;margin-top:20px;margin-bottom: 20px;"></div>
-                 </div>
-             <!--课程信息end--->
-             
-             </div>
-              
 		    </section>
 		    <section id="tab4" title="个人信息">
 		     <div class="mianBodyshow">
              
              <!--begin-->
-             
-             <div class="at-container">
-			<div class="at-main">
-			<include file="IndexMgr:personInfo" />
-			</div>
-			</div>
+			 <div class="at-container">
+				 <div class="at-main">
+				  	<include file="IndexMgr:personInfo" />
+				 </div>
+			 </div>
              <!--end-->
-		 </div>
-</section>
+		 	</div>
+			</section>
 		    <section id="tab5" title="修改密码">
 		       <div class="mianBodyshow">
                    <include file="IndexMgr:password" />
@@ -235,10 +162,11 @@
 		var paperDetilUrl = "{:U('Student/TestPaper/detailInfo')}";
 		var recordlist = "{:U('Student/TestRecord/getRecord')}";	// 考试记录
 		var recordDetail = "{:U('Student/TestRecord/detail')}";		// 记录详情
+		var courseClassList = "{:U('Student/CourseClass/courseClassList')}";		// 获取课程列表
 	</script>
 	<script src="__PUBLIC__/static/layui/layui.js"></script>
 	<!--将每个json接口与js交互分装到单独的js里，注意id或类名-->
-	<script src="__PUBLIC__/student/js/canjia_test.js"></script>
+	<script src="__PUBLIC__/student/js/paperList.js"></script>
 	<script src="__PUBLIC__/student/js/record.js"></script>
 	<script type="text/javascript">
 		$(function(){
@@ -367,7 +295,12 @@ layui.use(['layer','upload'],function(){
 	    }
 	    	  return false;
 	    }
-});
+	});
+
+    $.getJSON(courseClassList, {'courseClassId':$("#courseClassId").val()}, function(data) {
+
+        $("#tab3").append(data.data);
+    });
 
 });
 </script>

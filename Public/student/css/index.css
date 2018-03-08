@@ -6,19 +6,7 @@
 	height:auto;
 	background-color:#eee;
 }
-/*.headerBox{*/
-	/*margin-bottom:50px;*/
-	/*width:100%;*/
-	/*height:7%;*/
-	/*background-color: #FFFFFF;*/
-	/*border-bottom: 1px solid #D1D4D6;*/
-/*}*/
-/*.headerBox{*/
-	 /*padding-left: 8%;}*/
-/*.headerBox img{*/
-	/*display:inline-block; width:26px; height:26px;}*/
-/*.headerBox a{*/
-	/*display:inline-block; font-size:20px; margin-left:20px; color:black;text-align: center;margin-top: 1%;}*/
+
 .bodyBox{
 	width:83%;
 	margin-left:8%;
@@ -27,48 +15,7 @@
 	background-color:#E9E9E9;
 	margin-bottom:50px;
 }
-/*.nl-logout {*/
-	/*position: relative;*/
-	/*float: right;*/
-	/*height: 70%;*/
-	/*padding-top:0.2%;*/
-	/*padding-right: 10px;*/
-	/*text-align: center;*/
-/*}*/
-/*.nl-btn-logout {*/
-	/*cursor: pointer;*/
-	/*display: inline-block;*/
-	/*min-height: 1em;*/
-	/*outline: 0;*/
-	/*border: none;*/
-	/*vertical-align: baseline;*/
-	/*color: rgba(0,0,0,.6);*/
-	/*font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;*/
-	/*margin: 0 .25em 0 0;*/
-	/*padding: .78571429em 1.5em;*/
-	/*text-transform: none;*/
-	/*text-shadow: none;*/
-	/*font-weight: 700;*/
-	/*line-height: 1em;*/
-	/*font-style: normal;*/
-	/*text-align: center;*/
-	/*text-decoration: none;*/
-	/*border-radius: .28571429rem;*/
-	/*box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgba(34,36,38,.15) inset;*/
-	/*-webkit-user-select: none;*/
-	/*-moz-user-select: none;*/
-	/*-ms-user-select: none;*/
-	/*user-select: none;*/
-	/*-webkit-transition: opacity .1s ease,background-color .1s ease,color .1s ease,box-shadow .1s ease,background .1s ease;*/
-	/*transition: opacity .1s ease,background-color .1s ease,color .1s ease,box-shadow .1s ease,background .1s ease;*/
-	/*-webkit-tap-highlight-color: transparent;*/
-	/*background-color: #475669;*/
-	/*color: #FFF;*/
-	/*background-image: none;*/
-/*}*/
-/*.nl-btn-logout:hover{*/
-	/*background-color: #324057;*/
-/*}*/
+
 .bodysidebar_Box{
 	border-radius:5px;
 	width: 28%;
@@ -371,23 +318,7 @@
 	border-left:#00B188 solid 2px;	
 	
 }
-/*.footBox{*/
-	/*width:100%;*/
-	/*height:15%;*/
-	/*background-color:#324057;*/
-/*}*/
-/*.nl-foot-sign {*/
-	/*padding-top: 1.5%;*/
-	/*padding-left: 45%;*/
-	/*display: block;*/
-	/*color: #a4aebd;*/
-	/*font-size: 19px;*/
-	/*line-height: 29px;*/
-/*}*/
-/*.nl-foot-sign p {*/
-	/*padding-top: 2%;*/
-	/*display: block;*/
-/*}*/
+
 .nl-choice {
 	display: block;
 	width:200px;

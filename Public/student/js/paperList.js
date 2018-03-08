@@ -1,6 +1,4 @@
-/**
- * Created by Mr.liang on 2017/7/16.
- */
+
 layui.use(['laypage', 'layer','form'], function() {
     var laypage = layui.laypage,
         layer = layui.layer,
@@ -9,7 +7,8 @@ layui.use(['laypage', 'layer','form'], function() {
 
     //获取试卷的详细信息
     function getPaperList(curr, type_id) {
-        $.getJSON(paperDetailUrl, {'requestPage': curr, 'type_id':type_id}, function(data) {
+        var courseClassId = $("#courseClassId").val();
+        $.getJSON(paperDetailUrl, {'requestPage': curr, 'type_id':type_id,'courseClassId':courseClassId}, function(data) {
             var json = eval(data); //数组
             //console.log(json);
             if(json.status == 1) {
@@ -20,7 +19,7 @@ layui.use(['laypage', 'layer','form'], function() {
                 $.each(list, function (index, item) {
                     var flag = checkTime(item.start_time, item.end_time);   //比较考试时间与当前的时间
                     //循环获取数据，拼接html标签以及内容
-                    html = '<div class="testList" data-id="'+item.id+'" data-courseid="'+item.courseclass_id+'">'+
+                    var html = '<div class="testList" data-id="'+item.id+'" data-courseid="'+item.courseclass_id+'">'+
                         '<div class="testListLeft">'+
                         '<div class="testName">'+item.name+'</div>'+
                         '<div class="testClass">'+item.courseclass_name+'</div>'+

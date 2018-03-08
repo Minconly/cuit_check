@@ -21,20 +21,29 @@ class TestPaperController extends StudentBaseController {
         $type_id = I('type_id','');         //获取试卷的测试类型
         $requestPage = I('requestPage', 1);     //获取请求的页码数
         $rows = 3;		                        //每页展示的数据
+        $courseClassId = I('courseClassId'); //获取行课班级
 
         //获取学生所属的行课班级，对应相应的课程
-        $course_id_temp = M('class_student')->where(array('account' => $stu_account))->field('courseclass_id')->select();
-        $course_id = array_column($course_id_temp,'courseclass_id');    //行课班级可能为多个，所以转化为一维数组，进行查找
+//        $course_id_temp = M('class_student')->where(array('account' => $stu_account))->field('courseclass_id')->select();
+//        $course_id = array_column($course_id_temp,'courseclass_id');    //行课班级可能为多个，所以转化为一维数组，进行查找
         //获取该行课班级下的所有的试卷id
-        $map['courserclass_id'] = array('in',$course_id);
-        $paperIds_temp = M('paper_courserclass as t1')->field('testpaper_id, courserclass_id, t1.start_time,t1.end_time,kh_courseclass.name as courseclassName')->
-            join('kh_courseclass ON kh_courseclass.id = courserclass_id')->where($map)->select();
+//        $map['courserclass_id'] = array('in',$course_id);
+        $map['t1.courserclass_id'] = $courseClassId;
+
+        //获取所有试卷
+        $paperIds_temp = M('paper_courserclass as t1')
+            ->field('testpaper_id, courserclass_id, t1.start_time,t1.end_time,t2.name as courseclassName')
+            ->join('left join kh_courseclass as t2 ON t2.id = courserclass_id')
+            ->where($map)
+            ->select();
+
         //p($paperIds_temp);die;
         $paperIds = array_column($paperIds_temp,'testpaper_id');
         //获取已经做过的试卷
-        $didPaper_temp = M('score')->where(array('account' => $stu_account))->field('testpaper_id')->select();
-        $didPaper = array_column($didPaper_temp,'testpaper_id');
-        $canPaperIds = array_diff($paperIds, $didPaper);        //获取可以考试的试卷
+        $flishPaperTemp = M('score')->where(array('account' => $stu_account))->field('testpaper_id')->select();
+        $filshPaper = array_column($flishPaperTemp,'testpaper_id');
+        //获得可参与考试的试卷信息（包含未开考和已经结束的）
+        $canPaperIds = array_diff($paperIds, $filshPaper);
         //判断是否有可考试或练习的试卷，没有返回信息并退出
         if($canPaperIds == null) {
             $result['status'] = 0;

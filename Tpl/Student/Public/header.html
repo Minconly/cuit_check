@@ -61,10 +61,12 @@
     //         }
     //     });
     //监听select选择框
-    $('#selectCourse').change(function() {
+    $('#selectCourse').on("change",function() {
         var id = $("#selectCourse").val();
-        console.log("---------"+id);
-
+        // console.log("---------"+id);
+        if(id === $("#courseClassId").val()){
+            return;
+        }
         layer.confirm('确定切换课程吗？',{ title:false,icon:3,
             btn:['确定','取消']
         },function(){
@@ -72,7 +74,7 @@
                 parent.location.href="{:U('indexMgr/index')}?courseClassId="+id;
             });
         },function(){
-
+            $('.ui.dropdown').dropdown('restore default value');
         });
 
     });

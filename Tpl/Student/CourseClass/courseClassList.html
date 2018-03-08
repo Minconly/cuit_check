@@ -1,0 +1,49 @@
+<div class="mianBodyshow">
+    <!--课程信息begin-->
+    <div class="testListBox">
+        <div class="testLheader">
+            <h4 class="ui horizontal header divider">
+                <i class="Checkmark Box icon"></i>
+                已选课程
+            </h4>
+        </div>
+        <!--begin-->
+        <div style="margin-top: 20%;">
+
+            <foreach name="list" item="vo" key="k" >
+                <if condition="$currentCourse eq $vo['id']">
+                    <div class="testList">
+                        <div class="testListLeft">
+                            <div class="classNameBorder"><div class="className1">{$vo['name']}-------</div></div>
+                        </div>
+                        <div class="testListRight">
+                            <div class="classInTmp"></div>
+                            <div class="testMessage"><font color="#666">●</font>&nbsp;任课教师：{$vo['teacher_name']}</div>
+                            <div class="testMessage"><font color="#666">●</font>&nbsp;上课时间：{$vo['start_time']} -- {$vo['end_time']}</div>
+                            <div class="testMessage"><font color="#666">●</font>&nbsp;所属年级：{$vo['grade_name']}</div>
+                            <div class="testMessage"><font color="#666">●</font>&nbsp;所属课程：{$vo['lession_name']}</div>
+                        </div>
+                    </div>
+                    <else />
+                    <div class="testList">
+                        <div class="testListLeft">
+                            <div class="classNameBorder"><div class="className1">{$vo['name']}</div></div>
+                        </div>
+                        <div class="testListRight">
+                            <div class="classInTmp"></div>
+                            <div class="testMessage"><font color="#666">●</font>&nbsp;任课教师：{$vo['teacher_name']}</div>
+                            <div class="testMessage"><font color="#666">●</font>&nbsp;上课时间：{$vo['start_time']} -- {$vo['end_time']}</div>
+                            <div class="testMessage"><font color="#666">●</font>&nbsp;所属年级：{$vo['grade_name']}</div>
+                            <div class="testMessage"><font color="#666">●</font>&nbsp;所属课程：{$vo['lession_name']}</div>
+                        </div>
+                    </div>
+                </if>
+            </foreach>
+
+        </div>
+        <!--分页begging-->
+        <div id="page-show3" style="text-align: center;margin-top:20px;margin-bottom: 20px;"></div>
+    </div>
+    <!--课程信息end--->
+
+</div>
