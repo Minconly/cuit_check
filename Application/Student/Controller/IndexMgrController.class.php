@@ -9,6 +9,7 @@ use Common\Controller\StudentBaseController;
  **/
 class IndexMgrController extends StudentBaseController {
     public function index(){
+        $courseClassId = I("get.courseClassId","");
         $personData=$this->personInfo();
         $courseList = D("class_student")->getCourse(session('stu_account'));
         // dump($personData);die();
@@ -16,6 +17,7 @@ class IndexMgrController extends StudentBaseController {
         $inform=$this->Inform();
         $this->assign('info',$inform);
         $this->assign('courseList',$courseList);
+        $this->assign("courseClassId",$courseClassId===""?$courseList[0]["cci"]:$courseClassId);
         $this->display();
     }
     public function Inform(){

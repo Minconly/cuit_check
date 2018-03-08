@@ -11,9 +11,10 @@ class InformModel extends Model{
 		$limit=5;
 		$map['kh_inform.del_flag']=array('eq','1');
 		$map['sendtype']=array('neq' , '2' );
-		$list=M('inform')		
-		->field('id,title,greatedate')
-		->where($map)
+		$list=M('inform')
+        ->join("left join kh_student as stu on kh_inform.dept_id = stu.dept_id")
+		->field('kh_inform. id,title,greatedate')
+		->where($map)->where(array("stu.account" => session("stu_account")))
 		->order('kh_inform.greatedate desc')
 		->limit($limit)
 		->select();

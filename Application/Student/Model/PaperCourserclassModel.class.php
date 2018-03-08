@@ -23,10 +23,11 @@ class PaperCourserclassModel extends Model{
 	 * @param     [type]                   $account_id [description]
 	 * @return    [type]                               [description]
 	 */
-	public function getRecordInfo($account_id, $type, $requestPage, $rows){
+	public function getRecordInfo($account_id, $type, $requestPage, $rows,$courserClassId){
 
                 
 		$map['account'] = $account_id;
+		$map['courserclass_id'] = $courserClassId;
 
 		// 根据学生账户,加入行课班级获得所有试卷id列表
 		$testpaper_ids = $this
@@ -36,8 +37,9 @@ class PaperCourserclassModel extends Model{
                         ->select();
                         
                 $i = 0;
-                $result_ids="";
-                // 根据试卷id获取大于结束时间
+                $result_ids=[];
+
+        // 根据试卷id获取大于结束时间
                 foreach ($testpaper_ids as $key=>$testpaper) {
                 	$end_time = $testpaper['end_time'];
                 	$end_time = strtotime($end_time);		//将字符串转换为时间戳
@@ -47,7 +49,9 @@ class PaperCourserclassModel extends Model{
                 }
 
                 $total = count($result_ids);                                                    // 获得数组总数
-                $result_ids = array_splice($result_ids, ($requestPage-1)*$rows, $rows);         // 将数组进行分页处理
+                if(!empty($result_ids)){
+                    $result_ids = array_splice($result_ids, ($requestPage-1)*$rows, $rows);         // 将数组进行分页处理
+                }
                 // $limit = ($requestPage-1)*$rows.','.$rows;
 
                 // 获取试卷信息
@@ -64,7 +68,10 @@ class PaperCourserclassModel extends Model{
         			->join('kh_testpaper ON kh_testpaper.id = kh_paper_courserclass.testpaper_id')
         			->where($map1)
         			->select();
-                	$list[$key] = $data[0];
+                    if($data[0] === null){
+                        break;
+                    }
+                	$list[$key] = $data[0];   //判断数据是否存在
                 }
 
 

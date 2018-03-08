@@ -13,9 +13,9 @@ layui.use(['laypage', 'layer','form'], function() {
     function getRecordList(type = '', requestPage = 1){
 
     	$("#recordlist").html("");
-    	$.getJSON(recordlist, {'type':type, 'requestPage':requestPage}, function(data){
+    	$.getJSON(recordlist, {'type':type, 'requestPage':requestPage,'courseClassId':$("#courseClassId").val()}, function(data){
     		var list = eval(data.list);		// 获得试卷信息
-    		// console.log(list);
+    		console.log(list);
     		$.each(list, function(index, item) {
     			var head = '<div class="ui card" style="margin-left: 2%;">';
     			var paper_name = '<div class="content"><div class="header">'+item.name+'</div></div>';

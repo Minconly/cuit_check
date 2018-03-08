@@ -76,10 +76,12 @@ class TestRecordController extends StudentBaseController {
         $account_id = session('stu_account');
         $type = I('type');
         $requestPage = I('requestPage', 1);
+        //行课班级id
+        $courseClassId = I('courseClassId');
         $rows = 4;
 
         // 获得已经结束的考试记录
-        $record_info = D("PaperCourserclass")->getRecordInfo($account_id, $type, $requestPage, $rows);
+        $record_info = D("PaperCourserclass")->getRecordInfo($account_id, $type, $requestPage, $rows,$courseClassId);
 
         // 进行数据返回
         $data['pages'] = $record_info['pages'];
