@@ -39,11 +39,8 @@
 	<div class="bodyBox">
     	<div class="bodysidebar_Box">
         	<div class="sidebarIMGBox">
-            	<div class="sidebarIMG"> <eq name="person.photo" value="">
-					<img class="ui medium circular image" src="__PUBLIC__/student/images/public.png" />
-					<else/>
-					<img class="ui medium circular image" src="__SITE__{$person.photo}" />
-					</eq></div>
+            	<div class="sidebarIMG" style="background-image: url('<eq name="person.photo" value=""> __PUBLIC__/student/images/public.png')<else/>__SITE__{$person.photo}')</eq>">
+				</div>
             </div>
         	<!--<div class="sidebarNAME">{$person.name}</div>-->
             <div class="sidebarEDITBox">
