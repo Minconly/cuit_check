@@ -87,6 +87,10 @@
         border:solid 8px;
         border-color: #ffffff  #9bb2ff #ffffff #ffffff;
     }
+    .image img{
+        width: 77px !important;
+        height: 77px !important;
+    }
 </style>
 
 <div class="body-main">
@@ -109,15 +113,16 @@
                 <legend>在线状态</legend>
                 <div class="man-box">
                     <div class="ui  grid">
-                        <div class="box">
-                            <div class="ui fluid card">
-                                <div class="image">
-                                    <img class="gray" src="https://semantic-ui.qyears.com/images/avatar/large/daniel.jpg">
+                        <foreach name="user_list" item="v">
+                            <div class="box" id="{$v.account}">
+                                <div class="ui fluid card">
+                                    <div class="image">
+                                        <img class="gray" src="__SITE__{$v.photo}">
+                                    </div>
+                                    <label>{$v.name}<i class="wifi icon" style="color:#A0A0A0"></i></label>
                                 </div>
-                                <label>东方既白<i class="wifi icon" style="color:#A0A0A0"></i></label>
-
                             </div>
-                        </div>
+                        </foreach>
                 </div>
             </fieldset>
         </div>
@@ -235,7 +240,6 @@
                 flush_client_list();
         }
     }
-
     // 提交对话
     function onSubmit() {
         var input = document.getElementById("textarea");
@@ -245,7 +249,6 @@
         input.value = "";
         input.focus();
     }
-
     // 刷新用户列表框
     function flush_client_list(){
         var userlist_window = $("#userlist");
@@ -280,17 +283,6 @@
 
         $("#dialog").append('<div class="speech_item"><img src="http://lorempixel.com/38/38/?'+from_client_id+'" class="user_icon" /> '+from_client_name+' <br> '+time+'<div style="clear:both;"></div><p class="triangle-isosceles top">'+content+'</p> </div>').parseEmotion();
     }
-
-    $(function(){
-        select_client_id = 'all';
-        $("#client_list").change(function(){
-            select_client_id = $("#client_list option:selected").attr("value");
-        });
-        $('.face').click(function(event){
-            $(this).sinaEmotion();
-            event.stopPropagation();
-        });
-    });
 
 
 </script>

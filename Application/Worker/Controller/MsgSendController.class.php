@@ -32,6 +32,7 @@ class MsgSendController extends controller{
             //获取当场考试的所有学生信息
             $list = (new Courseclass())->getStuInfoByCid($cid);
             $this->assign('user_list',$list);
+//            p($list);
             $this->display();
         }
     }
