@@ -240,6 +240,8 @@ class TestPaperController extends StudentBaseController {
             $this->ajaxReturn($status);               
     }
 
-
+    public function getOUt(){
+        $this->redirect("/Student/IndexMgr/index");
+    }
 }
 ?>

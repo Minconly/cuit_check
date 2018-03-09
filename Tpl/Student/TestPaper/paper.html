@@ -206,7 +206,7 @@
     var testPage = "{:U('Student/TestPaper/paper')}";
 
 </script>
-
+<layuijs/>
 <script src="__PUBLIC__/student/js/jquery-3.1.1.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="__PUBLIC__/student/js/jquery-tab.js"></script>
 <script src="__PUBLIC__/student/SemanticUI/semantic.min.js"></script>
@@ -221,58 +221,81 @@
 
 <script>
 
-    if (typeof console == "undefined") {    this.console = { log: function (msg) {  } };}
+    $(function () {
+        layui.use(['layer'], function () {
+            var layer = layui.layer;
+            var $ = layui.jquery;
+            if (typeof console == "undefined") {
+                this.console = {
+                    log: function (msg) {
+                    }
+                };
+            }
+            // 如果浏览器不支持websocket，会使用这个flash自动模拟websocket协议，此过程对开发者透明
+            WEB_SOCKET_SWF_LOCATION = "/swf/WebSocketMain.swf";
+            // 开启flash的websocket debug
+            WEB_SOCKET_DEBUG = true;
+            var _worker;
+            var baseInfo = {
+                'student_name': "{$baseInfo.name}",
+                'room_id': "{$baseInfo.room_id}",
+                'account': "{$baseInfo.account}",
+                'account_type': "student",
+            };
+            connect();
 
-    // 如果浏览器不支持websocket，会使用这个flash自动模拟websocket协议，此过程对开发者透明
-    WEB_SOCKET_SWF_LOCATION = "/swf/WebSocketMain.swf";
-    // 开启flash的websocket debug
-    WEB_SOCKET_DEBUG = true;
-    var _worker;
-    var baseInfo = {
-        'student_name':"{$baseInfo.name}",
-        'room_id':"{$baseInfo.room_id}",
-        'account':"{$baseInfo.account}",
-        'account_type':"student",
-    };
-    connect();
-    function connect(){
-        _worker = new WebSocket("ws://localhost:7272");
-        _worker.onopen = onopen;
-        _worker.onmessage = onmessage;
-        _worker.onclose = function() {
-            console.log("连接关闭，定时重连");
-            this.connect();
-        };
-        _worker.onerror = function() {
-            console.log("出现错误");
-        };
-    }
-    function onopen(){
-        var params = {
-            'client_name':baseInfo.student_name,
-            'room_id':baseInfo.room_id,
-            'account':baseInfo.account,
-            'account_type':baseInfo.account_type,
-            'type':"login",
-        };
-        var login_data =  JSON.stringify(params);
-        console.log("websocket握手成功，发送登录数据:"+login_data);
-        console.log(_worker);
-        _worker.send(login_data);
-    }
-    function onmessage(e){
-        console.log("接收消息:"+e.data);
-        var data = JSON.parse(e.data);
-        switch(data['type']){
-            // 服务端ping客户端
-            case 'ping':
-                _worker.send('{"type":"pong"}');
-                break;
-            case 'say':
-                layer.msg(data['content']);
-                //say(data['from_client_id'], data['from_client_name'], data['content'], data['time']);
-                break;
-        }
-    }
+            function connect() {
+                _worker = new WebSocket("ws://localhost:7272");
+                _worker.onopen = onopen;
+                _worker.onmessage = onmessage;
+                _worker.onclose = function () {
+                    console.log("连接关闭，定时重连");
+                    this.connect();
+                };
+                _worker.onerror = function () {
+                    console.log("出现错误");
+                };
+            }
 
+            function onopen() {
+                var params = {
+                    'client_name': baseInfo.student_name,
+                    'room_id': baseInfo.room_id,
+                    'account': baseInfo.account,
+                    'account_type': baseInfo.account_type,
+                    'type': "login",
+                };
+                var login_data = JSON.stringify(params);
+                console.log("websocket握手成功，发送登录数据:" + login_data);
+                console.log(_worker);
+                _worker.send(login_data);
+            }
+
+            function onmessage(e) {
+                console.log("接收消息:" + e.data);
+                var data = JSON.parse(e.data);
+                switch (data['type']) {
+                    // 服务端ping客户端
+                    case 'ping':
+                        _worker.send('{"type":"pong"}');
+                        break;
+                    case 'say':
+                        layer.msg(data['content']);
+                        //say(data['from_client_id'], data['from_client_name'], data['content'], data['time']);
+                        break;
+                    case 'out':
+                        console.log("你被挤下线啦!");
+                        //强行退出当场考试
+                        layer.confirm(data['message'], {
+                            btn: ['确定']
+                        }, function(){
+                            location.href = "{:U('getOut')}";
+                        });
+
+                        break;
+                }
+            }
+
+        });
+    });
 </script>

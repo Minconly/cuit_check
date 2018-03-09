@@ -55,12 +55,21 @@ class Events
                 //判断该用户是否已经登录了
                 foreach($clients_list as $tmp_client_id=>$item)
                 {
-//                    if($item['client_name'])
+                    //判断该用户是否已经登录了
                     //判断是否已经连接，如果有链接则之前的下线
+                   if($item['client_name']==$client_name){
+                       $offlineMessage = array(
+                           'type'=>'out',
+                           'message'=>'您的账号在其他地方登录本场考试,当前登录即将下线!',
+                           'time'=>date('Y-m-d H:i:s'),
+                       );
+                       Gateway::sendToClient($tmp_client_id, json_encode($offlineMessage));
+                   }
                     $clients_list[$tmp_client_id] = $item['client_name'];
                 }
-                $clients_list[$client_id] = $client_name;
 
+
+                $clients_list[$client_id] = $client_name;
                 // 转播给当前房间的所有客户端，xx进入聊天室 message {type:login, client_id:xx, name:xx}
                 $new_message = array('type'=>$message_data['type'], 'client_id'=>$client_id, 'client_name'=>htmlspecialchars($client_name), 'time'=>date('Y-m-d H:i:s'));
                 Gateway::sendToGroup($room_id, json_encode($new_message));

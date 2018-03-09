@@ -3590,3 +3590,18 @@ Stack trace:
 2018-03-08 18:59:45 pid:5448 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
 2018-03-08 18:59:45 pid:5443 Workerman[index.php] has been stopped
 2018-03-08 18:59:46 pid:5670 Workerman[index.php] start in DEBUG mode
+2018-03-09 09:58:10 pid:4433 Workerman[index.php] start in DEBUG mode
+2018-03-09 10:12:04 pid:4433 Workerman[index.php] stopping ...
+2018-03-09 10:12:04 pid:4440 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2018-03-09 10:12:04 pid:4439 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2018-03-09 10:12:04 pid:4437 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2018-03-09 10:12:04 pid:4433 Workerman[index.php] has been stopped
+2018-03-09 10:12:05 pid:6357 Workerman[index.php] start in DEBUG mode
+2018-03-09 10:21:02 pid:6357 Workerman[index.php] stopping ...
+2018-03-09 10:21:02 pid:6357 Workerman[index.php] has been stopped
+2018-03-09 10:21:03 pid:7236 Workerman[index.php] start in DEBUG mode
+2018-03-09 10:43:36 pid:7236 Workerman[index.php] stopping ...
+2018-03-09 10:43:36 pid:7239 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2018-03-09 10:43:36 pid:7239 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2018-03-09 10:43:36 pid:7236 Workerman[index.php] has been stopped
+2018-03-09 10:43:37 pid:9778 Workerman[index.php] start in DEBUG mode
