@@ -19,12 +19,13 @@ layui.use(['laypage', 'layer','form'], function() {
                 $.each(list, function (index, item) {
                     var flag = checkTime(item.start_time, item.end_time);   //比较考试时间与当前的时间
                     //循环获取数据，拼接html标签以及内容
-                    var html = '<div class="testList" data-id="'+item.id+'" data-courseid="'+item.courseclass_id+'">'+
-                        '<div class="testListLeft">'+
+                    var html = '<div class="myPaperList testList" data-id="'+item.id+'" data-courseid="'+item.courseclass_id+'">'+
+                        '<div class="testListSamll">'+
                         '<div class="testName">'+item.name+'</div>'+
                         '<div class="testClass">'+item.courseclass_name+'</div>'+
                         '</div>'+
-                        '<div class="testListRight">'+
+                        '<div class="testListSamll"></div>'+
+                        '<div class="testListBig">'+
                         '<div class="testMessage"><font color="#666">●</font>&nbsp;试卷总分：'+item.full_score+'</div>'+
                         '<div class="testMessage"><font color="#666">●</font>&nbsp;及格分数：'+item.pass_score+'</div>'+
                         '<div class="testMessage"><font color="#666">●</font>&nbsp;考试开始时间：'+item.start_time+'</div>'+
@@ -103,7 +104,7 @@ layui.use(['laypage', 'layer','form'], function() {
     });
 
     //动态添加元素后，获取data属性
-    $(document).on('click', '.testList', function() {
+    $(document).on('click', '.myPaperList', function() {
         var id = $(this).data('id');        //获取试卷的id
         var courseclass_id = $(this).data('courseid');
         $.StandardPost(paperDetilUrl, {'id':id,'courseclass_id':courseclass_id});

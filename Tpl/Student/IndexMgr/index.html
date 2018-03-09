@@ -171,6 +171,8 @@
 			$('.tab-group').tabify();
 			$('.ui.dropdown').dropdown();
 
+
+
 		})
 	</script>
 </body>
@@ -251,6 +253,8 @@ layui.use(['layer','upload'],function(){
     return false;
 });
 
+
+
 	$('#savePsw').click(function(event) {
 		var id = $("#id").val();
 	    var oldPassword = $("#old").val();
@@ -297,6 +301,24 @@ layui.use(['layer','upload'],function(){
     $.getJSON(courseClassList, {'courseClassId':$("#courseClassId").val()}, function(data) {
 
         $("#tab3").append(data.data);
+    });
+
+    $(document).on('click','.selectCourseClass',function () {
+        var id = $(this).data("courseid");
+        // console.log("---------"+id);
+        if(id === $("#courseClassId").val()){
+            return;
+        }
+        layer.confirm('确定切换课程吗？',{ title:false,icon:3,
+            btn:['确定','取消']
+        },function(){
+            layer.msg('切换成功', {time: 1000},function(){
+                parent.location.href="{:U('indexMgr/index')}?courseClassId="+id;
+            });
+        },function(){
+            $('.ui.dropdown').dropdown('restore default value');
+        });
+
     });
 
 });
