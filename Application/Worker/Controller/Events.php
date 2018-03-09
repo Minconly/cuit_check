@@ -94,17 +94,35 @@ class Events
                 // 私聊
                 if($message_data['to_client_id'] != 'all')
                 {
+                    $message_data['to_client_id'];
+
                     $new_message = array(
                         'type'=>'say',
                         'from_client_id'=>$client_id,
-                        'from_client_name' =>$client_name,
-                        'to_client_id'=>$message_data['to_client_id'],
-                        'content'=>"<b>对你说: </b>".nl2br(htmlspecialchars($message_data['content'])),
+                        'from_client_name'=>$client_name,
+                        'content'=>htmlspecialchars($message_data['content']),
                         'time'=>date('Y-m-d H:i:s'),
                     );
-                    Gateway::sendToClient($message_data['to_client_id'], json_encode($new_message));
-                    $new_message['content'] = "<b>你对".htmlspecialchars($message_data['to_client_name'])."说: </b>".nl2br(htmlspecialchars($message_data['content']));
-                    return Gateway::sendToCurrentClient(json_encode($new_message));
+                    foreach ($message_data['to_client_id'] as $k=>$v){
+                        $new_message['to_client_id'] = $v;
+                        Gateway::sendToClient($v,json_encode($new_message));
+                        Gateway::sendToCurrentClient(json_encode($new_message));
+                    }
+                    return ;
+
+//                    $new_message = array(
+//                        'type'=>'say',
+//                        'from_client_id'=>$client_id,
+//                        'from_client_name' =>$client_name,
+//                        'to_client_id'=>$message_data['to_client_id'],
+//                        'content'=>"<b>对你说: </b>".nl2br(htmlspecialchars($message_data['content'])),
+//                        'time'=>date('Y-m-d H:i:s'),
+//                    );
+//
+//
+//                    Gateway::sendToClient($message_data['to_client_id'], json_encode($new_message));
+//                    $new_message['content'] = "<b>你对".htmlspecialchars($message_data['to_client_name'])."说: </b>".nl2br(htmlspecialchars($message_data['content']));
+//                    return Gateway::sendToCurrentClient(json_encode($new_message));
                 }
 
                 $new_message = array(

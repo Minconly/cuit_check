@@ -218,6 +218,10 @@
                 }else{
                     //给队列中的人发送
                     console.log("发送消息给选中的人");
+                    params['to_client_id'] =toUser_list;
+                    var send_data = JSON.stringify(params);
+                    console.log(send_data);
+                    say(send_data);
                 }
             });
 
