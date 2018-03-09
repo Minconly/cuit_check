@@ -197,8 +197,6 @@
                 }
             });
 
-
-
             //发送全部
             $('#public').on('change', function () {
                 $('.toUsers').html('');
@@ -233,10 +231,8 @@
                     say(send_data);
                 }
             });
-
         });
     });
-
 
 
     if (typeof console == "undefined") {    this.console = { log: function (msg) {  } };}
@@ -356,6 +352,7 @@
     // 发消息
     function say(params){
        ws.send(params);
+       //进行其他界面操作
     }
 
 
