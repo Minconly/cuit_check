@@ -280,7 +280,7 @@
                         _worker.send('{"type":"pong"}');
                         break;
                     case 'say':
-                        layer.msg(data['content']);
+                        layer.alert(data['content'],{title:"来自"+data['from_client_name']+"的消息"});
                         //say(data['from_client_id'], data['from_client_name'], data['content'], data['time']);
                         break;
                     case 'out':

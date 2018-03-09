@@ -148,7 +148,7 @@
             </div>
         </div>
         <div class="textarae">
-            <textarea style="height: 15%;width: 100%;"></textarea>
+            <textarea style="height: 15%;width: 100%;" id="msg"></textarea>
         </div>
         <button class="fluid ui button primary" id="sendMsg">发送消息</button>
         </fieldset>
@@ -196,13 +196,28 @@
                 toUser_list.length = 0;
             });
 
+            //发送消息
             $('#sendMsg').on('click', function(){
                 var isall = $('input[name="public"]').is(":checked");
+                var msg = $("#msg").val();
+                if(msg==""){
+                    layer.msg("发送内容不能为空!");
+                    return ;
+                }
+                var params = {
+                    type:'say',
+                    to_client_id:'all',
+                    content:  msg,
+                };
                 if(isall){
                     //给全部人发送
+                    console.log("发送消息全部人");
+                    var sen_data = JSON.stringify(params);
+                    console.log(sen_data);
+                    say(sen_data);
                 }else{
                     //给队列中的人发送
-
+                    console.log("发送消息给选中的人");
                 }
             });
 
@@ -324,9 +339,10 @@
         }
 
     }
-    // 发言
-    function say(from_client_id, from_client_name, content, time){
 
+    // 发消息
+    function say(params){
+       ws.send(params);
     }
 
 
