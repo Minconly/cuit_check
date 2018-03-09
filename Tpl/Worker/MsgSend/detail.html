@@ -139,7 +139,7 @@
         <div class="sec_who" style="padding-bottom: 15px;">
             <div class="ui input focus fluid">
                 <div class="ui toggle checkbox" style="padding-left: 15px;padding-top: 7px;padding-right: 15px;">
-                    <input type="checkbox" name="public" id="public">
+                    <input type="checkbox" name="public" id="public" />
                     <label>全部</label>
                 </div>
                 <div class="ui basic buttons toUsers">
@@ -150,7 +150,7 @@
         <div class="textarae">
             <textarea style="height: 15%;width: 100%;"></textarea>
         </div>
-        <button class="fluid ui button primary">发送消息</button>
+        <button class="fluid ui button primary" id="sendMsg">发送消息</button>
         </fieldset>
     </div>
 </div>
@@ -165,7 +165,6 @@
             var layer = layui.layer;
             var toUser_list = [];
             connect();
-
             $('.box').on('click',function(){
                 _this = $(this);
                 var _toUsersDom = $('.toUsers');
@@ -191,14 +190,21 @@
 
                 }
             });
-
             //发送全部
             $('#public').on('change', function () {
-                console.log("全币");
                 $('.toUsers').html('');
                 toUser_list.length = 0;
             });
 
+            $('#sendMsg').on('click', function(){
+                var isall = $('input[name="public"]').is(":checked");
+                if(isall){
+                    //给全部人发送
+                }else{
+                    //给队列中的人发送
+
+                }
+            });
 
         });
     });
