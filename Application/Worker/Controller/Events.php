@@ -60,7 +60,7 @@ class Events
                    if($item['client_name']==$client_name){
                        $offlineMessage = array(
                            'type'=>'out',
-                           'message'=>'您的账号在其他地方登录本场考试,当前登录即将下线!',
+                           'message'=>'您的账号在其他地方登录本场考试,当前登录将在３s后下线!',
                            'time'=>date('Y-m-d H:i:s'),
                        );
                        Gateway::sendToClient($tmp_client_id, json_encode($offlineMessage));

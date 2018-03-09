@@ -245,7 +245,7 @@
             connect();
 
             function connect() {
-                _worker = new WebSocket("ws://localhost:7272");
+                _worker = new WebSocket("ws://"+document.domain+":7272");
                 _worker.onopen = onopen;
                 _worker.onmessage = onmessage;
                 _worker.onclose = function () {
@@ -286,12 +286,8 @@
                     case 'out':
                         console.log("你被挤下线啦!");
                         //强行退出当场考试
-                        layer.confirm(data['message'], {
-                            btn: ['确定']
-                        }, function(){
-                            location.href = "{:U('getOut')}";
-                        });
-
+                        layer.alert(data['message']);
+                        setTimeout(function(){location.href = "{:U('getOut')}"},2000);
                         break;
                 }
             }
