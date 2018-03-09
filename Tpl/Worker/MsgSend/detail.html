@@ -66,27 +66,6 @@
         filter: grayscale(1); /* W3C */
     }
 
-
-    .send {
-        position:relative;
-        width:85%;
-        height:35px;
-        background: #9bb2ff;
-        border-radius:5px; /* 圆角 */
-       margin-top: 15px;
-        margin-left: 16px;
-    }
-
-    .send .arrow {
-        position:absolute;
-        top:8px;
-        left:-16px; /* 圆角的位置需要细心调试哦 */
-        width:0;
-        height:0;
-        font-size:0;
-        border:solid 8px;
-        border-color: #ffffff  #9bb2ff #ffffff #ffffff;
-    }
     .image img{
         width: 77px !important;
         height: 77px !important;
@@ -111,6 +90,7 @@
             <fieldset class="layui-elem-field" style="min-height: 570px;max-height: 570px">
                 <legend>消息记录</legend>
                 <div class="his-box">
+                    <label>to-所有人:谢谢</label>
                 </div>
             </fieldset>
         </div>
@@ -129,6 +109,7 @@
                                 </div>
                             </div>
                         </foreach>
+                    </div>
                 </div>
             </fieldset>
         </div>
@@ -179,7 +160,7 @@
                     var flag = $.inArray(client,toUser_list);
                     console.log(flag);
                     if(flag>=0){
-                        layer.alert("该学生已加入发送列表!");
+                        layer.alert("该学生已加入发送列表,点击列表中对应的名字可取消!");
                         return ;
                     }
                     toUser_list.push(client);
@@ -253,7 +234,6 @@
             console.log("连接关闭，定时重连");
             connect();
         };
-
         ws.onerror = function() {
             console.log("出现错误");
         };
@@ -352,8 +332,11 @@
     // 发消息
     function say(params){
        ws.send(params);
-       //进行其他界面操作
     }
 
+    //将消息记录添加到记录框里面
+    function appendToBox(msg){
+        //todo
+    }
 
 </script>
