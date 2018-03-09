@@ -166,15 +166,16 @@
             var toUser_list = [];
             connect();
             $('.box').on('click',function(){
-                _this = $(this);
+                var _this = $(this);
                 var _toUsersDom = $('.toUsers');
                 var client = _this.data('client');
                 var uid = _this.data('id');
                 if(client===undefined){
                     layer.alert("不能给不在线的用户发信息!");
                 }else{
+                    //关闭全选
+                    $('input[name="public"]').prop("checked", false);
                     // 判断是否已经存在于接收数组中
-                    //TODO
                     var flag = $.inArray(client,toUser_list);
                     console.log(flag);
                     if(flag>=0){
@@ -184,12 +185,20 @@
                     toUser_list.push(client);
                     console.log(toUser_list);
                     var name= $('#'+uid+'>div>label').text();
-                    var htmlStr = ' <div class="ui button">'+name+'</div>';
+                    var htmlStr = ' <div class="ui button oneUser" data-id="'+uid+'">'+name+'</div>';
                     //追加发送用户
                     _toUsersDom.append(htmlStr);
-
+                    $('.oneUser').on('click',function(){
+                        var _this = $(this);
+                        _this.remove();
+                        toUser_list.splice($.inArray('c',toUser_list),1);
+                        console.log(toUser_list);
+                    });
                 }
             });
+
+
+
             //发送全部
             $('#public').on('change', function () {
                 $('.toUsers').html('');
