@@ -58,7 +58,14 @@
     .offline {
         color: rgba(5, 11, 13, 0.97);
     }
+    .stop-test{
+        width: 77px;
+        margin-left: 7px;
+    }
+
 </style>
+<input type="hidden" value="{$cid}" name="cid" id="cid">
+<input type="hidden" value="{$pid}" name="pid" id="pid">
 
 <div class="body-main">
     <div class="sign-diver" >
@@ -82,13 +89,16 @@
                 <div class="man-box">
                     <div class="ui  grid">
                         <foreach name="user_list" item="v">
-                            <div class="box" id="{$v.account}" data-id="{$v.account}">
-                                <div class="ui fluid card">
-                                    <div class="image">
-                                        <img class="gray" src="__SITE__{$v.photo}">
+                            <div>
+                                <div class="box" id="{$v.account}" data-id="{$v.account}">
+                                    <div class="ui fluid card">
+                                        <div class="image">
+                                            <img class="gray" src="__SITE__{$v.photo}">
+                                        </div>
+                                        <label>{$v.name}<i class="wifi icon offline"></i></label>
                                     </div>
-                                    <label>{$v.name}<i class="wifi icon offline"></i></label>
                                 </div>
+                                <div class="stop-test" id="stop-{$v.account}" data-id="{$v.account}" data-name="{$v.name}"><button class="ui button" style="padding: 0.8rem"><p style="font-size: 5px;">设为作弊</p></button></div>
                             </div>
                         </foreach>
                     </div>
@@ -123,6 +133,9 @@
 <script type="text/javascript" src="__PUBLIC__/worker/js/jquery-sinaEmotion-2.1.0.min.js"></script>
 <layuijs/>
 <script type="text/javascript">
+
+    var setCheat = "{:U('Worker/ExamManage/setCheat')}";
+
     $(function () {
         layui.use(['layer','upload'],function(){
             var layer = layui.layer;
@@ -194,6 +207,30 @@
                     say(send_data);
                 }
             });
+
+            //标记为作弊
+            $('.stop-test').on('click',function () {
+                var _this = $(this);
+
+                layer.confirm('确定将 ['+$(this).data("name")+' ]标记为作弊，并且踢出考场？',{ title:false,icon:3,
+                    btn:['确定','取消']
+                },function(){
+
+                    layer.msg('标记中......', {time: 1000},function(){
+                        // parent.location.href="{:U('indexMgr/index')}?courseClassId="+id;
+                        var params = {
+                          "name":_this.data("name"),
+                          "cid": $("#cid").val(),
+                          "pid": $("#pid").val(),
+                          "account": _this.data("id"),
+                          "client_id":_this.prev("div").data("client"),
+                        };
+                        set_cheat(params);
+                    });
+                },function(){
+                    // $('.ui.dropdown').dropdown('restore default value');
+                });
+            });
         });
     });
 
@@ -222,8 +259,7 @@
     }
 
     // 连接建立时发送登录信息
-    function onopen()
-    {
+    function onopen() {
         console.log(ws);
         // 登录
         var params = {
@@ -239,8 +275,7 @@
     }
 
     // 服务端发来消息时
-    function onmessage(e)
-    {
+    function onmessage(e) {
         console.log(e.data);
         var data = JSON.parse(e.data);
         switch(data['type']){
@@ -316,6 +351,26 @@
        ws.send(params);
     }
 
+    //标记为作弊并且踢下线
+    function set_cheat(params) {
+        $.ajax( {
+            type: "POST",
+            url: setCheat,
+            data: params,
+            dataType: "json",
+            success: function(data){
+                if(data.status === 1){
+                    location.reload();
+                }else {
+                }
+                layer.alert(data.msg)
+            },
+            error: function(){
+                $("#alert_msg").html("网络故障");
+
+            }
+        });
+    }
     //将消息记录添加到记录框里面
     function appendToBox(msg){
         //todo

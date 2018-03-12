@@ -216,7 +216,7 @@
 <!--worker-->
 <script type="text/javascript" src="__PUBLIC__/worker/js/swfobject.js"></script>
 <script type="text/javascript" src="__PUBLIC__/worker/js/web_socket.js"></script>
-<script type="text/javascript" src="__PUBLIC__/worker/js/jquery.min.js"></script>
+<!--<script type="text/javascript" src="__PUBLIC__/worker/js/jquery.min.js"></script>-->
 <script type="text/javascript" src="__PUBLIC__/worker/js/jquery-sinaEmotion-2.1.0.min.js"></script>
 
 <script>
@@ -250,7 +250,7 @@
                 _worker.onmessage = onmessage;
                 _worker.onclose = function () {
                     console.log("连接关闭，定时重连");
-                    this.connect();
+                    connect();
                 };
                 _worker.onerror = function () {
                     console.log("出现错误");
@@ -285,6 +285,12 @@
                         break;
                     case 'out':
                         console.log("你被挤下线啦!");
+                        //强行退出当场考试
+                        layer.alert(data['message']);
+                        setTimeout(function(){location.href = "{:U('getOut')}"},2000);
+                        break;
+                    case 'cheat':
+                        console.log("被标记为作弊!");
                         //强行退出当场考试
                         layer.alert(data['message']);
                         setTimeout(function(){location.href = "{:U('getOut')}"},2000);

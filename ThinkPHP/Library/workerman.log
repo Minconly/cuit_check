@@ -3618,3 +3618,40 @@ Stack trace:
 2018-03-09 14:03:11 pid:29733 Workerman[index.php] stopping ...
 2018-03-09 14:03:11 pid:29733 Workerman[index.php] has been stopped
 2018-03-09 14:03:12 pid:30120 Workerman[index.php] start in DEBUG mode
+2018-03-11 17:36:37 pid:8876 Workerman[index.php] start in DEBUG mode
+2018-03-11 17:41:59 pid:8876 Workerman[index.php] stopping ...
+2018-03-11 17:41:59 pid:8876 Workerman[index.php] has been stopped
+2018-03-11 17:42:01 pid:9600 Workerman[index.php] start in DEBUG mode
+2018-03-11 17:56:07 pid:9600 Workerman[index.php] stopping ...
+2018-03-11 17:56:07 pid:9600 Workerman[index.php] has been stopped
+2018-03-11 17:58:46 pid:11926 Workerman[index.php] start in DEBUG mode
+2018-03-12 01:06:11 pid:11926 Workerman[index.php] stopping ...
+2018-03-12 01:06:11 pid:11926 Workerman[index.php] has been stopped
+2018-03-12 17:09:57 pid:2915 Workerman[index.php] start in DEBUG mode
+2018-03-13 01:16:30 pid:2919 Exception: You can't send(array) to client, you need to convert it to a string.  in /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Protocols/Websocket.class.php:232
+Stack trace:
+#0 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Connection/TcpConnection.class.php(338): Workerman\Protocols\Websocket::encode(Array, Object(Workerman\Connection\TcpConnection))
+#1 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/GatewayWorker/Gateway.class.php(558): Workerman\Connection\TcpConnection->send(Array)
+#2 [internal function]: GatewayWorker\Gateway->onWorkerMessage(Object(Workerman\Connection\TcpConnection), Array)
+#3 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Connection/TcpConnection.class.php(657): call_user_func(Array, Object(Workerman\Connection\TcpConnection), Array)
+#4 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #82)
+#5 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Events/Select.class.php(286): call_user_func_array(Array, Array)
+#6 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Worker.class.php(2102): Workerman\Events\Select->loop()
+#7 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/GatewayWorker/Gateway.class.php(279): Workerman\Worker->run()
+#8 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Worker.class.php(1300): GatewayWorker\Gateway->run()
+#9 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Worker.class.php(1133): Workerman\Worker::forkOneWorkerForLinux(Object(GatewayWorker\Gateway))
+#10 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Worker.class.php(1106): Workerman\Worker::forkWorkersForLinux()
+#11 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Worker.class.php(459): Workerman\Worker::forkWorkers()
+#12 /opt/lampp/htdocs/cuit_check/Application/Worker/Controller/IndexController.class.php(62): Workerman\Worker::runAll()
+#13 [internal function]: Worker\Controller\IndexController->index()
+#14 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Think/App.class.php(173): ReflectionMethod->invoke(Object(Worker\Controller\IndexController))
+#15 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Think/App.class.php(110): Think\App::invokeAction(Object(Worker\Controller\IndexController), 'index')
+#16 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Think/App.class.php(204): Think\App::exec()
+#17 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Think/Think.class.php(120): Think\App::run()
+#18 /opt/lampp/htdocs/cuit_check/ThinkPHP/ThinkPHP.php(97): Think\Think::start()
+#19 /opt/lampp/htdocs/cuit_check/index.php(33): require('/opt/lampp/htdo...')
+#20 {main}
+2018-03-13 01:16:30 pid:2919 Worker process terminated
+2018-03-13 01:16:30 pid:2915 worker[ChatGateway:2919] exit with status 64000
+2018-03-13 01:32:06 pid:2915 Workerman[index.php] stopping ...
+2018-03-13 01:32:06 pid:2915 Workerman[index.php] has been stopped

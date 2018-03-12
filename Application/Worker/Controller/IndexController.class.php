@@ -17,6 +17,7 @@ class IndexController  extends Controller{
 
         $register = new \GatewayWorker\Register('text://0.0.0.0:1236');
         $worker = new \Workerman\Worker('websocket://127.0.0.1:2346');
+        $worker->name = "worker";
 
 
         // gateway 进程
