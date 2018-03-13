@@ -1,7 +1,6 @@
 <layuicss/>
 <link rel="stylesheet" href="__PUBLIC__/student/SemanticUI/semantic.min.css">
-
-
+<link rel="stylesheet" href="__PUBLIC__/worker/css/jquery.contextMenu.min.css">
 
 <style>
 
@@ -58,10 +57,12 @@
     .offline {
         color: rgba(5, 11, 13, 0.97);
     }
-    .stop-test{
-        width: 77px;
-        margin-left: 7px;
+    .out{
+        border:1px solid #BFBFBF;
+        box-shadow:0px 0px  3px 3px #e74c3c;
     }
+
+
 
 </style>
 <input type="hidden" value="{$cid}" name="cid" id="cid">
@@ -89,16 +90,13 @@
                 <div class="man-box">
                     <div class="ui  grid">
                         <foreach name="user_list" item="v">
-                            <div>
-                                <div class="box" id="{$v.account}" data-id="{$v.account}">
-                                    <div class="ui fluid card">
-                                        <div class="image">
-                                            <img class="gray" src="__SITE__{$v.photo}">
-                                        </div>
-                                        <label>{$v.name}<i class="wifi icon offline"></i></label>
+                            <div class="box out" id="{$v.account}" data-name="{$v.name}" data-id="{$v.account}">
+                                <div class="ui fluid card">
+                                    <div class="image">
+                                        <img class="gray" src="__SITE__{$v.photo}">
                                     </div>
+                                    <label>{$v.name}<i class="wifi icon offline"></i> </label>
                                 </div>
-                                <div class="stop-test" id="stop-{$v.account}" data-id="{$v.account}" data-name="{$v.name}"><button class="ui button" style="padding: 0.8rem"><p style="font-size: 5px;">设为作弊</p></button></div>
                             </div>
                         </foreach>
                     </div>
@@ -130,11 +128,14 @@
 <script type="text/javascript" src="__PUBLIC__/worker/js/swfobject.js"></script>
 <script type="text/javascript" src="__PUBLIC__/worker/js/web_socket.js"></script>
 <script type="text/javascript" src="__PUBLIC__/worker/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/worker/js/jquery.contextMenu.js"></script>
+<script type="text/javascript" src="__PUBLIC__/worker/js/jquery.ui.position.js"></script>
 <script type="text/javascript" src="__PUBLIC__/worker/js/jquery-sinaEmotion-2.1.0.min.js"></script>
 <layuijs/>
 <script type="text/javascript">
 
     var setCheat = "{:U('Worker/ExamManage/setCheat')}";
+    var unSetCheat = "{:U('Worker/ExamManage/unSetCheat')}";
 
     $(function () {
         layui.use(['layer','upload'],function(){
@@ -209,6 +210,62 @@
             });
 
             //标记为作弊
+            $.contextMenu({
+                selector: '.box',
+                callback: function(key, options) {
+                    var _this = $(this);
+
+                    if(key === 'setCheat'){
+                        layer.confirm('确定将 ['+$(this).data("name")+' ]标记为作弊，并且踢出考场？',{ title:false,icon:3,
+                            btn:['确定','取消']
+                        },function(){
+
+                            layer.msg('标记中......', {time: 1000},function(){
+                                // parent.location.href="{:U('indexMgr/index')}?courseClassId="+id;
+                                var params = {
+                                    "name":_this.data("name"),
+                                    "cid": $("#cid").val(),
+                                    "pid": $("#pid").val(),
+                                    "account": _this.data("id"),
+                                    "client_id":_this.data("client"),
+                                };
+                                if(params.client_id === undefined){
+                                    layer.alert("该考生未参加过考试！")
+                                    return;
+                                }
+                                set_cheat(params,setCheat);
+                            });
+                        },function(){
+                            // $('.ui.dropdown').dropdown('restore default value');
+                        });
+                    }else if(key === 'unSetCheat'){
+                        layer.confirm('确定将 ['+$(this).data("name")+' ]解除作弊？',{ title:false,icon:3,
+                            btn:['确定','取消']
+                        },function(){
+
+                            layer.msg('解除中......', {time: 1000},function(){
+                                // parent.location.href="{:U('indexMgr/index')}?courseClassId="+id;
+                                var params = {
+                                    "name":_this.data("name"),
+                                    "cid": $("#cid").val(),
+                                    "pid": $("#pid").val(),
+                                    "account": _this.data("id"),
+                                };
+
+                                set_cheat(params,unSetCheat);
+                            });
+                        },function(){
+                            // $('.ui.dropdown').dropdown('restore default value');
+                        });
+                    }
+
+                },
+                items: {
+                    "setCheat": {name: "标记为作弊", icon: "fa-beer"},
+                    "unSetCheat": {name: "解除作弊", icon: "fa-certificate"}
+                }});
+
+            /*//标记为作弊
             $('.stop-test').on('click',function () {
                 var _this = $(this);
 
@@ -230,7 +287,7 @@
                 },function(){
                     // $('.ui.dropdown').dropdown('restore default value');
                 });
-            });
+            });*/
         });
     });
 
@@ -352,21 +409,26 @@
     }
 
     //标记为作弊并且踢下线
-    function set_cheat(params) {
+    function set_cheat(params,url) {
         $.ajax( {
             type: "POST",
-            url: setCheat,
+            url: url,
             data: params,
             dataType: "json",
             success: function(data){
+
                 if(data.status === 1){
-                    location.reload();
+                    layer.alert(data.msg,function () {
+                        location.reload();
+                    },1000);
                 }else {
+                    layer.alert(data.msg);
                 }
-                layer.alert(data.msg)
+
             },
-            error: function(){
-                $("#alert_msg").html("网络故障");
+            error: function(data){
+                layer.alert("网络故障  \n"+data.toString());
+                console.log(data);
 
             }
         });
