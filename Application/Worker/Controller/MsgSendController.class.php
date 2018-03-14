@@ -30,7 +30,7 @@ class MsgSendController extends controller{
             $this->assign('account_type','admin');
 
             //获取当场考试的所有学生信息
-            $list = (new Courseclass())->getStuInfoByCid($cid);
+            $list = (new Courseclass())->getStuInfoByCid($cid,$pid);
             $this->assign('cid',$cid);
             $this->assign('pid',$pid);
             $this->assign('user_list',$list);

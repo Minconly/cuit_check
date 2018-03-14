@@ -265,11 +265,19 @@ Class courseclassModel extends Model{
 	}
 
 	//根据ｉｄ获取该班级所有学生的基本信息
-	public function getStuInfoByCid($cid){
+	public function getStuInfoByCid($cid,$pid){
         $list = M('ClassStudent')->alias('cst')->where(['courseclass_id'=>$cid])
             ->field('kh_student.name,cst.account,kh_student.photo')
             ->join('left join kh_student on kh_student.account = cst.account')
+            ->join('left join kh_cheat kc on kh_student.account = cst.account')
             ->select();
+
+        foreach ($list as &$value){
+            $ischeat = D('cheat')->where(['cid'=>$cid,'pid'=>$pid,'account'=>$value['account']])->find();
+            if($ischeat){
+                $value['cheat'] = $ischeat['cheat'];
+            }
+        }
         return $list;
     }
 

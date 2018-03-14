@@ -90,7 +90,7 @@
                 <div class="man-box">
                     <div class="ui  grid">
                         <foreach name="user_list" item="v">
-                            <div class="box out" id="{$v.account}" data-name="{$v.name}" data-id="{$v.account}">
+                            <div class="box <if condition="$v.cheat eq 1">out</if>" id="{$v.account}" data-name="{$v.name}" data-id="{$v.account}">
                                 <div class="ui fluid card">
                                     <div class="image">
                                         <img class="gray" src="__SITE__{$v.photo}">
