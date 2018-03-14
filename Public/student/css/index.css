@@ -25,27 +25,67 @@
 	background-color:#FFF;	
 	
 }
-.sidebarIMGBox{
-	/*margin: auto;*/
-	margin-left:14%;
-	margin-top: 20px;
-	width:200px;
-	height:200px;
-	/*margin-bottom:10px;*/
+
+.img-wrap{
+	width: 40%; /* 这里设置占屏幕宽度百分比 */
+	margin: 10% auto;
 }
-.sidebarIMG{
-	border-radius: 50%;
-	display: block;
-	overflow: hidden;
+
+/* 创建一个正方形容器 */
+.img-container{
+	width: 100%;
+	height: 0px;
+	border-radius: 50%	;
+	padding-bottom: 100%;
+	overflow:hidden;
+	margin: 0;
+	position:relative;
+}
+
+/* 采用绝对定位 */
+.img-wrap img{
+	position:absolute;
 	width: 100%;
 	height: 100%;
-	margin-left: 30%;
-	background-size: cover;
-	border: 1px solid #E0E0E0;
 }
-.sidebarIMG img{height:auto;
 
-	max-height:100%;}
+
+.layui-upload-button {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	min-width: 60px;
+	width: 100%;
+	height: 38px;
+	margin-left: 0%;
+	line-height: 38px;
+	border: 1px solid #DFDFDF;
+	border-radius: 2px;
+	overflow: hidden;
+	background-color: #fff;
+	color: #666;
+}
+/*.sidebarIMGBox{*/
+	/*!*margin: auto;*!*/
+	/*margin-left:14%;*/
+	/*margin-top: 20px;*/
+	/*width:20%;*/
+	/*height:20%;*/
+	/*!*margin-bottom:10px;*!*/
+/*}*/
+/*.sidebarIMG{*/
+	/*border-radius: 50%;*/
+	/*display: block;*/
+	/*overflow: hidden;*/
+	/*width: 100%;*/
+	/*height: 100%;*/
+	/*margin-left: 30%;*/
+	/*background-size: cover;*/
+	/*border: 1px solid #E0E0E0;*/
+/*}*/
+/*.sidebarIMG img{height:auto;*/
+
+	/*max-height:100%;}*/
 
 .sidebarNAME{
 	margin-top: 80px;
@@ -56,10 +96,8 @@
 	color:#CCC;
 }
 .sidebarEDITBox{
-	margin-top: 20%;
-
+	margin-top: 10%;
 	width:100%;
-	height:80px;
 }
 .sidebarEDIT{
 	width:32%;

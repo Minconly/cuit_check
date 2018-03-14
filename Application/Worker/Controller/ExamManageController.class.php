@@ -56,11 +56,13 @@ class ExamManageController extends Controller{
                 }
             }else{
                 $redis->hset($student,"is_cheat",0);
+                $arr["status"] = 0;
+                $arr["msg"] = "标记失败 或 已经被标记！";
             }
 
         }else{
             $arr["status"] = 0;
-            $arr["msg"] = "标记失败！";
+            $arr["msg"] = "该生还未答题 或 标记失败！";
         }
 
         $this->ajaxReturn($arr,"JSON");
@@ -81,7 +83,7 @@ class ExamManageController extends Controller{
         $arr = [];
         $isok = false;
         //设置redis缓存中的数据
-        if($redis->hexists($student,"is_cheat") && $redis->hset($student,"is_cheat",0) == 0 ){
+        if($redis->hexists($student,"is_cheat") && ($redis->hset($student,"is_cheat",0) == 0) ){
             if(!M('cheat')->where(array("account"=>$account,"cid"=>$course_id,"pid"=>$paper_id))->find()){
                 $arr["status"] = 0;
                 $arr["msg"] = "解除失败，未标记过！";
@@ -91,11 +93,14 @@ class ExamManageController extends Controller{
             if($isok){
                 $arr["status"] = 1;
                 $arr["msg"] = "解除成功！";
+            }else{
+                $arr["status"] = 0;
+                $arr["msg"] = "该用户没有被标记，无需解除！";
             }
 
         }else{
             $arr["status"] = 0;
-            $arr["msg"] = "解除失败！";
+            $arr["msg"] = "解除失败，该生还未答题！";
         }
 
         $this->ajaxReturn($arr,"JSON");

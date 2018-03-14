@@ -3836,3 +3836,10 @@ Stack trace:
 2018-03-14 00:56:58 pid:8562 Workerman[index.php] start in DEBUG mode
 2018-03-14 01:26:34 pid:8562 Workerman[index.php] stopping ...
 2018-03-14 01:26:34 pid:8562 Workerman[index.php] has been stopped
+2018-03-14 10:29:47 pid:5014 Workerman[index.php] start in DEBUG mode
+2018-03-14 14:01:16 pid:5014 Workerman[index.php] stopping ...
+2018-03-14 14:01:16 pid:5020 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2018-03-14 14:01:16 pid:5014 Workerman[index.php] has been stopped
+2018-03-14 14:01:18 pid:23534 Workerman[index.php] start in DEBUG mode
+2018-03-14 14:26:33 pid:23534 Workerman[index.php] stopping ...
+2018-03-14 14:26:33 pid:23534 Workerman[index.php] has been stopped

@@ -30,51 +30,51 @@
 <div style="margin: 20px;">
 <div style="float: left; width: 68%;">
   <form class="layui-form" style="padding: 0px;">
-<input type="hidden" name="courserclass_id" id="courserclass_id" value="{$courseclassid}">
-  <label class="layui-form-label  lable-box">测试时间:</label>
-      <div class="layui-form-pane">
-       <div class="layui-input-inline">
-         <input class="layui-input" placeholder="开始时间" id="start_time" name="start_time" style="height:30px; line-height:30px;"  readonly="true">
-         </div>
-         <div class="layui-input-inline">
-          <input class="layui-input" placeholder="结束时间" id="end_time" name="end_time" style="height:30px; line-height:30px;" readonly="true">
+    <input type="hidden" name="courserclass_id" id="courserclass_id" value="{$courseclassid}">
+      <label class="layui-form-label  lable-box">测试时间:</label>
+          <div class="layui-form-pane">
+           <div class="layui-input-inline">
+             <input class="layui-input" placeholder="开始时间" id="start_time" name="start_time" style="height:30px; line-height:30px;"  readonly="true">
+             </div>
+             <div class="layui-input-inline">
+              <input class="layui-input" placeholder="结束时间" id="end_time" name="end_time" style="height:30px; line-height:30px;" readonly="true">
+            </div>
+          </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label  lable-box">试卷选择:</label>
+        <if condition="$ber2 eq 1"><p>暂无可分配试卷,请先出卷！</p>
+        <else />
+      <table class="layui-table" width="500px;">
+      <thead>
+        <tr>
+          <th width="40%">试卷名</th>
+          <th width="20%">试卷总分</th>
+          <th width="20%">及格成绩</th>
+          <th width="20%">选择</th>
+        </tr>
+      </thead>
+      <tbody>
+        <volist name="papersList" id="vo">
+        <tr>
+          <td>{$vo.name}</td>
+          <td>{$vo.full_score}</td>
+          <td>{$vo.pass_score}</td>
+          <td>
+          <input type="radio" name="testpaper_id" id="testpaper_id_{$vo.id}" value="{$vo.id}" title="勾选">
+          </td>
+        </tr>
+      </volist>
+      </tbody>
+    </table>
+     </if>
+       </div>
+      <div class="layui-form-item btn">
+        <div class="layui-input-block">
+          <button class="layui-btn" lay-submit lay-filter="test_btn">提交</button>
+          <button type="reset" class="layui-btn layui-btn-primary">重置</button>
         </div>
-   </div>
-  <div class="layui-form-item">
-    <label class="layui-form-label  lable-box">试卷选择:</label>
-    <if condition="$ber2 eq 1"><p>暂无可分配试卷,请先出卷！</p>
-    <else />
-  <table class="layui-table" width="500px;">
-  <thead>
-    <tr>
-      <th width="40%">试卷名</th>
-      <th width="20%">试卷总分</th>
-      <th width="20%">及格成绩</th>
-      <th width="20%">选择</th>
-    </tr> 
-  </thead>
-  <tbody>
-    <volist name="papersList" id="vo">
-    <tr>
-      <td>{$vo.name}</td>
-      <td>{$vo.full_score}</td>
-      <td>{$vo.pass_score}</td>
-      <td> 
-      <input type="radio" name="testpaper_id" id="testpaper_id" value="{$vo.id}" title="勾选">
-      </td>
-    </tr>
-  </volist>
-  </tbody>
-</table>
- </if>
-   </div>
-  <div class="layui-form-item btn">
-    <div class="layui-input-block">
-      <button class="layui-btn" lay-submit lay-filter="test_btn">提交</button>
-      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-    </div>
-  </div>
-</form>
+      </div>
+    </form>
 </div>
 <div class="oldtest">
 <fieldset class="layui-elem-field">
@@ -103,7 +103,7 @@
     </table>
     </if>
     <hr class="layui-bg-blue">
-    <blockquote class="layui-elem-quote">还未测试试卷</blockquote>
+    <blockquote class="layui-elem-quote">在测试或未测的试卷</blockquote>
       <if condition="$ber3 eq 1"><p>暂无数据！</p>
     <else />
       <table class="layui-table" style="width: 300px;">
@@ -182,39 +182,38 @@ layui.use(['form','laydate','laypage','layer'], function(){
     var courseid = $("#id").val();
     var start_time = $("#start_time").val();
     var end_time = $("#end_time").val();
-     var val=$('input:radio[name="testpaper_id"]:checked').val();
+     var pid=$('input:radio[name="testpaper_id"]:checked').val();
     // alert(paperid); 
     if (start_time==''||end_time=='') {
         layer.msg('请选择测试时间',{icon:5});
           return false;
-    }else if(val==null) {
-          layer.msg('请选择测试试卷',{icon:5});
-          return false;
+    }else if(pid==null) {
+        layer.msg('请选择测试试卷',{icon:5});
+        return false;
     }
     else{
-    $.ajax({
-
-      url:"{:U('Home/courseclassMgr/coursepaper')}",
-      type: 'POST',
-      data: data.field,
-      error: function(request){
-        layer.msg("请求服务器超时", {time: 1000, icon: 5});
-      },
-      success: function(data){
-        if (data.success){
-          layer.msg('提交成功', {
-            time: 1000
-          }, function(){
-            parent.location.href="{:U('Home/courseclassMgr/courseclassList')}";
-          });
-        }else{
-          layer.msg(data.msg, {
-            time: 1000,icon:5
-          });
-        }
-      }
-    });
-      return false;
+        $.ajax({
+          url:"{:U('Home/courseclassMgr/coursepaper')}",
+          type: 'POST',
+          data: data.field,
+          error: function(request){
+            layer.msg("请求服务器超时", {time: 1000, icon: 5});
+          },
+          success: function(data){
+            if (data.success){
+              layer.msg('提交成功', {
+                time: 1000
+              }, function(){
+                parent.location.href="{:U('Home/courseclassMgr/courseclassList')}";
+              });
+            }else{
+              layer.msg(data.msg, {
+                time: 1000,icon:5
+              });
+            }
+          }
+        });
+        return false;
  }
   });
 
@@ -222,7 +221,7 @@ $('.nowdel').on('click', function(){
     var id = $(this).data('id');
     var time = $(this).data('time');
     var courseclassid=$(this).data('course_id');
- $.ajax({
+    $.ajax({
       url: isurl,
       type: 'POST',
       data: {'id': id,'time':time},

@@ -281,7 +281,7 @@ class CourseclassMgrController extends HomeBaseController {
 	}
 	public function corsetest(){
 		// p($time);die();
-		strtotime($vo['start_time']);
+//		strtotime($vo['start_time']);
 		$courseclassid=I('corseclassid');
 		$form['courserclass_id']=array('eq',$courseclassid);
 		$form['kh_paper_courserclass.del_flag']=array('eq','1');
@@ -290,10 +290,8 @@ class CourseclassMgrController extends HomeBaseController {
 		$lession_id=I('lession_id');
 		// dump($lession_id);die();
 		$oldtest=M('paper_courserclass')
-		->join('
-				LEFT join kh_testpaper ON kh_paper_courserclass.testpaper_id = kh_testpaper.id 
-			')
-		->field('testpaper_id,start_time, kh_testpaper.name as paper_name,end_time,courserclass_id')
+		->join('LEFT join kh_testpaper ktt ON kh_paper_courserclass.testpaper_id = ktt.id')
+		->field('testpaper_id,start_time, ktt.name as paper_name,end_time,courserclass_id')
 		->where($form)
 		->order('start_time desc')
 		->select();
@@ -303,6 +301,7 @@ class CourseclassMgrController extends HomeBaseController {
 		date_default_timezone_set('prc');
 		$time = time();
 		$k=0;
+		//对已经分配的试卷进行分类
 		for($i=0; $i<sizeof($oldtest); $i++){
 			$stime=strtotime($oldtest[$i]['start_time']);
 			$etime=strtotime($oldtest[$i]['end_time']);
@@ -310,7 +309,7 @@ class CourseclassMgrController extends HomeBaseController {
 					array_push($nowtest, $oldtest[$i]);
 			}else{
 				$k++;
-				if($k<4){
+				if($k<5){
 					array_push($pasttest, $oldtest[$i]);
 				}
 			}
@@ -323,6 +322,8 @@ class CourseclassMgrController extends HomeBaseController {
 		$type=1;
 		$map['college_id']=array('eq',$college_id);
 		$map['lession_id']=array('eq',$lession_id);
+		$map['is_use']=array('eq',1);
+		$map['del_flag']=array('eq',1);
 		$map['type_id']=array('eq',$type);
 		if(sizeof($tests['testpaper_id'])!=0){
 			$map['id']=array('not in',$tests['testpaper_id']);
