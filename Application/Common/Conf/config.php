@@ -57,5 +57,9 @@ return array(
         'password' => 'cuitcheck',
         'database' => 2
     ),
+    'REDIS_TAG'=>array(
+        'testinfo'=>'TestInfo:',
+
+    ),
 
 );

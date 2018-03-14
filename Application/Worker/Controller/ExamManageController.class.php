@@ -27,7 +27,7 @@ class ExamManageController extends Controller{
         $student = $tag.":".$account;
         $student = $student.":studentTestingInfo";
 
-        $redis = $this->getRedis();
+        $redis = getRedis();
 
         $arr = [];
 
@@ -78,7 +78,7 @@ class ExamManageController extends Controller{
         $student = $tag.":".$account;
         $student = $student.":studentTestingInfo";
 
-        $redis = $this->getRedis();
+        $redis = getRedis();
 
         $arr = [];
         $isok = false;
@@ -106,14 +106,5 @@ class ExamManageController extends Controller{
         $this->ajaxReturn($arr,"JSON");
     }
 
-    //获得redis实例
-    public function getRedis(){
-        //自动加载predis
-        Autoloader::register();
-        if($this->redis == null) {
-            $this->redis = new Client(C('PREDIS_OPTIONS_STUDENT'));
-        }
-        return $this->redis;
-    }
 
 }

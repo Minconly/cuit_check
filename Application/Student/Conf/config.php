@@ -6,8 +6,5 @@ return array(
 		'login'=>'LoginMgr/login',
 		'list'=>'indexMgr/index',
 	),
-    'REDIS_TAG'=>array(
-        'testinfo'=>'TestInfo:',
 
-    ),
 );

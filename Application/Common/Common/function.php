@@ -4,6 +4,7 @@
 	 */
 
 use Predis\Client;
+use Predis\Autoloader;
 
 /**
 	 * 调试时更好的打印数据的函数
@@ -595,4 +596,13 @@ if(!function_exists('get_ip')){
 
 }
 
-//获取菜单列表
+//获得redis实例
+if(!function_exists('getRedis')) {
+    function getRedis($which = "PREDIS_OPTIONS_STUDENT")
+    {
+        //自动加载predis
+        Autoloader::register();
+
+        return new Client(C($which));
+    }
+}

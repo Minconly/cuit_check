@@ -348,12 +348,43 @@ class CourseclassMgrController extends HomeBaseController {
         $this->assign('courseclassid', $courseclassid);
 		$this->display();
 	}
+
+	//分配课堂测试，添加缓存，添加定时任务
 	public function coursepaper(){
 		if (!IS_POST){
 			$data = array('success'=>false, 'msg'=>'提交方式不正确');
 		}else{
-			// dump($_POST);die();
-			$data = D('PaperCourserclass')->addpaper();
+            $data = D('PaperCourserclass')->addpaper();
+            if($data["success"]){
+                $paper_id = I('post.testpaper_id');
+                $course_id = I('post.courserclass_id');
+                $redis = getRedis();
+                $tag = C('REDIS_TAG')['testinfo'].$course_id.':'.$paper_id;
+
+                $paper_list = D('Student/paper_courserclass')->getPapaerInfo($paper_id, $course_id);
+                // 查找试卷题目
+                $question_list = D('Student/paper_question')->getQuestionList($paper_id);
+                //存储题目原始信息
+                $redis->hset($tag,'paperInfo',json_encode($paper_list));
+                //存储试卷题目原始信息
+                $redis->hset($tag,'question',json_encode($question_list['question_info']));
+                //存储试卷题目和对应的答案
+                foreach ($question_list['question_info'] as $value){
+                    foreach ($value['answer'] as $key => $value2){
+                        if($value2['is_true'] == 1){
+//                                非选择题记录值否则记录id
+//                                if($value["type"] != 1){
+                                $redis->hset($tag.':questionLists',$value['id'],$value2['content']);
+//                                }else{
+//                                    $redis->hset($tag.':questionLists',$value['id'],$value2['id']);
+//                                }
+                            //缓存题目的分值
+                            $redis->hset($tag.':questionValue',$value['id'],$question_list['question_value'][$key]);
+                        }
+                    }
+                }
+            }
+
 		}
 		$this->ajaxReturn($data, 'json');
 	}

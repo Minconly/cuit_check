@@ -3843,3 +3843,6 @@ Stack trace:
 2018-03-14 14:01:18 pid:23534 Workerman[index.php] start in DEBUG mode
 2018-03-14 14:26:33 pid:23534 Workerman[index.php] stopping ...
 2018-03-14 14:26:33 pid:23534 Workerman[index.php] has been stopped
+2018-03-14 22:17:28 pid:4334 Workerman[index.php] start in DEBUG mode
+2018-03-15 00:54:56 pid:4334 Workerman[index.php] stopping ...
+2018-03-15 00:54:56 pid:4334 Workerman[index.php] has been stopped

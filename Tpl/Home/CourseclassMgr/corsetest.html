@@ -8,7 +8,7 @@
   <style type="text/css">
   .lable-box{
     font-family: '微软雅黑';
-    font-size: 10;
+    font-size: 10px;
   }
    .inputbox{
     padding: 15px; 
@@ -172,46 +172,51 @@ layui.use(['form','laydate','laypage','layer'], function(){
     document.getElementById('start_time').onclick = function(){
       start.elem = this;
       laydate(start);
-    }
+    };
     document.getElementById('end_time').onclick = function(){
-      end.elem = this
+      end.elem = this;
       laydate(end);
-    }
+    };
 
   form.on('submit(test_btn)', function(data) {
-    var courseid = $("#id").val();
-    var start_time = $("#start_time").val();
-    var end_time = $("#end_time").val();
+     var courseid = $("#id").val();
+     var start_time = $("#start_time").val();
+     var end_time = $("#end_time").val();
      var pid=$('input:radio[name="testpaper_id"]:checked').val();
     // alert(paperid); 
-    if (start_time==''||end_time=='') {
+     if (start_time==''||end_time=='') {
         layer.msg('请选择测试时间',{icon:5});
           return false;
-    }else if(pid==null) {
+     }else if(pid==null) {
         layer.msg('请选择测试试卷',{icon:5});
         return false;
-    }
-    else{
+     }else if(new Date(start_time) > new Date(end_time)){
+         layer.msg('开始时间应该小于结束时间',{icon:5});
+         return false;
+     } else if(new Date(start_time)< new Date()){
+         layer.msg('开始时间应该大于现在时间',{icon:5});
+         return false;
+     }else{
         $.ajax({
-          url:"{:U('Home/courseclassMgr/coursepaper')}",
-          type: 'POST',
-          data: data.field,
-          error: function(request){
+           url:"{:U('Home/courseclassMgr/coursepaper')}",
+           type: 'POST',
+           data: data.field,
+           error: function(request){
             layer.msg("请求服务器超时", {time: 1000, icon: 5});
-          },
-          success: function(data){
-            if (data.success){
-              layer.msg('提交成功', {
-                time: 1000
-              }, function(){
-                parent.location.href="{:U('Home/courseclassMgr/courseclassList')}";
-              });
-            }else{
-              layer.msg(data.msg, {
-                time: 1000,icon:5
-              });
-            }
-          }
+           },
+           success: function(data){
+              if (data.success){
+                layer.msg('提交成功', {
+                  time: 1000
+                }, function(){
+                  parent.location.href="{:U('Home/courseclassMgr/courseclassList')}";
+                });
+              }else{
+                layer.msg(data.msg, {
+                  time: 1000,icon:5
+                });
+              }
+           }
         });
         return false;
  }
