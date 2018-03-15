@@ -339,6 +339,9 @@ class CourseclassMgrController extends HomeBaseController {
         if (sizeof($nowtest)==0) {
         	$ber3=1;
         }
+        $this->assign('accountname',session("accInfo")['name']);
+        $this->assign('account',session("accInfo")['account']);
+        $this->assign('account_type','admin');
         $this->assign('ber',$ber);
         $this->assign('ber2',$ber2);
         $this->assign('ber3',$ber3);
@@ -349,7 +352,7 @@ class CourseclassMgrController extends HomeBaseController {
 		$this->display();
 	}
 
-	//分配课堂测试，添加缓存，添加定时任务
+	//分配课堂测试，添加缓存，添加定时任务(未完成)
 	public function coursepaper(){
 		if (!IS_POST){
 			$data = array('success'=>false, 'msg'=>'提交方式不正确');

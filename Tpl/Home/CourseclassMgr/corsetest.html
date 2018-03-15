@@ -132,6 +132,9 @@
 </div>
 </div>
 <!-- <script src="__PUBLIC__/static/layui/layui.js"></script> -->
+<script type="text/javascript" src="__PUBLIC__/worker/js/swfobject.js"></script>
+<script type="text/javascript" src="__PUBLIC__/worker/js/web_socket.js"></script>
+<script type="text/javascript" src="__PUBLIC__/static/js/md5.js"></script>
 <script type="text/javascript">
     var editurl = "{:U('Home/courseclassMgr/edittest')}";
     var isurl = "{:U('Home/courseclassMgr/istest')}";
@@ -197,27 +200,30 @@ layui.use(['form','laydate','laypage','layer'], function(){
          layer.msg('开始时间应该大于现在时间',{icon:5});
          return false;
      }else{
-        $.ajax({
-           url:"{:U('Home/courseclassMgr/coursepaper')}",
-           type: 'POST',
-           data: data.field,
-           error: function(request){
-            layer.msg("请求服务器超时", {time: 1000, icon: 5});
-           },
-           success: function(data){
-              if (data.success){
-                layer.msg('提交成功', {
-                  time: 1000
-                }, function(){
-                  parent.location.href="{:U('Home/courseclassMgr/courseclassList')}";
-                });
-              }else{
-                layer.msg(data.msg, {
-                  time: 1000,icon:5
-                });
-              }
-           }
-        });
+
+         connect(pid,{"type":"addTimer"});
+
+        // $.ajax({
+        //    url:"{:U('Home/courseclassMgr/coursepaper')}",
+        //    type: 'POST',
+        //    data: data.field,
+        //    error: function(request){
+        //     layer.msg("请求服务器超时", {time: 1000, icon: 5});
+        //    },
+        //    success: function(data){
+        //       if (data.success){
+        //         layer.msg('提交成功', {
+        //           time: 1000
+        //         }, function(){
+        //           parent.location.href="{:U('Home/courseclassMgr/courseclassList')}";
+        //         });
+        //       }else{
+        //         layer.msg(data.msg, {
+        //           time: 1000,icon:5
+        //         });
+        //       }
+        //    }
+        // });
         return false;
  }
   });
@@ -307,5 +313,48 @@ $('.nowdel').on('click', function(){
   });
 
 });
+
+
+if (typeof console === undefined) {    this.console = { log: function (msg) {  } };}
+// 如果浏览器不支持websocket，会使用这个flash自动模拟websocket协议，此过程对开发者透明
+WEB_SOCKET_SWF_LOCATION = "/swf/WebSocketMain.swf";
+// 开启flash的websocket debug
+WEB_SOCKET_DEBUG = true;
+var ws;
+// 连接服务端
+function connect(pid,data) {
+    // 创建websocket
+    ws = new WebSocket("ws://"+document.domain+":7272");
+    // 当socket连接打开时，输入用户名
+    ws.onopen = function (){
+        console.log(ws);
+        // 登录
+        var params = {
+            'client_name':"{$accountname}",
+            'room_id':md5(pid*1234567+{$courseclassid}),
+            'account':"{$account}",
+            'account_type':"{$account_type}",
+            'type':"login",
+        };
+        var login_data = JSON.stringify(params);
+        console.log("websocket握手成功，发送登录数据:"+login_data);
+        ws.send(login_data);
+        ws.send(JSON.stringify(data));
+    };
+    // 当有消息时根据消息类型显示不同信息
+    ws.onmessage = function () {
+
+    };
+    ws.onclose = function() {
+        console.log("连接关闭，定时重连");
+        connect(pid);
+    };
+    ws.onerror = function() {
+        console.log("出现错误");
+    };
+}
+
+
+
 </script>
 

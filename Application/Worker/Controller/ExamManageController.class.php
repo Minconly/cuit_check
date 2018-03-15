@@ -7,14 +7,10 @@
  */
 namespace Worker\Controller;
 use Think\Controller;
-//use Common\Controller\StudentBaseController as stuControlller;
-use Predis\Autoloader;
-use Predis\Client;
 use \GatewayWorker\Lib\Gateway;
 
 
 class ExamManageController extends Controller{
-    protected  $redis;
 
     //设为作弊
     public function setCheat(){
@@ -106,5 +102,63 @@ class ExamManageController extends Controller{
         $this->ajaxReturn($arr,"JSON");
     }
 
+    //定时任务
+    /**
+     * 定时结束考试并且统计
+     * @param array  $data
+     */
+    public function timerFlishTest($data){
+        $cid = $data['courserclass_id'];
+        $pid = $data['testpaper_id'];
+        $stime = $data['start_time'];
+        $etime = $data['end_time'];
+        $tag = C('REDIS_TAG')['testinfo'].$cid.':'.$pid;
+
+        $redis = getRedis();
+
+        //获得获得某个行课班级
+        $studentList = D('Home/Testpaper')->getStuInfoByCid($cid,$pid);
+        echo "定时任务执行：".$studentList;
+//        foreach ($studentList as $key => $value){
+//            $singleData = [];
+//            $studentInfoTag = $tag.":".$value['account'].":studentTestingInfo";
+//            $studentAnswerTag = $tag.":".$value['account'].":studentAnswerLists";
+//            if($redis->exists($studentInfoTag)){
+//                //判断是否标记为作弊
+//                if($redis->hget($studentInfoTag,"is_cheat")==1){
+//                    break;
+//                }
+//                if($redis->exists($studentAnswerTag)){
+//                    break;
+//                }
+//                //获得所有回答的题
+//                $doQustionIds = $redis->hkeys($studentAnswerTag);
+//                //循环获得单条记录
+//                foreach ($doQustionIds as $key2 => $id) {
+//                    $singleData['student_id'] = $value['id'];
+//                    $singleData['testpaper_id'] = $pid;
+//                    $singleData['question_id'] = $id;
+//                    $singleData['answer_value'] = $redis->hget($studentAnswerTag,$id);
+//                    $isTrue = ($redis->hget($studentAnswerTag,$id)) == ($redis->hget($tag.":questionLists",$id));
+//                    $singleData['is_true'] = $isTrue;
+//                    $answerIds = D('answer')->where(['question_id'=>$id])->select();
+//                    if(count($answerIds) === 1){
+//                        $singleData['answer_id'] = $answerIds[0]['id'];
+//                    }else if(count($answerIds) > 1){
+//                        $singleData['answer_id'] = $singleData['answer_value'];
+//                    }else{
+//                        break;
+//                    }
+//                    if(!D('testFinal')->data($singleData)->add()){
+//                        break;
+//                    }
+//                }
+//
+//            }else{
+//                break;
+//            }
+//        }
+
+    }
 
 }

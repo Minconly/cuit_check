@@ -3846,3 +3846,92 @@ Stack trace:
 2018-03-14 22:17:28 pid:4334 Workerman[index.php] start in DEBUG mode
 2018-03-15 00:54:56 pid:4334 Workerman[index.php] stopping ...
 2018-03-15 00:54:56 pid:4334 Workerman[index.php] has been stopped
+2018-03-15 10:35:23 pid:3324 Workerman[index.php] start in DEBUG mode
+2018-03-15 18:21:12 pid:15638 Workerman[index.php] start in DEBUG mode
+2018-03-15 18:21:13 pid:15647 ArgumentCountError: Too few arguments to function Events::onMessage(), 2 passed and exactly 3 expected in /opt/lampp/htdocs/cuit_check/Application/Worker/Controller/Events.php:20
+Stack trace:
+#0 [internal function]: Events::onMessage('7f00000108fe000...', '{"client_name":...')
+#1 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/GatewayWorker/BusinessWorker.class.php(384): call_user_func('Events::onMessa...', '7f00000108fe000...', '{"client_name":...')
+#2 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#3 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Connection/TcpConnection.class.php(657): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#4 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #66)
+#5 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Events/Select.class.php(286): call_user_func_array(Array, Array)
+#6 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Worker.class.php(2102): Workerman\Events\Select->loop()
+#7 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/GatewayWorker/BusinessWorker.class.php(190): Workerman\Worker->run()
+#8 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Worker.class.php(1300): GatewayWorker\BusinessWorker->run()
+#9 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Worker.class.php(1133): Workerman\Worker::forkOneWorkerForLinux(Object(GatewayWorker\BusinessWorker))
+#10 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Worker.class.php(1106): Workerman\Worker::forkWorkersForLinux()
+#11 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Worker.class.php(459): Workerman\Worker::forkWorkers()
+#12 /opt/lampp/htdocs/cuit_check/Application/Worker/Controller/IndexController.class.php(62): Workerman\Worker::runAll()
+#13 [internal function]: Worker\Controller\IndexController->index()
+#14 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Think/App.class.php(173): ReflectionMethod->invoke(Object(Worker\Controller\IndexController))
+#15 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Think/App.class.php(110): Think\App::invokeAction(Object(Worker\Controller\IndexController), 'index')
+#16 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Think/App.class.php(204): Think\App::exec()
+#17 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Think/Think.class.php(120): Think\App::run()
+#18 /opt/lampp/htdocs/cuit_check/ThinkPHP/ThinkPHP.php(97): Think\Think::start()
+#19 /opt/lampp/htdocs/cuit_check/index.php(33): require('/opt/lampp/htdo...')
+#20 {main}
+2018-03-15 18:21:13 pid:15647 Worker process terminated
+2018-03-15 18:21:13 pid:15638 worker[ChatBusinessWorker:15647] exit with status 64000
+2018-03-15 18:21:32 pid:15650 ArgumentCountError: Too few arguments to function Events::onMessage(), 2 passed and exactly 3 expected in /opt/lampp/htdocs/cuit_check/Application/Worker/Controller/Events.php:20
+Stack trace:
+#0 [internal function]: Events::onMessage('7f00000108fe000...', '{"type":"pong"}')
+#1 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/GatewayWorker/BusinessWorker.class.php(384): call_user_func('Events::onMessa...', '7f00000108fe000...', '{"type":"pong"}')
+#2 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#3 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Connection/TcpConnection.class.php(657): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#4 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #67)
+#5 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Events/Select.class.php(286): call_user_func_array(Array, Array)
+#6 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Worker.class.php(2102): Workerman\Events\Select->loop()
+#7 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/GatewayWorker/BusinessWorker.class.php(190): Workerman\Worker->run()
+#8 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Worker.class.php(1300): GatewayWorker\BusinessWorker->run()
+#9 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Worker.class.php(1133): Workerman\Worker::forkOneWorkerForLinux(Object(GatewayWorker\BusinessWorker))
+#10 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Worker.class.php(1106): Workerman\Worker::forkWorkersForLinux()
+#11 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Worker.class.php(1432): Workerman\Worker::forkWorkers()
+#12 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Worker.class.php(1381): Workerman\Worker::monitorWorkersForLinux()
+#13 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Worker.class.php(461): Workerman\Worker::monitorWorkers()
+#14 /opt/lampp/htdocs/cuit_check/Application/Worker/Controller/IndexController.class.php(62): Workerman\Worker::runAll()
+#15 [internal function]: Worker\Controller\IndexController->index()
+#16 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Think/App.class.php(173): ReflectionMethod->invoke(Object(Worker\Controller\IndexController))
+#17 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Think/App.class.php(110): Think\App::invokeAction(Object(Worker\Controller\IndexController), 'index')
+#18 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Think/App.class.php(204): Think\App::exec()
+#19 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Think/Think.class.php(120): Think\App::run()
+#20 /opt/lampp/htdocs/cuit_check/ThinkPHP/ThinkPHP.php(97): Think\Think::start()
+#21 /opt/lampp/htdocs/cuit_check/index.php(33): require('/opt/lampp/htdo...')
+#22 {main}
+2018-03-15 18:21:32 pid:15650 Worker process terminated
+2018-03-15 18:21:32 pid:15638 worker[ChatBusinessWorker:15650] exit with status 64000
+2018-03-15 18:21:39 pid:15638 Workerman[index.php] stopping ...
+2018-03-15 18:21:39 pid:15644 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2018-03-15 18:21:39 pid:15638 Workerman[index.php] has been stopped
+2018-03-15 18:22:55 pid:15811 Workerman[index.php] start in DEBUG mode
+2018-03-15 18:56:32 pid:15822 Error: Class 'Timer' not found in /opt/lampp/htdocs/cuit_check/Application/Worker/Controller/Events.php:145
+Stack trace:
+#0 [internal function]: Events::onMessage('7f00000108fd000...', '{"type":"addTim...')
+#1 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/GatewayWorker/BusinessWorker.class.php(384): call_user_func('Events::onMessa...', '7f00000108fd000...', '{"type":"addTim...')
+#2 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#3 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Connection/TcpConnection.class.php(657): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#4 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #63)
+#5 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Events/Select.class.php(286): call_user_func_array(Array, Array)
+#6 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Worker.class.php(2102): Workerman\Events\Select->loop()
+#7 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/GatewayWorker/BusinessWorker.class.php(190): Workerman\Worker->run()
+#8 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Worker.class.php(1300): GatewayWorker\BusinessWorker->run()
+#9 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Worker.class.php(1133): Workerman\Worker::forkOneWorkerForLinux(Object(GatewayWorker\BusinessWorker))
+#10 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Worker.class.php(1106): Workerman\Worker::forkWorkersForLinux()
+#11 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Workerman/Worker.class.php(459): Workerman\Worker::forkWorkers()
+#12 /opt/lampp/htdocs/cuit_check/Application/Worker/Controller/IndexController.class.php(62): Workerman\Worker::runAll()
+#13 [internal function]: Worker\Controller\IndexController->index()
+#14 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Think/App.class.php(173): ReflectionMethod->invoke(Object(Worker\Controller\IndexController))
+#15 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Think/App.class.php(110): Think\App::invokeAction(Object(Worker\Controller\IndexController), 'index')
+#16 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Think/App.class.php(204): Think\App::exec()
+#17 /opt/lampp/htdocs/cuit_check/ThinkPHP/Library/Think/Think.class.php(120): Think\App::run()
+#18 /opt/lampp/htdocs/cuit_check/ThinkPHP/ThinkPHP.php(97): Think\Think::start()
+#19 /opt/lampp/htdocs/cuit_check/index.php(33): require('/opt/lampp/htdo...')
+#20 {main}
+2018-03-15 18:56:32 pid:15822 Worker process terminated
+2018-03-15 18:56:32 pid:15811 worker[ChatBusinessWorker:15822] exit with status 64000
+2018-03-15 18:58:38 pid:15811 Workerman[index.php] stopping ...
+2018-03-15 18:58:38 pid:15811 Workerman[index.php] has been stopped
+2018-03-15 18:58:41 pid:19792 Workerman[index.php] start in DEBUG mode
+2018-03-15 19:00:20 pid:19801 Worker process terminated
+2018-03-15 19:00:59 pid:19792 Workerman[index.php] stopping ...
+2018-03-15 19:00:59 pid:19792 Workerman[index.php] has been stopped

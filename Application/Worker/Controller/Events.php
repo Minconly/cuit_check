@@ -1,5 +1,6 @@
 <?php
 use \GatewayWorker\Lib\Gateway;
+use Workerman\Lib\Timer;
 
 /**
  * 监听和消息推送主逻辑代码
@@ -134,6 +135,17 @@ class Events
                     'time'=>date('Y-m-d H:i:s'),
                 );
                 return Gateway::sendToGroup($room_id ,json_encode($new_message));
+            case 'addTimer':
+//                $cid = $message_data['courserclass_id'];
+//                $pid = $message_data['testpaper_id'];
+//                $stime = $message_data['start_time'];
+                $etime = $message_data['end_time'];
+                //获得当前时间距离考试结束的时间(s)
+                $duringTime = strtotime($etime)-time();
+                echo "建立一个定时任务在10后执行";
+                Timer::add(10, array(new \Worker\Controller\ExamManageController(), 'timerFlishTest'), array($message_data), false);
+
+                return;
         }
     }
 

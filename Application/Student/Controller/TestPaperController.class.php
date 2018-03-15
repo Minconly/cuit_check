@@ -166,7 +166,8 @@ class TestPaperController extends StudentBaseController {
                     'LastIp' => get_ip(),
                     'LastLoction' => json_encode(getCity(get_client_ip(0))),
                     'fistInTime' => date('Y-m-d H:i:s',time()),
-                    'lastOutTime' =>  date('Y-m-d H:i:s',time())
+                    'lastOutTime' =>  date('Y-m-d H:i:s',time()),
+                    'isOver' => 0
                 );
                 if(!$data['account']){
                     $this->error("登录账号过期！","/cuit_check/Student/indexMgr/index.html",3);
@@ -208,8 +209,6 @@ class TestPaperController extends StudentBaseController {
         }
 
     }
-
-
 
 
 
