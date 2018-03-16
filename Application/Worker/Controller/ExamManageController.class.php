@@ -117,8 +117,10 @@ class ExamManageController extends Controller{
         $redis = getRedis();
 
         //获得获得某个行课班级
-        $studentList = D('Home/Testpaper')->getStuInfoByCid($cid,$pid);
-        echo "定时任务执行：".$studentList;
+        echo '$cid,$pid=======>'.$cid."  ".$pid."      ".var_dump($data);
+        $studentList = D('Home/courseclass')->getStuInfoByCid($cid,$pid);
+//        echo "定时任务执行：";
+        echo var_dump($studentList)."55";
 //        foreach ($studentList as $key => $value){
 //            $singleData = [];
 //            $studentInfoTag = $tag.":".$value['account'].":studentTestingInfo";

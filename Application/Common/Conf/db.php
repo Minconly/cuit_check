@@ -16,7 +16,7 @@ return array(
     'DB_USER'   =>   'root',
     //密码
     //'DB_PWD'    =>  '201607',
-   'DB_HOST'   =>  '119.29.100.113:3306',
+   'DB_HOST'   =>  '119.29.100.113',
    //'DB_USER'   =>   'root',
    'DB_PWD'    =>  'xjm1261391514',
     //端口

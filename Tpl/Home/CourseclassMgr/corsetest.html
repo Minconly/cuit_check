@@ -182,7 +182,7 @@ layui.use(['form','laydate','laypage','layer'], function(){
     };
 
   form.on('submit(test_btn)', function(data) {
-     var courseid = $("#id").val();
+     var courseid = $("#courserclass_id").val();
      var start_time = $("#start_time").val();
      var end_time = $("#end_time").val();
      var pid=$('input:radio[name="testpaper_id"]:checked').val();
@@ -201,7 +201,7 @@ layui.use(['form','laydate','laypage','layer'], function(){
          return false;
      }else{
 
-         connect(pid,{"type":"addTimer"});
+         connect(pid,{"type":"addTimer","courserclass_id":courseid,"testpaper_id":pid,"start_time":start_time,"end_time":end_time});
 
         // $.ajax({
         //    url:"{:U('Home/courseclassMgr/coursepaper')}",
@@ -339,6 +339,8 @@ function connect(pid,data) {
         var login_data = JSON.stringify(params);
         console.log("websocket握手成功，发送登录数据:"+login_data);
         ws.send(login_data);
+        console.log("websocket握手成功，发送登录数据:"+JSON.stringify(data));
+
         ws.send(JSON.stringify(data));
     };
     // 当有消息时根据消息类型显示不同信息
