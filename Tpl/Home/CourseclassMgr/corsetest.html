@@ -201,29 +201,30 @@ layui.use(['form','laydate','laypage','layer'], function(){
          return false;
      }else{
 
-         connect(pid,{"type":"addTimer","courserclass_id":courseid,"testpaper_id":pid,"start_time":start_time,"end_time":end_time});
 
-        // $.ajax({
-        //    url:"{:U('Home/courseclassMgr/coursepaper')}",
-        //    type: 'POST',
-        //    data: data.field,
-        //    error: function(request){
-        //     layer.msg("请求服务器超时", {time: 1000, icon: 5});
-        //    },
-        //    success: function(data){
-        //       if (data.success){
-        //         layer.msg('提交成功', {
-        //           time: 1000
-        //         }, function(){
-        //           parent.location.href="{:U('Home/courseclassMgr/courseclassList')}";
-        //         });
-        //       }else{
-        //         layer.msg(data.msg, {
-        //           time: 1000,icon:5
-        //         });
-        //       }
-        //    }
-        // });
+        $.ajax({
+           url:"{:U('Home/courseclassMgr/coursepaper')}",
+           type: 'POST',
+           data: data.field,
+           error: function(request){
+            layer.msg("请求服务器超时", {time: 1000, icon: 5});
+           },
+           success: function(data){
+              if (data.success){
+                layer.msg('提交成功', {
+                  time: 1000
+                }, function(){
+                    //todo:
+                    // connect(pid,{"type":"addTimer","courserclass_id":courseid,"testpaper_id":pid,"start_time":start_time,"end_time":end_time});
+                    window.location.reload();
+                });
+              }else{
+                layer.msg(data.msg, {
+                  time: 1000,icon:5
+                });
+              }
+           }
+        });
         return false;
  }
   });
@@ -340,8 +341,10 @@ function connect(pid,data) {
         console.log("websocket握手成功，发送登录数据:"+login_data);
         ws.send(login_data);
         console.log("websocket握手成功，发送登录数据:"+JSON.stringify(data));
+        data["room_id"] = params.room_id;
 
         ws.send(JSON.stringify(data));
+        ws.close();
     };
     // 当有消息时根据消息类型显示不同信息
     ws.onmessage = function () {
@@ -349,7 +352,7 @@ function connect(pid,data) {
     };
     ws.onclose = function() {
         console.log("连接关闭，定时重连");
-        connect(pid);
+        // connect(pid);
     };
     ws.onerror = function() {
         console.log("出现错误");

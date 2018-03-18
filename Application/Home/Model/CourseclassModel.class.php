@@ -269,7 +269,7 @@ Class courseclassModel extends Model{
         $list = M('ClassStudent')->alias('cst')->where(['courseclass_id'=>$cid])
             ->field('kh_student.name,kh_student.id,cst.account,kh_student.photo')
             ->join('left join kh_student on kh_student.account = cst.account')
-            ->join('left join kh_cheat kc on kh_student.account = cst.account')
+//            ->join('left join kh_cheat kc on kh_student.account = kh_cheat.account')
             ->select();
 
         foreach ($list as &$value){

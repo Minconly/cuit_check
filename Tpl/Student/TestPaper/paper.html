@@ -197,13 +197,14 @@
 <script type="text/javascript">
     var index = '{:U("Student/IndexMgr/index")}';
     var untilTime = "{$paperInfo.end_time}";
-    var CheckAnswer = '{:U("Student/testPaper/CheckAnswer")}';
+    var commitAnswer = '{:U("Student/testPaper/commitAnswer")}';
     var paper_id = "{$paperInfo.id}";
     var course_id = "{$course_id}"
     var setRedisUrl = '{:U("Student/StudentApi/setAnswer")}';
     var serverTimeUrl = '{:U("Student/StudentApi/serverTime")}';
     var getAnswerUrl = '{:U("Student/StudentApi/getAnswer")}';
     var testPage = "{:U('Student/TestPaper/paper')}";
+    var isGetAutoCommitMsg = false;
 
 </script>
 <layuijs/>
@@ -294,6 +295,40 @@
                         //强行退出当场考试
                         layer.alert(data['message']);
                         setTimeout(function(){location.href = "{:U('getOut')}"},2000);
+                        break;
+                    case 'testOver':
+                        isGetAutoCommitMsg = true;
+                        $('#alert_text').html("考试时间已到!");
+                        console.log("考试时间已到!");
+                        layer.confirm(data["msg"], {
+                            btn: ['确定', '取消']
+                        }, function(){
+                            $.ajax({
+                                url: "",
+                                type: 'POST',
+                                dataType: 'json',
+                                data: {'id': id},
+                                error: function(request){
+                                    layer.msg("请求服务器超时", {time: 1000, icon: 5});
+                                },
+                                success: function(data){
+                                    if (data.success){
+                                        layer.msg(data.msg, {
+                                            time: 1000
+                                        }, function(){
+                                            location.reload();
+                                        });
+                                    }else{
+                                        layer.msg(data.msg, {
+                                            time: 1000
+                                        });
+                                    }
+                                }
+                            });
+
+                        },function () {
+                            
+                        });
                         break;
                 }
             }

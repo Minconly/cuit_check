@@ -142,10 +142,9 @@ class Events
                 $etime = $message_data['end_time'];
                 //获得当前时间距离考试结束的时间(s)
                 $duringTime = strtotime($etime)-time();
-                echo "建立一个定时任务在3s后执行";
+                echo "建立一个定时任务在". $duringTime." s后执行";
                 echo $message_data['courserclass_id']."-----".$message_data['testpaper_id']."";
-                Timer::add(120, array(new \Worker\Controller\ExamManageController(), 'timerFlishTest'), array($message_data), false);
-
+                Timer::add($duringTime, array(new \Worker\Controller\ExamManageController(), 'timerFlishTest'), array($message_data), false);
                 return;
         }
     }

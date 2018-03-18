@@ -10,6 +10,7 @@ use Think\Controller;
 use \GatewayWorker\Lib\Gateway;
 
 
+
 class ExamManageController extends Controller{
 
     //设为作弊
@@ -112,54 +113,74 @@ class ExamManageController extends Controller{
         $pid = $data['testpaper_id'];
         $stime = $data['start_time'];
         $etime = $data['end_time'];
+        $room_id = $data['room_id'];
         $tag = C('REDIS_TAG')['testinfo'].$cid.':'.$pid;
 
         $redis = getRedis();
 
         //获得获得某个行课班级
-        echo '$cid,$pid=======>'.$cid."  ".$pid."      ".var_dump($data);
+        echo "定时任务执行：timerFlishTest";
+        echo var_dump($data);
+
+        //发送考试结束消息
+        Gateway::sendToGroup($room_id,json_encode(array("type"=>"testOver","msg"=>"考试已经结束，是否查看结果？")));
+
         $studentList = D('Home/courseclass')->getStuInfoByCid($cid,$pid);
-//        echo "定时任务执行：";
-        echo var_dump($studentList)."55";
-//        foreach ($studentList as $key => $value){
-//            $singleData = [];
-//            $studentInfoTag = $tag.":".$value['account'].":studentTestingInfo";
-//            $studentAnswerTag = $tag.":".$value['account'].":studentAnswerLists";
-//            if($redis->exists($studentInfoTag)){
-//                //判断是否标记为作弊
-//                if($redis->hget($studentInfoTag,"is_cheat")==1){
-//                    break;
-//                }
-//                if($redis->exists($studentAnswerTag)){
-//                    break;
-//                }
-//                //获得所有回答的题
-//                $doQustionIds = $redis->hkeys($studentAnswerTag);
-//                //循环获得单条记录
-//                foreach ($doQustionIds as $key2 => $id) {
-//                    $singleData['student_id'] = $value['id'];
-//                    $singleData['testpaper_id'] = $pid;
-//                    $singleData['question_id'] = $id;
-//                    $singleData['answer_value'] = $redis->hget($studentAnswerTag,$id);
-//                    $isTrue = ($redis->hget($studentAnswerTag,$id)) == ($redis->hget($tag.":questionLists",$id));
-//                    $singleData['is_true'] = $isTrue;
-//                    $answerIds = D('answer')->where(['question_id'=>$id])->select();
-//                    if(count($answerIds) === 1){
-//                        $singleData['answer_id'] = $answerIds[0]['id'];
-//                    }else if(count($answerIds) > 1){
-//                        $singleData['answer_id'] = $singleData['answer_value'];
-//                    }else{
-//                        break;
-//                    }
-//                    if(!D('testFinal')->data($singleData)->add()){
-//                        break;
-//                    }
-//                }
-//
-//            }else{
-//                break;
-//            }
-//        }
+
+        foreach ($studentList as $key => $value){
+            $singleData = [];
+            $studentInfoTag = $tag.":".$value['account'].":studentTestingInfo";
+            $studentAnswerTag = $tag.":".$value['account'].":studentAnswerLists";
+            if($redis->exists($studentInfoTag)){
+                //判断是否标记为作弊
+                if($redis->hget($studentInfoTag,"is_cheat")==1){
+                    break;
+                }
+                //判断是否已经提交
+                if($redis->hget($studentInfoTag,"isOver")==1){
+                    break;
+                }else{
+                    $redis->hset($studentInfoTag,"isOver",1);
+                }
+                //判断是否存在作答
+                if(!$redis->exists($studentAnswerTag)){
+                    break;
+                }
+                //获得所有回答的题
+                $doQustionIds = $redis->hkeys($studentAnswerTag);
+                //循环获得单条记录
+                $total = 0;
+                foreach ($doQustionIds as $key2 => $id) {
+                    $singleData['student_id'] = $value['id'];
+                    $singleData['testpaper_id'] = $pid;
+                    $singleData['question_id'] = $id;
+                    $singleData['answer_value'] = $redis->hget($studentAnswerTag,$id);
+                    $isTrue = ($redis->hget($studentAnswerTag,$id)) == ($redis->hget($tag.":questionLists",$id));
+                    $singleData['is_true'] = $isTrue;
+                    $answerIds = D('answer')->where(['question_id'=>$id])->select();
+                    if(count($answerIds) === 1){
+                        $singleData['answer_id'] = $answerIds[0]['id'];
+                    }else if(count($answerIds) > 1){
+                        $answerIds2 = D('answer')->where(['question_id' => $id,"content"=>$singleData['answer_value']])->select();
+                        $singleData['answer_id'] = $answerIds2[0]['id'];
+                    }else{
+                        break;
+                    }
+                    if(!D('testFinal')->data($singleData)->add()){
+                        break;
+                    }
+                    if($isTrue){
+                        $val = $redis->hget($tag.":questionValue",$id);
+                        $total += intval($val);
+                    }
+                }
+                // 存入最终成绩
+                D('score')->saveScore($value['account'], $pid, $total);
+
+            }else{
+                break;
+            }
+        }
 
     }
 

@@ -217,7 +217,7 @@
                 .modal('show')
             ;
         }else {
-            postAnswer("提交试卷成功!");
+            postAnswer("提交试卷？");
         }
     });
 
@@ -242,24 +242,42 @@
     }
 
     // post the answer
+    /*
+        $cid = I("post.courserclass_id");
+        $pid = I("post.testpaper_id");
+    * */
     function postAnswer(str="时间已到,试卷已经提交!"){
+        if(isGetAutoCommitMsg){
+            return;
+        }
         var storage = window.localStorage;
         $('#alert_text').html(str);
-        $.post(CheckAnswer, {'answer':JSON.stringify(storage), 'testpaper_id':paper_id}, function(data){
-            if(data === true){
-                $('.small.modal')
-                .modal({
-                    onApprove : function(){
-                        window.location.href = index;   
-                    },
-                })
-                .modal('show')
-                ;
-            }else{
-                alert("成绩已经存在!");
-                window.location.href = index;
-            }
-        });
+
+        $('.small.modal')
+            .modal({
+                onApprove : function(){
+                    $.post(commitAnswer, {'courserclass_id':course_id, 'testpaper_id':paper_id}, function(data){
+                        $('#alert_text').html(data["msg"]);
+                        if(data.status === true){
+                            $('.small.modal')
+                                .modal({
+                                    onApprove : function(){
+                                        window.location.href = index;
+                                    },
+                                })
+                                .modal('show');
+                        }else{
+                            $('.small.modal').modal({
+                                onApprove : function(){
+                                    window.location.href = index;
+                                },
+                            }).modal('show');
+                            window.location.reload();
+                        }
+                    });
+                },
+            })
+            .modal('show');
 
         storage.clear();
     }

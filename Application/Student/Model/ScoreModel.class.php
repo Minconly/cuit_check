@@ -33,20 +33,13 @@ class ScoreModel extends Model{
 	 * @param     [type]                   $checkArr     [description]
 	 * @return    [type]                                 [description]
 	 */
-	public function saveScore($account, $testpaper_id, $checkArr) {
+	public function saveScore($account, $testpaper_id,$score) {
 		$map['account'] = $account;
 		$map['testpaper_id'] = $testpaper_id;
 		$map['del_flag'] = 1;
-		$map['score'] = 0;
+		$map['score'] = $score;
 		$map['create_date'] = date('y-m-d h:i:s',time());
-		foreach ($checkArr as $key => $value) {
-			// 如果答案正确
-			if($value['is_true'] == 1 ){
-				$map['score'] += M('paper_question')
-							->where(array('testpaper_id' => $testpaper_id, 'question_id' => $key))
-							->getField('value');
-			}
-		}
+		$map['create_by'] = "system";
 		$this->add($map);
 	}
 

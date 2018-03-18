@@ -352,7 +352,7 @@ class CourseclassMgrController extends HomeBaseController {
 		$this->display();
 	}
 
-	//分配课堂测试，添加缓存，添加定时任务(未完成)
+	//分配课堂测试，添加缓存，添加定时任务(未完成)v
 	public function coursepaper(){
 		if (!IS_POST){
 			$data = array('success'=>false, 'msg'=>'提交方式不正确');

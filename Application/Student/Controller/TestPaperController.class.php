@@ -213,39 +213,91 @@ class TestPaperController extends StudentBaseController {
 
 
     /**
-     * 检验试题答案
+     * 提交答案
      * @function
      * @AuthorPJY
      * @DateTime  2017-07-22T15:56:04+0800
      */
-    public function CheckAnswer(){
-        $answer = I('post.answer');                         // 问题信息
-        $testpaper_id = I('post.testpaper_id');             // 试卷id
-        $student_id = M('student')
-                    ->where(array('account'=>session('stu_account')))->getField('id');
-        $question_answer = [];
-        $status = true;
+    public function commitAnswer()
+    {
 
-        // 格式化为 问题id=>答案信息
-        foreach ($answer as $key => $value) {
-            $question = explode("question_", $key);
-            $question_id = $question[1];                    // 问题id
-            $question_answer[$question_id] = $value;        // 答案内容(选择题为id, 判断题为T,F 填空题为内容)
-                             
+        $cid = I("post.courserclass_id");
+        $pid = I("post.testpaper_id");
+        $tag = C('REDIS_TAG')['testinfo'] . $cid . ':' . $pid;
+        $redis = $this->getRedis();
+
+        $account = session('stu_account');
+
+        //获得学生id
+        $student_id = M('student')->where(array('account' => session('stu_account')))->getField('id');
+        if (!$student_id) {
+            $this->ajaxReturn(["status" => false, "msg" => "提交出错"]);
         }
 
-        // 如果成绩存在则不进行保存
-        $score = M('score')->where(array('account'=>session('stu_account'), 'testpaper_id'=>$testpaper_id))->getField('score');
-        if($score != NULL) {
-            $status = false;
-        }else{
-            $checkArr = D('answer')->checkAnswer($question_answer);                     // 检验答案
-            $info = D('testFinal')->saveAnswer($testpaper_id, $student_id, $checkArr);                   // 存入答案
-            $score = D('score')->saveScore(session('stu_account'), $testpaper_id, $checkArr);                        // 存入最终成绩 
+        $singleData = [];
+        $studentInfoTag = $tag . ":" . $account . ":studentTestingInfo";
+        $studentAnswerTag = $tag . ":" . $account . ":studentAnswerLists";
+
+
+        if ($redis->exists($studentInfoTag)) {
+            //判断是否标记为作弊
+            if ($redis->hget($studentInfoTag, "is_cheat") == 1) {
+                $this->ajaxReturn(["status" => false, "msg" => "已被标记为作弊"]);
+                return;
+            }
+            //判断是否已经提交
+            if ($redis->hget($studentInfoTag, "isOver") == 1) {
+                $this->ajaxReturn(["status" => false, "msg" => "已提交过"]);
+                return;
+            } else {
+                $redis->hset($studentInfoTag, "isOver", 1);
+            }
+
+            //判断是否存在作答
+            if ($redis->exists($studentAnswerTag)) {
+
+            }
+            //获得所有回答的题
+            $doQustionIds = $redis->hkeys($studentAnswerTag);
+            //循环获得单条记录
+
+            $total = 0;
+
+            foreach ($doQustionIds as $key2 => $id) {
+                $singleData['student_id'] = $student_id;
+                $singleData['testpaper_id'] = $pid;
+                $singleData['question_id'] = $id;
+                $singleData['answer_value'] = $redis->hget($studentAnswerTag, $id);
+                $isTrue = ($redis->hget($studentAnswerTag, $id)) == ($redis->hget($tag . ":questionLists", $id));
+                $singleData['is_true'] = $isTrue;
+                $answerIds = D('answer')->where(['question_id' => $id])->select();
+                if (count($answerIds) === 1) {
+                    $singleData['answer_id'] = $answerIds[0]['id'];
+                } else if (count($answerIds) > 1) {
+                    $answerIds2 = D('answer')->where(['question_id' => $id,"content"=>$singleData['answer_value']])->select();
+                    $singleData['answer_id'] = $answerIds2[0]['id'];
+                } else {
+                    break;
+                }
+                if (!D('testFinal')->data($singleData)->add()) {
+                    break;
+                }
+                if ($isTrue) {
+                    $val = $redis->hget($tag . ":questionValue", $id);
+                    $total += intval($val);
+                }
+            }
+
+            // 存入最终成绩
+            D('score')->saveScore(session('stu_account'), $pid, $total);
+
+            $this->ajaxReturn(["status" => true, "msg" => "提交成功，是否查看结果？"]);
+            return;
+        } else {
+            $this->ajaxReturn(["status" => false, "msg" => "你未参与过考试！"]);
+            return;
         }
 
-
-            $this->ajaxReturn($status);               
     }
 
     public function getOUt(){
