@@ -2,10 +2,7 @@
 namespace Worker\Controller;
 use Think\Controller;
 use Workerman\Worker;
-use Workerman\WebServer;
-use Workerman\Lib\Timer;
 use \GatewayWorker\Gateway;
-use \GatewayWorker\Register;
 use \GatewayWorker\BusinessWorker;
 
 

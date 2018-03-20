@@ -144,7 +144,21 @@ class Events
                 $duringTime = strtotime($etime)-time();
                 echo "建立一个定时任务在". $duringTime." s后执行";
                 echo $message_data['courserclass_id']."-----".$message_data['testpaper_id']."";
-                Timer::add($duringTime, array(new \Worker\Controller\ExamManageController(), 'timerFlishTest'), array($message_data), false);
+                $workRoomId = Timer::add($duringTime, array(new \Worker\Controller\ExamManageController(), 'timerFlishTest'), array($message_data), false);
+                echo "定时任务id".$workRoomId;
+                $redis = getRedis('PREDIS_OPTIONS_SYS');
+                $redis->set("worker:".$message_data['room_id'],$workRoomId,'EX',$duringTime);
+                return;
+            case 'delTimer':
+                $cid = $message_data['cid'];
+                $pid = $message_data['pid'];
+                $redis = getRedis('PREDIS_OPTIONS_SYS');
+                echo "取消定时任务"."worker:".md5($pid*1234567+$cid)."";
+                $redis = getRedis('PREDIS_OPTIONS_SYS');
+                if(!Timer::del($redis->get("worker:".md5($pid*1234567+$cid)))){
+                    return;
+                }
+                $redis->del(array("worker:".md5($pid*1234567+$cid)));
                 return;
         }
     }

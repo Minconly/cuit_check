@@ -391,7 +391,8 @@ class CourseclassMgrController extends HomeBaseController {
 		}
 		$this->ajaxReturn($data, 'json');
 	}
-	public function istest(){
+	//判断是否在测试中
+	public function isTesting(){
 		$id=I('id');
 		$start_time=I('time');
 		date_default_timezone_set('prc');
@@ -442,12 +443,20 @@ class CourseclassMgrController extends HomeBaseController {
 		if (!IS_POST){
 			$data = array('success'=>false, 'msg'=>'提交方式不正确');
 		}else{
-		$paper=M('paper_courserclass');
-		$map['testpaper_id']=I('id');
-		$map['courserclass_id']=I('courseclassid');
-		$savedata['del_flag']='0';
-		$paper->where($map)->save($savedata);
-		$data['success']=true;
+		    $redis = getRedis();
+            $paper=M('paper_courserclass');
+            $map['testpaper_id']=I('id');
+            $map['courserclass_id']=I('courseclassid');
+            $savedata['del_flag']='0';
+            if($paper->where($map)->delete()){
+                $tag = "TestInfo:".I('courseclassid').":".I('id');
+                $redis->del(array($tag));
+                $redis->del(array($tag.":questionLists"));
+                $redis->del(array($tag.":questionValue"));
+                $data['success']=true;
+            }else{
+                $data['success']=false;
+            }
 		}
 		$this->ajaxReturn($data, 'json');
 	}
