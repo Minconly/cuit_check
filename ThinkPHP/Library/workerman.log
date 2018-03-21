@@ -4062,3 +4062,8 @@ Stack trace:
 2018-03-18 16:00:41 pid:10139 Workerman[index.php] start in DEBUG mode
 2018-03-19 00:23:07 pid:10139 Workerman[index.php] stopping ...
 2018-03-19 00:23:07 pid:10139 Workerman[index.php] has been stopped
+2018-03-21 10:51:01 pid:10105 Workerman[index.php] start in DEBUG mode
+2018-03-21 11:11:58 pid:10105 Workerman[index.php] stopping ...
+2018-03-21 11:11:58 pid:10110 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://wiki.workerman.net/Error3 for detail
+2018-03-21 11:11:58 pid:10105 Workerman[index.php] has been stopped
+2018-03-21 11:11:59 pid:12905 Workerman[index.php] start in DAEMON mode

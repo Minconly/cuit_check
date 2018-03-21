@@ -140,13 +140,13 @@
             }else {
                 var paperId = $(this).data('id');
                 //弹出即全屏
-                var index1 = parent.layer.open({
+                var index1 = layer.open({
                     type: 2,
                     title: ['   详细信息', 'text-align:center;'],
                     content: detailurl+"?paperId="+paperId+"&courseclass_id="+courseclass_id,
                     maxmin: true,
                 });
-                parent.layer.full(index1);
+                layer.full(index1);
             }
         });
     });
