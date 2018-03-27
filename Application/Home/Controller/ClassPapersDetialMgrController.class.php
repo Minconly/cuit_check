@@ -176,6 +176,7 @@ class ClassPapersDetialMgrController extends HomeBaseController{
         $map5['question_id']=array('in',$questionids);
         $knowlege=M('question_know')->field('knowledge_id')->where($map5)->select();
         $knowlegeids=array_column($knowlege,'knowledge_id');
+
         //获取章节id
         $map6['del_flag']=array('eq','1');
         $map6['id']=array('in',$knowlegeids);
@@ -207,7 +208,6 @@ class ClassPapersDetialMgrController extends HomeBaseController{
     	$testDbIds = I("ids","");
         $testpaper_id = I("testpaper_id", "");
         $chapterIds = I("chs", "");
-        // p($chapterIds);die();
         $list = D('PaperDetial')->queryList($testDbIds,$chapterIds,$testpaper_id);
         $courseList = D('Course')->getAllList();
 

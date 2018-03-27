@@ -169,8 +169,12 @@ class PaperDetialModel extends Model{
 	}
 
 	public function getchapter($question_id){
+
 		$map5['question_id']=array('eq',$question_id);
         $knowlege=M('question_know')->field('knowledge_id')->where($map5)->select();
+        if ($knowlege == null || $knowlege == ''){
+            return '';
+        }
         $knowlegeids=array_column($knowlege,'knowledge_id');
         //获取章节id
         $map6['del_flag']=array('eq','1');
@@ -178,11 +182,7 @@ class PaperDetialModel extends Model{
         $Chapter=M('knowledge')->field('chapter_id')->where($map6)->select();
         $Chapterids=array_column($Chapter,'chapter_id');
         
-        // p($Chapter);die();
 
-        // $lessionids=array_column($data,'lession_id');
-        // p($lessionids);die();
-        
         //根据章节id获取章节信息
         $map3['del_flag']=array('eq','1');
         $map3['id']=array('in',$Chapterids);
@@ -199,12 +199,12 @@ class PaperDetialModel extends Model{
 		//判断是否选择了章节
         if($chapterIds == ""){
             $sqlString = <<< EOT
-select DISTINCT kq.id AS question_id from kh_question kq WHERE kq.testdb_id in ($testDbIds);
+select DISTINCT kq.id AS question_id from kh_question kq WHERE kq.testdb_id in ($testDbIds) AND kq.del_flag=1;
 EOT;
         }else{
             $sqlString = <<< EOT
 select DISTINCT kqk.question_id from kh_question_know kqk LEFT JOIN kh_question kq ON kqk.question_id = kq.id,kh_knowledge kkl 
-WHERE kkl.chapter_id in ($chapterIds) AND kkl.id = kqk.knowledge_id AND kq.testdb_id in ($testDbIds);
+WHERE kkl.chapter_id in ($chapterIds) AND kkl.id = kqk.knowledge_id AND kq.testdb_id in ($testDbIds) AND kq.del_flag=1;
 EOT;
         }
 
@@ -221,8 +221,10 @@ EOT;
         if(sizeof($questionArray) != 0){
 
         	$map1['testpaper_id'] = array('eq', $testpaper_id);
+        	$map1['del_flag'] = array('eq', '1');
         	$list1 = M('PaperQuestion')->field('question_id')->where($map1)->select();
-        	$testQuIds = array_column($list1, 'question_id');//去掉重复的题目id
+        	$testQuIds = array_column($list1, 'question_id');
+        	//去掉试卷已经存在的试题ids
         	foreach ($questionArray as $key => $value) {
         		foreach ($testQuIds as $value2) {
         			if ($value == $value2){
@@ -230,12 +232,10 @@ EOT;
         			}
         		}
         	}
-        	// p($questionArray);die();
 			if (sizeof($questionArray)==0) {
 				$list=null;
 			}else{
-	        	$map['kh_question.id'] = array('in',
-	        	 $questionArray);
+	        	$map['kh_question.id'] = array('in',$questionArray);
 		        $map['kh_question.del_flag'] = array('eq', '1');
 
 		        $list = D('Question')
