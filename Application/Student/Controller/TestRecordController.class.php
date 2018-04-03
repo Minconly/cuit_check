@@ -19,6 +19,10 @@ class TestRecordController extends StudentBaseController {
      * @return    [type]                   [description]
      */
     public function detail(){
+        $courseList = D("class_student")->getCourse(session('stu_account'));
+        $this->assign('courseList',$courseList);
+        $this->assign("courseClassId",session("courseClassId"));
+
         $testpaper_id = I('testpaper_id');
         if(empty($testpaper_id)){
             $this->error();
@@ -55,7 +59,10 @@ class TestRecordController extends StudentBaseController {
             $student_id = M('student')->where(array('account'=>$account_id))->getField('id');
 
             $list = D('TestFinal')->getQuestionDetails($paper_id, $student_id, $type, $requestPage, $rows); // 获得问题详情
-            $data['question'] = $list['question'];     
+            $ratio = D('TestFinal')->getMistakeRatio($paper_id, $student_id);
+            $data['question'] = $list['question'];
+            $data['knowledgeRadio'] = $ratio['knowledgeArr'];
+            $data['chapterRadio'] = $ratio['chapterArr'];
             $data['pages'] = $list['pages'];        // 分页相关
             $data['requestPage'] = $requestPage;    // 请求页
             $data['type'] = $type;                  // 请求类型

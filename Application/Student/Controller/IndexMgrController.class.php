@@ -12,12 +12,20 @@ class IndexMgrController extends StudentBaseController {
         $courseClassId = I("get.courseClassId","");
         $personData=$this->personInfo();
         $courseList = D("class_student")->getCourse(session('stu_account'));
+        if($courseClassId === ""){
+            $courseClassId = session("courseClassId");
+        }
+        $courseClassId = $courseClassId===""?$courseList[0]["cci"]:$courseClassId;
+        session("courseClassId",$courseClassId);
+
         // dump($personData);die();
         $this->assign('person',$personData);
         $inform=$this->Inform();
         $this->assign('info',$inform);
         $this->assign('courseList',$courseList);
-        $this->assign("courseClassId",$courseClassId===""?$courseList[0]["cci"]:$courseClassId);
+
+
+        $this->assign("courseClassId",$courseClassId);
         $this->display();
     }
     public function Inform(){

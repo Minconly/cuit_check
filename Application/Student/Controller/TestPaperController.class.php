@@ -83,6 +83,10 @@ class TestPaperController extends StudentBaseController {
     public function detailInfo(){
         $testpaper_id = I('id');
         $courseclass_id = I('courseclass_id');
+        $courseList = D("class_student")->getCourse(session('stu_account'));
+        $this->assign('courseList',$courseList);
+        $this->assign("courseClassId",session("courseClassId"));
+
         if(empty($testpaper_id) || empty($courseclass_id)){
             $this->error();
         }else{

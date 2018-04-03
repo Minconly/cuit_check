@@ -67,7 +67,7 @@ class TestFinalModel extends Model{
 
 		// 获得题目详情
 		$question = $this
-					->field(array('question_id','answer_id','is_true'))
+					->field(array('question_id','answer_id','is_true','answer_value'))
 					->where($map)
 					->limit($limit)
 					->select();
@@ -76,8 +76,9 @@ class TestFinalModel extends Model{
 			
 			// 题目
 			$question[$key]['question_content'] = M('question')->where(array('id'=>$value['question_id']))->getField('content');
+            $question[$key]['type'] = M('question')->where(array('id'=>$value['question_id']))->getField('type');
 
-			// 答案
+            // 答案
 			$question[$key]['answer'] = M('answer')->where(array('question_id'=>$value['question_id']))->getField('id,content,is_true',':');
 			
 			// 获得相关知识点
@@ -97,6 +98,41 @@ class TestFinalModel extends Model{
 
 		return $list;
 	}
+
+
+	public function getMistakeRatio($paper_id, $student_id){
+
+        $map['testpaper_id'] = $paper_id;
+        $map['student_id'] = $student_id;
+        $map['is_true'] = 0;
+        $arr = [];
+        $arr2 = [];
+
+
+        //获得错题详情
+        $question = $this
+            ->field(array('question_id','answer_id'))
+            ->where($map)
+            ->select();
+        foreach ($question as $k => $v){
+            $knowledges = M('question_know')->where(array('question_id'=>$v['question_id']))->getField('knowledge_id',true);
+            foreach ($knowledges as $lk){
+                if($arr[$lk]["value"] == null){
+                    $arr[$lk]["value"] = 0;
+                    $arr[$lk]["name"] = M('knowledge')->where(array('id'=>$lk))->getField('name');
+                }
+                $arr[$lk]["value"] += 1;
+                $chapter = M('chapter')->field('kh_chapter.id,kh_chapter.name')->join(" left join kh_knowledge kl on kl.chapter_id = kh_chapter.id")
+                    ->where(['kl.id'=>$lk])->find();
+                if($arr2[$chapter['id']]['value'] == null){
+                    $arr2[$chapter['id']]['value'] = 0;
+                    $arr2[$chapter['id']]['name'] = $chapter['name'];
+                }
+                $arr2[$chapter['id']]['value']+=1;
+            }
+        }
+        return array('knowledgeArr'=>$arr,'chapterArr'=>$arr2);
+    }
 
 
 	/**

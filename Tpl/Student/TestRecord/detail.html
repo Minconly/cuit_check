@@ -51,40 +51,45 @@
         </form>
         </blockquote>
         
-
-        <div class="paper_detail">
-            <div class="border_paper">
-                <div class="paper_img">
-                    <img src="__PUBLIC__/student/images/note.png">
-                </div>
-                <div class="paper_description">
-                    <div class="paper_header paper_line">
-                        <b>试卷名称:</b>
-                        <span class="label label-info paper_name"></span>
+        <div style="width: 50%;height:100%;float: left;">
+            <div class="paper_detail">
+                <div class="border_paper">
+                    <div class="paper_img">
+                        <img src="__PUBLIC__/student/images/note.png">
                     </div>
-                    <div class="paper_type paper_line">
-                        <b>试卷类型:</b>
-                        <span class="label label-info type_name"></span>
-                    </div>
-                    <div class="paper_author paper_line">
-                        <b>试卷作者:</b>
-                        <span class="label label-info author"></span>
-                    </div>
-                    <div class="paper_full_score paper_line">
-                        <b>试卷满分:</b>
-                        <span class="label label-success full_score"></span>
-                    </div>
-                    <div class="paper_pass_score paper_line">
-                        <b>及格分数:</b>
-                        <span class="label label-danger pass_score"></span>
-                    </div>
-                    <div class="paper_people_score paper_line">
-                         <b>您的分数:</b>
-                        <span class="label label-danger your_score"></span>
+                    <div class="paper_description">
+                        <div class="paper_header paper_line">
+                            <b>试卷名称:</b>
+                            <span class="label label-info paper_name"></span>
+                        </div>
+                        <div class="paper_type paper_line">
+                            <b>试卷类型:</b>
+                            <span class="label label-info type_name"></span>
+                        </div>
+                        <div class="paper_author paper_line">
+                            <b>试卷作者:</b>
+                            <span class="label label-info author"></span>
+                        </div>
+                        <div class="paper_full_score paper_line">
+                            <b>试卷满分:</b>
+                            <span class="label label-success full_score"></span>
+                        </div>
+                        <div class="paper_pass_score paper_line">
+                            <b>及格分数:</b>
+                            <span class="label label-danger pass_score"></span>
+                        </div>
+                        <div class="paper_people_score paper_line">
+                             <b>您的分数:</b>
+                            <span class="label label-danger your_score"></span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>  
+            <div id="chart" style="margin-top:10%;height:600px; width:100%; float: left">
+
+
+            </div>
+        </div>
 
         <div class="answer_detail">
         </div>
@@ -97,12 +102,13 @@
     </div>
 
 </div>
-    <include file='Public:foot' />
+<include file='Public:foot' />
 </body>
 </html>
 
 <layuijs/>
-<script> 
+<script src="__PUBLIC__/student/js/echarts.min.js" type="text/javascript"></script>
+<script>
  var testpaper_id = "{$testpaper_id}";
  var jsonData = "{:U('Student/TestRecord/getDetails')}";
  var pages = "";
@@ -116,11 +122,11 @@ layui.use(['layer','form','jquery','laypage'],function(){
   laypage = layui.laypage,
   $ = layui.jquery;
 
+
+
   var type = $(".choice").val();
 
-  $(function(){
     getDetails();
-  });
 
 
   // 获取接口信息
@@ -155,29 +161,46 @@ layui.use(['layer','form','jquery','laypage'],function(){
                 var question = eval(data.question);
                 $(".answer_detail").html("");      //清空html用于分页
                 $.each(question, function(index,value){
-                        var head = '<div class="question_detail">';
-                        var number =   '<div class="question_number paper_line"><b>当前题号:</b><span>'+value.question_id+'</span></div>';
-                        var content = '<div class="question_title paper_line"><b>题目内容:</b><span>'+value.question_content+'</span></div>';
-                        var answer = '<div class="question_answer paper_line"><b>题目答案:</b>';
-                        var knowledges = '<div class="question_knowledge paper_line"><b>相关知识点:</b>'
+                        var head = "<div class='question_detail'>";
+                        var number =   "<div class='question_number paper_line'><b>当前题号:</b><span>"+value.question_id+"</span></div>";
+                        var content = "<div class='question_title paper_line'><b>题目内容:</b>"+escapeChars(value.question_content)+"</div>";
+                        // content = $(content).find('div').append(value.question_content).toString();
+                        var answer = "<div class='question_answer paper_line'><b>题目答案:</b>";
+                        var knowledges = "<div class='question_knowledge paper_line'><b>相关知识点:</b>"
 
                         var select = "";
                         var knowledge = "";
                         // 添加答案
                         $.each(value.answer, function(index1, value1){
                             value1 = value1.split(":");
-                            // 正确答案样式
-                            if(value1[1] == 1){
-                                select += '<span class="label label-success">'+value1[0]+'</span>';
+
+                            if(value.type === "1"){
+                                // 正确答案样式
+                                if(value1[1] === "1"){
+                                    select += '<span class="label label-success">'+value1[0]+'</span>';
+                                }
+                                // 学生选择了错误答案后的样式
+                                else if(index1 === value.answer_id && value1[1] === "0"){
+                                    select += '<span class="label label-danger">'+value1[0]+'</span>';
+                                }
+                                // 通用样式
+                                else{
+                                    select += '<span>'+value1[0]+'</span>';
+                                }
+                            }else {
+                                if(value1[0] === value.answer_value){
+                                    select += '<span class="label label-success">'+value1[0]+'</span>';
+                                }else {
+                                    select += '<span class="label label-danger">'+ value.answer_value+'</span>';
+                                    if(value.type === "3"){
+                                        select += '<span>'+value1[0]+'</span>';
+                                    }else if(type === "2") {
+                                        // if(value1[]){}
+                                        // select += '<span></span>';
+                                    }
+                                }
                             }
-                            // 学生选择了错误答案后的样式
-                            else if(index1 == value.answer_id && value1[1] == 0){
-                                select += '<span class="label label-danger">'+value1[0]+'</span>';
-                            }
-                            // 通用样式
-                            else{
-                                select += '<span>'+value1[0]+'</span>';   
-                            }
+
                             // 如果为最后一个数,则封闭div
                             if(index1 == value.answer[value.answer.length - 1]){
                                 select += '</div>';
@@ -197,8 +220,107 @@ layui.use(['layer','form','jquery','laypage'],function(){
                         var foot = '</div>';
                         // 添加答案框
                         var html = head+number+content+answer+knowledges+foot;
-                        $(".answer_detail").append(html);    
+                        $(".answer_detail").append(html);
+
                 });
+
+
+                var myChart = echarts.init(document.getElementById('chart'));
+
+                var  option = {
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b}: {c} ({d}%)"
+                    },
+                    title: {
+                        text: '错题分析',
+                        left: 'center',
+                        top: 20,
+                        textStyle: {
+                            color: '#ccc'
+                        }
+                    },
+                    legend: {
+                        orient: 'vertical',
+                        x: 'left',
+                        data:[]
+                    },
+                    series: [
+                        {
+                            name:'错题章节分布',
+                            type:'pie',
+                            selectedMode: 'single',
+                            //  position: 'center',
+                            radius: ['0', '30%'],
+
+                            label: {
+                                normal: {
+                                    position: 'inner'
+                                }
+                            },
+                            labelLine: {
+                                normal: {
+                                    show: false
+                                }
+                            },
+                            data:[]
+                        },
+                        {
+                            name:'错题知识点分布',
+                            type:'pie',
+                            radius: ['40%', '55%'],
+                            label: {
+                                normal: {
+                                    formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
+                                    backgroundColor: '#eee',
+                                    borderColor: '#aaa',
+                                    borderWidth: 1,
+                                    borderRadius: 4,
+                                    rich: {
+                                        a: {
+                                            color: '#999',
+                                            lineHeight: 22,
+                                            align: 'center'
+                                        },
+                                        hr: {
+                                            borderColor: '#aaa',
+                                            width: '100%',
+                                            borderWidth: 0.5,
+                                            height: 0
+                                        },
+                                        b: {
+                                            fontSize: 16,
+                                            lineHeight: 33
+                                        },
+                                        per: {
+                                            color: '#eee',
+                                            backgroundColor: '#334455',
+                                            padding: [2, 4],
+                                            borderRadius: 2
+                                        }
+                                    }
+                                }
+                            },
+                            data:[]
+                        }
+                    ]
+                };
+                var radioData = [];
+                var radioName = [];
+                for (var id in data.knowledgeRadio){
+                    radioData.push(data.knowledgeRadio[id]);
+                    radioName.push(data.knowledgeRadio[id]['name']);
+                }
+
+                var radioData1 = [];
+                for (var id2 in data.chapterRadio){
+                    radioData1.push(data.chapterRadio[id2]);
+                }
+                option.series[0].data = radioData1;
+                option.series[1].data = radioData;
+                option.legend.data = radioName;
+                myChart.setOption(option);
+                // console.log(JSON.stringify(JSON.parse(JSON.stringify(radioData))));
 
             }
         },
@@ -221,12 +343,20 @@ layui.use(['layer','form','jquery','laypage'],function(){
         }
       });
   }
-
+    function escapeChars(str) {
+        str = str.replace(/&amp;/g, '&');
+        str = str.replace(/&lt;/g, '<');
+        str = str.replace(/&gt;/g, '>');
+        str = str.replace(/&acute;/g, '\'');
+        str = str.replace(/&quot;/g, '"');
+        str = str.replace(/&brvbar;/g, '|');
+        return str;
+    }
 
 // 下拉框联动
 form.on('select(choice)',function(data){
     getDetails(data.value);
-})
+});
 
 
 });

@@ -46,7 +46,7 @@ b{
 }
 
 .content .paper_detail {
-	width:45%;
+	/*width:45%;*/
 	float: left;
 	border: 1px solid #eee;
 	border-left-width: 5px;
@@ -86,7 +86,7 @@ b{
 
 .content .answer_detail {
 	width: 50%;
-	float: left;
+	float: right;
 	/*border: 1px solid #eee;
 	border-left-width: 5px;
 	border-left-color:#aa6708;
@@ -112,5 +112,5 @@ b{
 	margin-right: 10px;
 }
 .paper_container {
-	height: 90%;
+	height: auto;
 }
