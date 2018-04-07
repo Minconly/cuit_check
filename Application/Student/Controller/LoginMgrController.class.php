@@ -49,7 +49,13 @@ class LoginMgrController extends Controller {
             if($data2['code']==1){
                 if((sizeof($passtrue)!=0)||(sizeof($passtrue2)!=0)){
                     if(($passtrue['status']!=0)||($passtrue2['status']!=0)){
-                             $data=array('status'=>success);
+                         $data=array('status'=>'success');
+                         if($passtrue['status'] != 0){
+                             session('stuInfo',$passtrue);
+                         }
+                         if($passtrue2['status'] != 0){
+                            session('stuInfo',$passtrue2);
+                         }
                             session('stu_account',$temp['account']);
                      
                       }else{

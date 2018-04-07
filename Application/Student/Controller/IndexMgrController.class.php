@@ -15,7 +15,7 @@ class IndexMgrController extends StudentBaseController {
         if($courseClassId === ""){
             $courseClassId = session("courseClassId");
         }
-        $courseClassId = $courseClassId===""?$courseList[0]["cci"]:$courseClassId;
+        $courseClassId = $courseClassId===null?$courseList[0]["cci"]:$courseClassId;
         session("courseClassId",$courseClassId);
 
         // dump($personData);die();

@@ -1,0 +1,124 @@
+
+<div class="testListBox">
+    <div class="somepanel">
+        <div class="ui grid">
+            <div class="row">
+                <div class="six wide column myPadding">
+                    <div class="ui card" style="margin-left: 2%;">
+                        <div class="content">
+                            <div class="center aligned header">开始练习</div>
+                            <div class="center aligned description">
+                                <div class="ui buttons">
+                                    <button class="ui right teal labeled icon button" onclick="startPractice(1);"> 随机测试 </button>
+                                    <div class="or"></div>
+                                    <button class="ui right grey labeled icon button" onclick="startPractice(2);"> 错题练习 </button>
+                                </div>
+                                <div class="ui divider " style="clear: both "></div>
+                                <button class="ui  red  icon button" onclick="startPractice(3);"> 只 做 新 题 </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ui card" style="margin-left: 2%;">
+                        <div class="ui top attached label">练习记录</div>
+                        <div class="ui " style="margin-top: 5%"></div>
+                        <div class="ui items" style="margin-left: 15%">
+                            <div class="item">
+                                <div class="content">
+                                    <div class="header" style="font-weight:200;font-size: small">2018-2-15 12:05:08</div>
+                                    <div class="meta">
+                                        <a class="ui label"><i class="mail icon"></i> 正确率：80% </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui divider"></div>
+                        <div class="ui items" style="margin-left: 15%">
+                            <div class="item">
+                                <div class="content">
+                                    <div class="header" style="font-weight:200;font-size: small">2018-2-15 12:05:08</div>
+                                    <div class="meta">
+                                        <a class="ui label"><i class="mail icon"></i> 正确率：80% </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui divider"></div>
+                        <div class="ui items" style="margin-left: 15%">
+                            <div class="item">
+                                <div class="content">
+                                    <div class="header" style="font-weight:200;font-size: small">2018-2-15 12:05:08</div>
+                                    <div class="meta">
+                                        <a class="ui label"><i class="mail icon"></i> 正确率：80% </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="six wide column myPadding">
+                    <div class="ui card" style="margin-left: 2%;">
+                        <div class="content">
+                            <div class="center aligned header">错题本</div>
+                            <div class="center aligned description">
+                                <div class="statistic ">
+                                    <div class="value red">
+                                        22%
+                                    </div>
+                                    <div class="label">正确率 </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <div class="center aligned author">
+                                <img class="ui avatar image" src="http://semantic-ui.com/images/avatar/small/jenny.jpg">
+                                <button class="ui button">查看错题</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="four wide column myPadding" id="rank" style="border: #e2e2e2 1px solid;">
+                    <h4 class="ui header center">刷题排行榜</h4>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var practiceUrl = "{:U('Student/Practice/beginPractice')}";
+    var getRankUrl = "{:U('Student/Practice/getRank')}";
+
+    getRank();
+
+    function startPractice(type) {
+        window.location.href=practiceUrl+'?type='+type;
+    }
+
+    function getRank() {
+        $.getJSON(getRankUrl,"", function(data) {
+            var json = eval(data); //数组
+            console.log(json);
+            if(json.success) {
+                let list = data.data;
+                //循环json数组，依次赋值div
+
+                let i=1;
+                let item = "";
+                for (let key in  list){
+                    let arr = key.split(":");
+                    item += `<span style="font-size:medium">${i}</span>
+                    <a class="ui teal image label" style="margin-left: 8%">
+                        <img src="https://semantic-ui.com/images/avatar/small/veronika.jpg">
+                            ${arr[1]}
+                        <div class="detail">${list[key]}</div>
+                    </a>
+                    <div class="ui divider"></div>`;
+                    i++;
+                }
+                $('#rank').append(item);
+            }
+        });
+    }
+</script>
